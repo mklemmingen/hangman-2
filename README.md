@@ -21,7 +21,7 @@ The structure of the game is fairly simple and follows basic control structures.
     
       - if it has guessed correct, it gets positional information, like a real player would, where in the secret word the guessed letter would be. 
       - It then calculates the oppositional elements that cannot be at that position (guessed letter: a2 oppos.: b2,c2,...,x2), collects the index values and deletes those
-      - from the pool from which it iterates at each loop.
+        from the pool from which it iterates at each loop.
       - if the guess has been incorrect, all index vallues of words where that element has been a part of at whatever position gets yeeted into nothingness. 
 
 the computers "high strategy" is based on how an adult player would make his choices, if he didnt know what words are, and just knows they consist of up to 26 individual letters.
