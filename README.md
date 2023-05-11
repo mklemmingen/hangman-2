@@ -1,6 +1,7 @@
 # hanging_man
 
 The game has a D&D like story-aspect to it to make it stand out against simple vanilla hangman games.
+
 It supports both english and german.
 
 Decisions are made by typing in one of the displayed numbers, and as of now, all that is done in the console.
