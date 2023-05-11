@@ -19,7 +19,7 @@ The structure of the game is fairly simple and follows basic control structures.
       - He then iterates through each element of each word and adds the index values of the whole words into a dictionary of alphabet_at_position (meaning a0, a1, a2...,x30)
       - At the end, these values are measured, summed up by letter and altogether, the biggest letter gets choosen to be guessed.
     
-      - if it has guessed correct, it gets positional information, like a real player would, where in the secret word the guessed letter would be. 
+      - if it has guessed correct, it receives positional information, like a real player would, where in the secret word the guessed letter would be. 
       - It then calculates the oppositional elements that cannot be at that position (guessed letter: a2 oppos.: b2,c2,...,x2), collects the index values and deletes those
         from the pool from which it iterates at each loop.
       - if the guess has been incorrect, all index vallues of words where that element has been a part of at whatever position gets yeeted into nothingness. 
@@ -36,4 +36,8 @@ TO-DO:
   - Game Interface
   - Fixes of german
   - split source code inbetween functions, game-run, art and lines
-  
+  - easier dictionary support
+      - change dictionary after being opened to all-small (, no spaces) and sorted by length. 
+      - go over dictionary itself and create intervals by length
+  - check if iteration process can be speed-up (late stage tweaking)
+  - late-stage: support for spaces?
