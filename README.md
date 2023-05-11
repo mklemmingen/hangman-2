@@ -1,5 +1,4 @@
 # hanging_man
-simple hanging man game with universal dictionary support. Want to make the strongest hangman computer? Make a bigger dictionary for him. 
 
 The game has a D&D like story-aspect to it to make it stand out against simple vanilla hangman games.
 It supports both english and german.
@@ -10,7 +9,7 @@ The structure of the game is fairly simple and follows basic control structures.
 
 - You either play yourself and try to solve a secret word, or you can challenge the villain with a word you can individually give him.
 
-The user can select 3 difficulty options.
+### The user can select 3 difficulty options.
 
   - easy: simply chooses a random letter of the alphabet and acts as if its a toddler who just gained colour sight
   - medium: knows which letters of the alphabet are most used and weights them more than others in his random decision making.
@@ -28,6 +27,6 @@ The user can select 3 difficulty options.
 the computers "high strategy" is based on how an adult player would make his choices, if he didnt know what words are, and just knows they consist of up to 26 individual letters.
 The computer, if the word is in fact in the dictionary, is able to play surprisingly well. 
 
-See for yourself! 
+### See for yourself! 
 
 If you have any tips and tricks on how to improve the code or where to get a big chunk of dictionaries like the one I sneakily forked, feel free to message or create a discussion
