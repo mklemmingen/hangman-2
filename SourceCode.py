@@ -492,7 +492,6 @@ strategy_value = int
 # string used for language_identification
 hard_mode_lang = str
 
-
 # --------------------------------------------------
 # Select the word function
 
@@ -531,14 +530,18 @@ def pri_secret_word(word, gues_letters):
 
 # ------------------------------------------
 # used repeating
-def give_me_a_value_inbetween(value1: int, value2: int, language_eng: bool) -> int:
+def give_me_a_value_inbetween(value1: int, value2: int, language_eng: bool, start_of_game: bool) -> int:
     # Function for choosing a letter between two values
     erg = -1
     while erg <= value1 or erg > value2:
         # A while-loop is used to stop the user from ending the game with anything not allowed,
         # except is used to prevent errors
         try:
-            if language_eng:
+            if start_of_game:
+                erg = int(input("\nEnter your choices number ... Geb die Nummer deiner Entscheidung ein: "))
+                print("")
+                start_of_game = False
+            elif language_eng:
                 # User is presented with the choice to choose between playing the game or choosing the computers word
                 erg = int(input("\nEnter your choices number: "))
                 print("")
@@ -596,21 +599,27 @@ def guess_computer_letter(language_eng):
     else:
         print(select_word(npc_inner_thoughts_german))
     print("\n-----------------------------------------")
-    time.sleep(5)
+    time.sleep(2)
     return guess
 
 
-def guess_computer_letters_strategy(language_eng):
+def guess_computer_letters_strategy(language_eng, gues_let_func: list):
     # this reoccurring functions uses a simple vowel-first strategy to solve the user input words
     # https://pynative.com/python-weighted-random-choices-with-probability/
     # used for inspiration for guesses with probability
     # used for probabilities: https://www.wordcheats.com/blog/most-used-letters-in-english
-    in_function_guess = random.choices(alphabet, weights=(8.4966, 2.0720, 4.5388, 3.3844, 11.1607,
-                                                          1.8121, 2.4705, 3.0034, 7.5448, 0.1965,
-                                                          1.1016, 5.4893, 3.0129, 6.6544, 7.1635,
-                                                          3.1671, 0.1962, 7.5809, 5.7351, 6.9509,
-                                                          3.6308, 1.0074, 1.2899, 0.2902, 1.7779,
-                                                          0.2722), k=1)
+    while True:
+        in_function_guess = random.choices(alphabet, weights=(8.4966, 2.0720, 4.5388, 3.3844, 11.1607,
+                                                              1.8121, 2.4705, 3.0034, 7.5448, 0.1965,
+                                                              1.1016, 5.4893, 3.0129, 6.6544, 7.1635,
+                                                              3.1671, 0.1962, 7.5809, 5.7351, 6.9509,
+                                                              3.6308, 1.0074, 1.2899, 0.2902, 1.7779,
+                                                              0.2722), k=1)
+        if in_function_guess in guessed_letters:
+            continue
+        if in_function_guess != secret_word:
+            break
+
     print("\n*The Executioner looks into the distance... thinking real hard...*")
     time.sleep(2)
     print("-----------------------------------------\n")
@@ -619,7 +628,7 @@ def guess_computer_letters_strategy(language_eng):
     else:
         print(select_word(npc_general_german))
     print("\n-----------------------------------------")
-    time.sleep(5)
+    time.sleep(2)
     in_function_guess = str(in_function_guess[0])
     return in_function_guess
 
@@ -655,7 +664,7 @@ def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, langua
     else:
         print(select_word(npc_general_german))
     print("\n-----------------------------------------")
-    time.sleep(5)
+    time.sleep(2)
 
     # Creating a skeleton dict without positional arguments.
     # Add onto the length of lists of corresponding key:value-pairs
@@ -1099,7 +1108,7 @@ def games_callout(who_won, language_eng):
     if who_won == "NPC":
         print(npc_art_win)
         print("")
-        time.sleep(5)
+        time.sleep(2)
         print("---------------------------------------")
         print(select_word(npc_wins))
         print("")
@@ -1205,14 +1214,14 @@ print(" --- 1. English/Englisch --- 2. German/Deutsch --- ")
 
 # call just for this one function
 is_english = True
-lang_decide = language = give_me_a_value_inbetween(0, 2, is_english)
+lang_decide = language = give_me_a_value_inbetween(0, 2, is_english, True)
 
 if lang_decide == 2:
     is_english = False
 
 if is_english:
     print("\nYou wake up and find a tall shadowy giant towering above you."
-          " He points to a sad small and thin man in chains, tied to a high beam.\n")
+          " He points to a sad, small and thin man in chains, tied to a high beam.\n")
     print("The Executioner: Harharhar. Welcome to my wicked game.")
     print("Tell me, you dwarv wrangler, to safe this unspoiled being, do you challenge me or do you challenge "
           "yourself?\n")
@@ -1231,7 +1240,7 @@ else:
     print("1. Nenne dem Henker ein Wort, das er erraten muss\n"
           "2. Erhalte ein Wort, so dass du erraten musst.\n")
 
-first_choice = give_me_a_value_inbetween(0, 2, is_english)
+first_choice = give_me_a_value_inbetween(0, 2, is_english, False)
 
 if first_choice == 2:  # the route of being challenged with a word
     if is_english:
@@ -1265,7 +1274,7 @@ if first_choice == 2:  # the route of being challenged with a word
               "\n6. Schwierige Wörter (gemischt)"
               "\n7. Tiere des deutschen Waldes (deutsch)")
 
-    second_choice = give_me_a_value_inbetween(0, 7, is_english)
+    second_choice = give_me_a_value_inbetween(0, 7, is_english, False)
 
     # nested if statements for choosing the right secret word
     if second_choice == 1:
@@ -1327,12 +1336,10 @@ else:  # The route of challenging with a word
               " 3. Ich habe heute Glück. Mein Schicksal liegt in den Sternen. (schweeer)\n")
         print("1, 2 oder 3")
 
-    secret_word = challenge_word.lower()
-
     # used for controlling who gets to play / which part of the code is used
     who_plays = "NPC"
 
-strategy_value = give_me_a_value_inbetween(0, 3, is_english)
+strategy_value = give_me_a_value_inbetween(0, 3, is_english, False)
 
 if strategy_value == 3:
     print("")
@@ -1348,23 +1355,25 @@ if strategy_value == 3:
               "Dies ist meine höllische Landschaft, also gelten meine Regeln:\n"
               "Englisch (1) oder Deutsch (2)")
 
-    lang_value = give_me_a_value_inbetween(0, 2, is_english)
+    lang_value = give_me_a_value_inbetween(0, 2, is_english, False)
 
     if lang_value == 2:
         hard_mode_lang = "german"
     else:
         hard_mode_lang = "english"
 
-    challenge_word = user_input_word(is_english)
+print("--------------------------------")
+challenge_word = user_input_word(is_english)
+secret_word = challenge_word.lower()
 
-    if is_english:
-        print("\n---------------------------")
-        print("Very well, let it BEGIN!")
-        print("---------------------------\n")
-    else:
-        print("\n---------------------------")
-        print("Nun gut, möge deine Folter beginnen.")
-        print("---------------------------\n")
+if is_english:
+    print("\n---------------------------")
+    print("Very well, let it BEGIN!")
+    print("---------------------------\n")
+else:
+    print("\n---------------------------")
+    print("Nun gut, möge deine Folter beginnen.")
+    print("---------------------------\n")
 
 # ------------------------------------------------------------
 # THE GAME
@@ -1453,7 +1462,11 @@ if who_plays == "NPC":
             solving_dict = iterate_dict_to_sol_dict(sliced_dict, empty_solv_dict)
 
             # computer takes a guess based on the highest amount of an element it found in solving_dict
-            guess = high_strategy_dictionary(solving_dict, guessed_letters, remove_letters, is_english)
+            # if sliced_dict empty, meaning no known words fit parameters of secret word, use medium strategy
+            if len(sliced_dict) == 0:
+                guess = guess_computer_letters_strategy(is_english, guessed_letters)
+            else:
+                guess = high_strategy_dictionary(solving_dict, guessed_letters, remove_letters, is_english)
 
             # gives out a True or False value which we store in the variable and use in the following if statements
             guess_in_secret_word = is_guess_in_secret_word(guess, secret_word)
@@ -1522,7 +1535,7 @@ if who_plays == "NPC":
                 else:
                     print("Jeff, mit seinem letzten Atemzug:\n"
                           " Warum... Bitte... du hättest... besser ein Wörterbuch selbst nutzen sollen...")
-                time.sleep(5)
+                time.sleep(2)
 
     else:
         while remaining_attempts > 0 and len(guessed_letters) < length_of_secret_word:
@@ -1531,7 +1544,7 @@ if who_plays == "NPC":
             if strategy_value == 1:
                 guess = guess_computer_letter(is_english)  # computer takes a guess
             else:
-                guess = guess_computer_letters_strategy(is_english)
+                guess = guess_computer_letters_strategy(is_english, guessed_letters)
                 # computer takes a structured guess with a higher success chance
 
             guess_in_secret_word = is_guess_in_secret_word(guess, secret_word)
@@ -1607,7 +1620,7 @@ else:
     print("1. Nochmal spielen\n"
           "2. Beende dies bitte!\n")
 
-restart = give_me_a_value_inbetween(0, 2, is_english)
+restart = give_me_a_value_inbetween(0, 2, is_english, False)
 
 if restart == "1":
     os.execl(sys.executable, os.path.abspath(__file__), *sys.argv)
