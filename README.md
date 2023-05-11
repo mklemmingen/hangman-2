@@ -11,7 +11,7 @@ The structure of the game is fairly simple and follows basic control structures.
 - You either play yourself and try to solve a secret word, or you can challenge the villain with a word you can individually give him.
 
 The user can select 3 difficulty options.
-  - easy: simply chooses a random alphabeit letter and acts as if its a toddler who just gained colour sight
+  - easy: simply chooses a random letter of the alphabet and acts as if its a toddler who just gained colour sight
   - medium: knows which letters of the alphabet are most used and weights them more than others in his random decision making.
   - hard: here is where the fun begins.
       - The computer limits (as of now this has to be added manually) the interchangeable dictionary by length of the word you give him.
