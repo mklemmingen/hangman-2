@@ -32,6 +32,7 @@ The computer, if the word is in fact in the dictionary, is able to play surprisi
 If you have any tips and tricks on how to improve the code or where to get a big chunk of dictionaries like the one I sneakily forked, feel free to message or create a discussion
 
 TO-DO:
+  - change game-phase layout so the player chooses hard-mode more naturally and has lower difficulty settings as a fallback for more playthroughs
   - Fallback of high strategy to medium difficulty if length of iterated dict == 0 
   - Game Interface
   - Fixes of german
