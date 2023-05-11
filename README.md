@@ -30,3 +30,10 @@ The computer, if the word is in fact in the dictionary, is able to play surprisi
 ### See for yourself! 
 
 If you have any tips and tricks on how to improve the code or where to get a big chunk of dictionaries like the one I sneakily forked, feel free to message or create a discussion
+
+TO-DO:
+  - Fallback of high strategy to medium difficulty if length of iterated dict == 0 
+  - Game Interface
+  - Fixes of german
+  - split source code inbetween functions, game-run, art and lines
+  
