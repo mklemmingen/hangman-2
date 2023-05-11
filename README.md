@@ -26,3 +26,5 @@ the computers "high strategy" is based on how an adult player would make his cho
 The computer, if the word is in fact in the dictionary, is able to play surprisingly well. 
 
 See for yourself! 
+
+If you have any tips and tricks on how to improve the code or where to get a big chunk of dictionaries like the one I sneakily forked, feel free to message or create a discussion!
