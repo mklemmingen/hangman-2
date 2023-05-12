@@ -117,6 +117,8 @@ if first_choice == 2:  # the route of being challenged with a word
         print("\n-----------"
               "\nah.... deutsche Tiere... jaja, guten Tag Herr Osterhase."
               "\n----------")
+    else:
+        secret_word = "errorviernullvier"
 
     # testing
     # print(secret_word)
@@ -168,26 +170,26 @@ else:  # The route of challenging with a word
 
     strategy_value = funcs.give_me_a_value_inbetween(0, 3, is_english, False)
 
-if strategy_value == 3:
-    print("")
-    print("--------------------------------------------------")
-    if is_english:
-        print("If you fly high, you fall deep, foolish Ikarus.\n")
-        print("I am a villain, and yet I like to play fair. Which language will you write your "
-              "word in? This is my hellish landscape, so these are my rules:\n"
-              "english (1) or german (2)")
-    else:
-        print("Wenn du hoch fliegst, fällst du tief, törichter Ikarus.\n")
-        print("Ich bin ein Bösewicht, aber ich spiele gerne fair. In welcher Sprache wirst du dein Wort schreiben? "
-              "Dies ist meine höllische Landschaft, also gelten meine Regeln:\n"
-              "Englisch (1) oder Deutsch (2)")
+    if strategy_value == 3:
+        print("")
+        print("--------------------------------------------------")
+        if is_english:
+            print("If you fly high, you fall deep, foolish Ikarus.\n")
+            print("I am a villain, and yet I like to play fair. Which language will you write your "
+                  "word in? This is my hellish landscape, so these are my rules:\n"
+                  "english (1) or german (2)")
+        else:
+            print("Wenn du hoch fliegst, fällst du tief, törichter Ikarus.\n")
+            print("Ich bin ein Bösewicht, aber ich spiele gerne fair. In welcher Sprache wirst du dein Wort schreiben? "
+                  "Dies ist meine höllische Landschaft, also gelten meine Regeln:\n"
+                  "Englisch (1) oder Deutsch (2)")
 
-    lang_value = funcs.give_me_a_value_inbetween(0, 2, is_english, False)
+        lang_value = funcs.give_me_a_value_inbetween(0, 2, is_english, False)
 
-    if lang_value == 2:
-        hard_mode_lang = "german"
-    else:
-        hard_mode_lang = "english"
+        if lang_value == 2:
+            hard_mode_lang = "german"
+        else:
+            hard_mode_lang = "english"
 
     print("--------------------------------")
     challenge_word = funcs.user_input_word(is_english)
@@ -206,10 +208,10 @@ if strategy_value == 3:
 # THE GAME
 # ------------------------------------------------------------
 
-# variable used in both player and npc
-length_of_secret_word = int(len(funcs.get_unique_letters(secret_word)))
 
 # The Player is in charge:
+
+length_of_secret_word = int(len(funcs.get_unique_letters(secret_word)))
 
 if who_plays == "Player":
 
@@ -268,8 +270,6 @@ if who_plays == "Player":
 # The Computer is in charge of guessing: ---------------------------------------------------
 
 if who_plays == "NPC":
-
-    length_of_secret_word = int(len(funcs.get_unique_letters(secret_word)))
 
     if strategy_value == 3:
         # here the version for the high-strategy computer-way, seperated for better overview

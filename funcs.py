@@ -149,9 +149,9 @@ def guess_computer_letters_strategy(language_eng, gues_let_func: list):
                                                                          3.1671, 0.1962, 7.5809, 5.7351, 6.9509,
                                                                          3.6308, 1.0074, 1.2899, 0.2902, 1.7779,
                                                                          0.2722), k=1)
-        if in_function_guess in guessed_letters:
+        if in_function_guess in gues_let_func:
             continue
-        if in_function_guess != secret_word:
+        if in_function_guess not in gues_let_func:
             break
 
     print("\n*The Executioner looks into the distance... thinking real hard...*")
@@ -179,7 +179,7 @@ def open_dictionary(language):
 
     # opening the dictionary in read mode
     if language == "german":
-        my_dict = open("words_german_excel.txt", "r")
+        my_dict = open("wordlist-german.txt", "r")
     else:
         my_dict = open("words_alpha_excel.txt", "r")
 
@@ -580,6 +580,14 @@ def slice_dict(current_dictionary, language, language_eng, secret_word):
     elif language == "german":
         print("\nI have to admit... I haven't learned german yet... I just dont get the grammar.\n eh... los gehts")
         output_dict = fun_dict
+
+        # possible upgrade of the function:
+        # choose words with len(word) = len(secret_word)
+        # turn every element of dictionary into alpha-mode
+
+        # sorted_german_dict = sorted(fun_dict, key=len)
+        # for index in length_of_german_dict:
+
         # TODO
 
     return output_dict
