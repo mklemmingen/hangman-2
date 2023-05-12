@@ -104,7 +104,7 @@ def guess_player_letter(language_eng):
             print(select_word(RPG_assets.choose_german), end="")
         guess_func = str(input(": "))
         print("-----------------------------------")
-        if len(guess) > 1 or not guess.isalpha():
+        if len(guess_func) > 1 or not guess_func.isalpha():
             if language_eng:
                 print("\nYou fool of a tuck, only single letters are to be guessed. Do you want to break"
                       "the simulation?... go again... this time remember the rules of only one letter at a time!")
@@ -113,7 +113,7 @@ def guess_player_letter(language_eng):
                       "Möchtest du die Simulation zerstören? Versuche es erneut und denke daran, "
                       "dass nur ein Buchstabe auf einmal geraten werden darf!")
 
-        if len(guess) == 1 & guess.isalpha():
+        if len(guess_func) == 1 & guess_func.isalpha():
             break
     return guess_func.lower()
 

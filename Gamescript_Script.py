@@ -166,7 +166,7 @@ else:  # The route of challenging with a word
     # used for controlling who gets to play / which part of the code is used
     who_plays = "NPC"
 
-strategy_value = funcs.give_me_a_value_inbetween(0, 3, is_english, False)
+    strategy_value = funcs.give_me_a_value_inbetween(0, 3, is_english, False)
 
 if strategy_value == 3:
     print("")
@@ -189,18 +189,18 @@ if strategy_value == 3:
     else:
         hard_mode_lang = "english"
 
-print("--------------------------------")
-challenge_word = funcs.user_input_word(is_english)
-secret_word = challenge_word.lower()
+    print("--------------------------------")
+    challenge_word = funcs.user_input_word(is_english)
+    secret_word = challenge_word.lower()
 
-if is_english:
-    print("\n---------------------------")
-    print("Very well, let it BEGIN!")
-    print("---------------------------\n")
-else:
-    print("\n---------------------------")
-    print("Nun gut, möge deine Folter beginnen.")
-    print("---------------------------\n")
+    if is_english:
+        print("\n---------------------------")
+        print("Very well, let it BEGIN!")
+        print("---------------------------\n")
+    else:
+        print("\n---------------------------")
+        print("Nun gut, möge deine Folter beginnen.")
+        print("---------------------------\n")
 
 # ------------------------------------------------------------
 # THE GAME
