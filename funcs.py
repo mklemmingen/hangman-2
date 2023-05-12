@@ -24,6 +24,7 @@ strategy_value = int
 # string used for language_identification
 hard_mode_lang = str
 
+
 # --------------------------------------------------
 # Select the word function
 
@@ -119,7 +120,7 @@ def guess_player_letter(language_eng):
 
 def guess_computer_letter(language_eng):
     # reoccurring function for guessing a letter as the NPC (Executioner) does
-    guess = select_word(RPG_assets.alphabet)
+    in_func_guess = select_word(RPG_assets.alphabet)
     if language_eng:
         print("\n*The Executioner looks into the distance... thinking hard...*")
     else:
@@ -132,7 +133,7 @@ def guess_computer_letter(language_eng):
         print(select_word(RPG_assets.npc_inner_thoughts_german))
     print("\n-----------------------------------------")
     time.sleep(2)
-    return guess
+    return in_func_guess
 
 
 def guess_computer_letters_strategy(language_eng, gues_let_func: list):
@@ -140,13 +141,14 @@ def guess_computer_letters_strategy(language_eng, gues_let_func: list):
     # https://pynative.com/python-weighted-random-choices-with-probability/
     # used for inspiration for guesses with probability
     # used for probabilities: https://www.wordcheats.com/blog/most-used-letters-in-english
+
     while True:
         in_function_guess = random.choices(RPG_assets.alphabet, weights=(8.4966, 2.0720, 4.5388, 3.3844, 11.1607,
-                                                              1.8121, 2.4705, 3.0034, 7.5448, 0.1965,
-                                                              1.1016, 5.4893, 3.0129, 6.6544, 7.1635,
-                                                              3.1671, 0.1962, 7.5809, 5.7351, 6.9509,
-                                                              3.6308, 1.0074, 1.2899, 0.2902, 1.7779,
-                                                              0.2722), k=1)
+                                                                         1.8121, 2.4705, 3.0034, 7.5448, 0.1965,
+                                                                         1.1016, 5.4893, 3.0129, 6.6544, 7.1635,
+                                                                         3.1671, 0.1962, 7.5809, 5.7351, 6.9509,
+                                                                         3.6308, 1.0074, 1.2899, 0.2902, 1.7779,
+                                                                         0.2722), k=1)
         if in_function_guess in guessed_letters:
             continue
         if in_function_guess != secret_word:
@@ -168,7 +170,6 @@ def guess_computer_letters_strategy(language_eng, gues_let_func: list):
 # ----------------------------------------------
 
 def open_dictionary(language):
-
     # possible upgrade
     # open a file given by the user into a accompanied directory
     # let him choose by listing all files in that folder and letting him choose with number
@@ -748,4 +749,3 @@ def get_hangman_stage(attempt_number):
     ------------
     """]
     return stages[max_attempts - attempt_number]
-

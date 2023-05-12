@@ -1,4 +1,3 @@
-import random  # used to choose randomly out of lists, see "https://docs.python.org/3/library/random.html"
 import time  # used to simulate delays of the npc while choosing a letter and add user-friendliness
 import os  # used to exit and reload programm at end
 import sys  # "

@@ -421,7 +421,7 @@ npc_general_german = ["Hmm, ein herausforderndes Wort hast du gewählt. \n"
                       "und ich bekomme immer, was ich will. Nun lasst uns zum Aufhängen übergehen, sollen wir?",
                       "Ich habe einen Doktortitel in Galgenmännchenologie. Du hast keine Chance.",
                       "Ich war schon immer schlecht darin, ein Wörterbuch zu benutzen, "
-                      "aber das gibt mir nur mehr Zeit, um clevere Möglichkeiten zu überlegen, dieses Spiel zu beenden.",
+                      "aber das gibt mir nur mehr Zeit, um clevere Möglichkeiten zu überlegen, dieses Spiel zu beenden",
                       "Ich habe zwar meine Familie verloren, "
                       "aber ich habe immer noch mein treues Wörterbuch. Du bist jetzt in Schwierigkeiten.", ]
 
