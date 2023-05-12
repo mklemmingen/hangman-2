@@ -1313,33 +1313,37 @@ else:  # The route of challenging with a word
     if is_english:
         print("\n--------------------------")
         print("YOU DARE TO CHALLENGE ME?")
-        print("----------------------------")
+        print("----------------------------\n")
 
-        print("\nIf I look at you... I feel pity... I will destroy you, but do you wish for me to go easy on you?")
+        print('I will use my infinitely finite knowledge of the world to cause your destruction.\n'
+              'Although I could crush you, I want to give you a chance... to play with my prey\n.'
+              'Would you like me to go easier on you?\n')
 
-        print("\nYou open your eyes and stare with a thousand daggers:\n")
-        print(" 1. Yes, please. I am still confused! (easy)\n"
-              " 2. No. I stand. Try me, monster.(medium)\n"
-              " 3. I have woken up lucky. My fate is in the stars (harrddddd)\n")
-        print("1 , 2 or 3 ")
+        print("   1. Yes, please. I am still confused! (easy)\n"
+              "   2. I do not want your pity, but I do want a chance. medium\n"
+              "\n   3. Give me the best that you got. You will be my prey.\n")
+
+        print("\n1 , 2 or 3\n")
     else:
         print("\n--------------------------")
         print("DU WAGST ES, MICH HERAUSZUFORDERN?")
         print("----------------------------")
 
-        print("\nWenn ich dich anschaue... empfinde ich Mitleid... ich werde dich zerstören, aber möchtest du, "
-              "dass ich es dir leicht mache?")
+        print("\nIch werde mein unendlich endliches Wissen gegen dich verwenden, um dein Untergang hervorzurufen.\n"
+              "Obwohl ich dich zerstören könnte mit dem Schnips meines Fingers, mmöchte ich dir eine Chance geben...\n"
+              "... damit es ür mich noch Spaß macht...\n")
 
-        print("\nDu öffnest deine Augen und starrst mit tausend Dolchen:\n")
-        print(" 1. Ja, bitte. Ich bin immer noch verwirrt! (leicht)\n"
-              " 2. Nein. Ich bleibe standhaft. Versuche es mit mir, Monster. (mittel)\n"
-              " 3. Ich habe heute Glück. Mein Schicksal liegt in den Sternen. (schweeer)\n")
+        print("   1. Ja, bitte. Ich bin immer noch verwirrt! (leicht)\n"
+              "   2. Ich möchte dein Mitleid nicht, aber ich möchte eine Chance. (mittel)\n"
+              
+              "\n    3. Geb mir das Beste was du hast. ICH werde dein Untergang sein. (schweeer)\n")
+
         print("1, 2 oder 3")
 
     # used for controlling who gets to play / which part of the code is used
     who_plays = "NPC"
 
-strategy_value = give_me_a_value_inbetween(0, 3, is_english, False)
+strategy_value = give_me_a_value_inbetween(0, 2, is_english, False)
 
 if strategy_value == 3:
     print("")
