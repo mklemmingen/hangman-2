@@ -636,6 +636,14 @@ def guess_computer_letters_strategy(language_eng, gues_let_func: list):
 # ----------------------------------------------
 
 def open_dictionary(language):
+
+    # possible upgrade
+    # open a file given by the user into a accompanied directory
+    # let him choose by listing all files in that folder and letting him choose with number
+    # put dictionary into list compatible with parameters, use dynamic adaptable slicer
+    # TODO
+    # ----------------------------------------------
+
     # opening the dictionary in read mode
     if language == "german":
         my_dict = open("words_german_excel.txt", "r")
@@ -929,6 +937,13 @@ def slice_dict(current_dictionary, language, language_eng):
     # to save processor time
     # please make sure that length_of_secret_word is a set variable
     # (above start of who is in charge part)
+
+    # possible upgrade of the function:
+    # choose words with len(word) = len(secret_word)
+    # turn every element of dictionary into alpha-mode
+    # TODO
+    # ------------------------------------------
+
 
     fun_dict = current_dictionary
     output_dict = dict
