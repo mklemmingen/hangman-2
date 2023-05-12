@@ -14,9 +14,9 @@ first_choice: int
 # this variable is used in choosing the category of word
 second_choice: int = 0
 # the word first used when challenging the executioner
-challenge_word = "ErrorNotGivenOther"
+# challenge_word = "ErrorNotGivenOther"
 # the secret word, to guess or to e guessed
-secret_word = "ErrorSecretWordWasntChosen"
+# secret_word = "ErrorSecretWordWasntChosen"
 # Variable that is the current guess / chosen word
 guess: str
 # letter of the current guess
@@ -276,7 +276,7 @@ if who_plays == "NPC":
 
         # implemented variable outside of loop, so it doesn't load each time
         dict_before_slice = funcs.open_dictionary(hard_mode_lang)
-        sliced_dict = funcs.slice_dict(dict_before_slice, hard_mode_lang, is_english)
+        sliced_dict = funcs.slice_dict(dict_before_slice, hard_mode_lang, is_english, secret_word)
         remove_letters = []
 
         while remaining_attempts > 0 and len(guessed_letters) < length_of_secret_word:

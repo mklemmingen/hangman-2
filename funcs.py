@@ -465,7 +465,7 @@ def remove_duplicates_in_list(func_list: list):
     return filtered_removal_list
 
 
-def slice_dict(current_dictionary, language, language_eng):
+def slice_dict(current_dictionary, language, language_eng, secret_word):
     # uses set known intervals of the length of words from the english dict and german dict
     # to save processor time
     # please make sure that length_of_secret_word is a set variable
