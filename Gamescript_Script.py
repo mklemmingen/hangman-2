@@ -145,8 +145,8 @@ else:  # The route of challenging with a word
               'Would you like me to go easier on you?\n')
 
         print("   1. Yes, please. I am still confused! (easy)\n"
-              "   2. I do not want your pity, but I do want a chance. medium\n"
-              "\n   3. Give me the best that you got. You will be my prey.\n")
+              "   2. I do not want your pity, but I do want a chance. (medium)\n"
+              "\n   3. Give me the best that you got. You will be my prey. (hard)\n")
 
         print("\n1 , 2 or 3\n")
     else:
@@ -160,7 +160,7 @@ else:  # The route of challenging with a word
 
         print("   1. Ja, bitte. Ich bin immer noch verwirrt! (leicht)\n"
               "   2. Ich möchte dein Mitleid nicht, aber ich möchte eine Chance. (mittel)\n"
-              
+
               "\n    3. Geb mir das Beste was du hast. ICH werde dein Untergang sein. (schweeer)\n")
 
         print("1, 2 oder 3")
@@ -171,25 +171,51 @@ else:  # The route of challenging with a word
     strategy_value = funcs.give_me_a_value_inbetween(0, 3, is_english, False)
 
     if strategy_value == 3:
-        print("")
-
         # asks if the user wants to use an in-build dictionary for the computer or if he
         # has provided an own one in the DICTIONARY folder
         # if he has not, go to ask about language:
 
-        own_dictionary = 0
+        # path to dictionaries folder
+        path_to_dict = "DICTIONARIES"
+        # creates a list of the files in the dir
+        files_in_dir = funcs.files_in_dir(path_to_dict)
+        # length of former mentioned list
+        own_dictionaries = len(files_in_dir)
 
-        print("-----\n")
-        if is_english:
-            print("Tell me, have you put a dictionary for me into my DICTIONARY box? \n")
-            print("1.Yes 2.No\n")
-        else:
-            print("Sag mir, hast du ein Wörterbuch in meine Wörterbuch-Kiste getan? \n")
-            print("1.Ja 2.Nein\n")
+        # activated if anything in dir
+        if own_dictionaries >= 1:
+            print("-----\n")
+            if is_english:
+                print("Tell me, have you put a dictionary for me into my DICTIONARY box,\n"
+                      "that you would like me to use? \n")
+                print("  1.Yes  2. No \n")
+            else:
+                print("Sag mir, hast du ein Wörterbuch in meine Wörterbuch-Kiste getan,\n"
+                      "welches du willst, dass ich benutze? \n")
+                print("  1.Ja   2. Nein \n")
 
-        lang_value = funcs.give_me_a_value_inbetween(0, 2, is_english, False)
+            value_if_own_dict = funcs.give_me_a_value_inbetween(0, 2, is_english, False)
 
-        if own_dictionary == 2:
+            # activated if player decided to use a user-input dict
+            if value_if_own_dict == 1:
+                if is_english:
+                    print("-------------------------------------\n")
+                    print("Which of these dictionaries do you wish to use? \n")
+                else:
+                    print("-------------------------------------\n")
+                    print("Welches dieser Wörterbücher wählst du?\n")
+
+                # formats a list of all dictionaries in ~/DICTIONARIES
+                zähler = -1
+                for i in files_in_dir:
+                    zähler = zähler + 1
+                    print(f" {zähler}  {i} \n")
+
+                # value for later selection
+                value_which_dictionary = funcs.give_me_a_value_inbetween(-1, own_dictionaries, is_english, False)
+
+        # if there are no files in dir or if user doesnt want to use them
+        if own_dictionaries == 0 or value_if_own_dict == 2:
             print("--------------------------------------------------")
             if is_english:
                 print("If you fly high, you fall deep, foolish Ikarus.\n")
@@ -198,9 +224,11 @@ else:  # The route of challenging with a word
                       "english (1) or german (2)")
             else:
                 print("Wenn du hoch fliegst, fällst du tief, törichter Ikarus.\n")
-                print("Ich bin ein Bösewicht, aber ich spiele gerne fair. In welcher Sprache wirst du dein Wort schreiben? "
-                      "Dies ist meine höllische Landschaft, also gelten meine Regeln:\n"
-                      "Englisch (1) oder Deutsch (2)")
+                print(
+                    "Ich bin ein Bösewicht, aber ich spiele gerne fair. "
+                    "In welcher Sprache wirst du dein Wort schreiben? "
+                    "Dies ist meine höllische Landschaft, also gelten meine Regeln:\n"
+                    "Englisch (1) oder Deutsch (2)")
 
             lang_value = funcs.give_me_a_value_inbetween(0, 2, is_english, False)
 
@@ -208,9 +236,6 @@ else:  # The route of challenging with a word
                 hard_mode_lang = "german"
             else:
                 hard_mode_lang = "english"
-        else:
-            # TODO build display of files in dir DICTIONARIES that are choosen by variable input,
-            # maybe use hard_mode_lang for that?
 
     print("--------------------------------")
     challenge_word = funcs.user_input_word(is_english)
@@ -295,9 +320,21 @@ if who_plays == "NPC":
     if strategy_value == 3:
         # here the version for the high-strategy computer-way, seperated for better overview
 
-        # implemented variable outside of loop, so it doesn't load each time
-        dict_before_slice = funcs.open_dictionary(hard_mode_lang)
-        sliced_dict = funcs.slice_dict(dict_before_slice, hard_mode_lang, is_english, secret_word)
+        if not value_if_own_dict == 1:
+            # chosen if user wants to use an inbuild-dict
+            # implemented variable outside of loop, so it doesn't load each time
+            dict_before_slice = funcs.open_dictionary(hard_mode_lang)
+            sliced_dict = funcs.slice_dict(dict_before_slice, hard_mode_lang, is_english,
+                                           secret_word, value_if_own_dict, files_in_dir,
+                                           value_which_dictionary)
+        else:
+            # uses the user-input-dictionary
+            # we don't need the open dict function, since it is implemented in the slice_dict function
+
+            sliced_dict = funcs.slice_dict(list, hard_mode_lang, is_english, secret_word,
+                                           value_if_own_dict, files_in_dir,
+                                           value_which_dictionary)
+
         remove_letters = []
 
         while remaining_attempts > 0 and len(guessed_letters) < length_of_secret_word:

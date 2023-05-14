@@ -1,6 +1,7 @@
 import random  # used to choose randomly out of lists, see "https://docs.python.org/3/library/random.html"
 import time  # used to simulate delays of the npc while choosing a letter and add user-friendliness
 import RPG_assets
+import os  # used to exit and reload programm at end and to list files in dict dictionary
 
 # (head + body + arms + legs are 6 pieces)
 remaining_attempts = 6
@@ -170,13 +171,6 @@ def guess_computer_letters_strategy(language_eng, gues_let_func: list):
 # ----------------------------------------------
 
 def open_dictionary(language):
-    # possible upgrade
-    # open a file given by the user into a accompanied directory
-    # let him choose by listing all files in that folder and letting him choose with number
-    # put dictionary into list compatible with parameters, use dynamic adaptable slicer
-    # TODO
-    # ----------------------------------------------
-
     # opening the dictionary in read mode
     if language == "german":
         my_dict = open("wordlist-german.txt", "r")
@@ -465,145 +459,166 @@ def remove_duplicates_in_list(func_list: list):
     return filtered_removal_list
 
 
-def slice_dict(current_dictionary, language, language_eng, secret_word):
+def slice_dict(current_dictionary, language, language_eng, secret_word, value_if_own_dict, files_in_dir,
+               value_which_dictionary):
+    # if user uses in-build dict:
     # uses set known intervals of the length of words from the english dict and german dict
     # to save processor time
-    # please make sure that length_of_secret_word is a set variable
-    # (above start of who is in charge part)
-
-    # possible upgrade of the function:
-    # choose words with len(word) = len(secret_word)
-    # turn every element of dictionary into alpha-mode
-    # TODO
-    # ------------------------------------------
 
     length_of_secret_word = len(secret_word)
-    fun_dict = current_dictionary
     output_dict = dict
 
-    if language == "english":
-        if length_of_secret_word <= 10:
-            if length_of_secret_word == 1:
-                output_dict = fun_dict[0:25]
-            elif length_of_secret_word == 2:
-                output_dict = fun_dict[26:452]
-            elif length_of_secret_word == 3:
-                output_dict = fun_dict[453:2582]
-            elif length_of_secret_word == 4:
-                output_dict = fun_dict[2583:9768]
-            elif length_of_secret_word == 5:
-                output_dict = fun_dict[9769:25688]
-            elif length_of_secret_word == 6:
-                output_dict = fun_dict[25689:55562]
-            elif length_of_secret_word == 7:
-                output_dict = fun_dict[55563:97560]
-            elif length_of_secret_word == 8:
-                output_dict = fun_dict[97561:149187]
-            elif length_of_secret_word == 9:
-                output_dict = fun_dict[149188:202589]
-            elif length_of_secret_word == 10:
-                output_dict = fun_dict[202590:248462]
-        elif length_of_secret_word <= 20:
-            if length_of_secret_word == 11:
-                output_dict = fun_dict[248463:286001]
-            elif length_of_secret_word == 12:
-                output_dict = fun_dict[286001:315125]
-            elif length_of_secret_word == 13:
-                output_dict = fun_dict[315126:336069]
-            elif length_of_secret_word == 14:
-                output_dict = fun_dict[336070:350218]
-            elif length_of_secret_word == 15:
-                output_dict = fun_dict[350219:359064]
-            elif length_of_secret_word == 16:
-                output_dict = fun_dict[359065:364247]
-            elif length_of_secret_word == 17:
-                output_dict = fun_dict[364248:367214]
-            elif length_of_secret_word == 18:
-                output_dict = fun_dict[367215:368684]
-            elif length_of_secret_word == 19:
-                output_dict = fun_dict[368685:369444]
-            elif length_of_secret_word == 20:
-                output_dict = fun_dict[369445:369803]
-        elif length_of_secret_word <= 31:
-            if length_of_secret_word == 21:
-                output_dict = fun_dict[369804:369971]
-            elif length_of_secret_word == 22:
-                output_dict = fun_dict[369972:370046]
-            elif length_of_secret_word == 23:
-                output_dict = fun_dict[370046:370077]
-            elif length_of_secret_word == 24:
-                output_dict = fun_dict[370078:370088]
-            elif length_of_secret_word == 25:
-                output_dict = fun_dict[370089:370096]
-            elif length_of_secret_word == 26:
-                output_dict = fun_dict
-                if language_eng:
-                    print("mhhh, I do not know any words with 26 letters...")
-                    print("I will try anyway, but I will take some more time, mortal.")
-                    print("I hope you have some more left... muahahah\n")
-                else:
-                    print("Hmm, ich kenne keine Wörter mit 26 Buchstaben...")
-                    print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.")
-                    print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n")
-            elif length_of_secret_word == 27:
-                output_dict = fun_dict[370097:370099]
-            elif length_of_secret_word == 28:
-                output_dict = fun_dict[370100:370101]
-            elif length_of_secret_word == 29:
-                output_dict = fun_dict[370102:370104]
-            elif length_of_secret_word == 30:
-                output_dict = fun_dict
-                if language_eng:
-                    print("mhhh, I do not know any words with 30 letters...")
-                    print("I will try anyway, but I will take some more time, mortal.")
-                    print("I hope you have some more left... muahahah\n")
-                else:
-                    print("Hmm, ich kenne keine Wörter mit 30 Buchstaben...")
-                    print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.")
-                    print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n")
-            elif length_of_secret_word == 31:
-                output_dict = fun_dict[370105:370105]
-        else:
-            if language_eng:
-                print("\nthat's a very long word... are you sure it exists?")
-                print("\nI will try anyway, cheat.")
-                print("\nIf you button-smashed, I will haunt your dreams for eternity and make sure that "
-                      "in the after-life you won`t have the chance to dream.... just kidding... unless...")
+    if not value_if_own_dict == 1:
+        fun_dict = current_dictionary
+        if language == "english":
+            if length_of_secret_word <= 10:
+                if length_of_secret_word == 1:
+                    output_dict = fun_dict[0:25]
+                elif length_of_secret_word == 2:
+                    output_dict = fun_dict[26:452]
+                elif length_of_secret_word == 3:
+                    output_dict = fun_dict[453:2582]
+                elif length_of_secret_word == 4:
+                    output_dict = fun_dict[2583:9768]
+                elif length_of_secret_word == 5:
+                    output_dict = fun_dict[9769:25688]
+                elif length_of_secret_word == 6:
+                    output_dict = fun_dict[25689:55562]
+                elif length_of_secret_word == 7:
+                    output_dict = fun_dict[55563:97560]
+                elif length_of_secret_word == 8:
+                    output_dict = fun_dict[97561:149187]
+                elif length_of_secret_word == 9:
+                    output_dict = fun_dict[149188:202589]
+                elif length_of_secret_word == 10:
+                    output_dict = fun_dict[202590:248462]
+            elif length_of_secret_word <= 20:
+                if length_of_secret_word == 11:
+                    output_dict = fun_dict[248463:286001]
+                elif length_of_secret_word == 12:
+                    output_dict = fun_dict[286001:315125]
+                elif length_of_secret_word == 13:
+                    output_dict = fun_dict[315126:336069]
+                elif length_of_secret_word == 14:
+                    output_dict = fun_dict[336070:350218]
+                elif length_of_secret_word == 15:
+                    output_dict = fun_dict[350219:359064]
+                elif length_of_secret_word == 16:
+                    output_dict = fun_dict[359065:364247]
+                elif length_of_secret_word == 17:
+                    output_dict = fun_dict[364248:367214]
+                elif length_of_secret_word == 18:
+                    output_dict = fun_dict[367215:368684]
+                elif length_of_secret_word == 19:
+                    output_dict = fun_dict[368685:369444]
+                elif length_of_secret_word == 20:
+                    output_dict = fun_dict[369445:369803]
+            elif length_of_secret_word <= 31:
+                if length_of_secret_word == 21:
+                    output_dict = fun_dict[369804:369971]
+                elif length_of_secret_word == 22:
+                    output_dict = fun_dict[369972:370046]
+                elif length_of_secret_word == 23:
+                    output_dict = fun_dict[370046:370077]
+                elif length_of_secret_word == 24:
+                    output_dict = fun_dict[370078:370088]
+                elif length_of_secret_word == 25:
+                    output_dict = fun_dict[370089:370096]
+                elif length_of_secret_word == 26:
+                    output_dict = fun_dict
+                    if language_eng:
+                        print("mhhh, I do not know any words with 26 letters...")
+                        print("I will try anyway, but I will take some more time, mortal.")
+                        print("I hope you have some more left... muahahah\n")
+                    else:
+                        print("Hmm, ich kenne keine Wörter mit 26 Buchstaben...")
+                        print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.")
+                        print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n")
+                elif length_of_secret_word == 27:
+                    output_dict = fun_dict[370097:370099]
+                elif length_of_secret_word == 28:
+                    output_dict = fun_dict[370100:370101]
+                elif length_of_secret_word == 29:
+                    output_dict = fun_dict[370102:370104]
+                elif length_of_secret_word == 30:
+                    output_dict = fun_dict
+                    if language_eng:
+                        print("mhhh, I do not know any words with 30 letters...")
+                        print("I will try anyway, but I will take some more time, mortal.")
+                        print("I hope you have some more left... muahahah\n")
+                    else:
+                        print("Hmm, ich kenne keine Wörter mit 30 Buchstaben...")
+                        print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.")
+                        print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n")
+                elif length_of_secret_word == 31:
+                    output_dict = fun_dict[370105:370105]
             else:
-                print("\nDas ist ein sehr langes Wort... bist du sicher, dass es existiert?")
-                print("\nIch werde es trotzdem versuchen, Schummler.")
-                print("\nWenn du wild auf den Tasten herumgehauen hast,\n"
-                      "werde ich dich für die Ewigkeit heimsuchen und sicherstellen,\n"
-                      "dass du im Jenseits nicht träumen wirst... nur ein Scherz... oder auch nicht...")
+                if language_eng:
+                    print("\nthat's a very long word... are you sure it exists?")
+                    print("\nI will try anyway, cheat.")
+                    print("\nIf you button-smashed, I will haunt your dreams for eternity and make sure that "
+                          "in the after-life you won`t have the chance to dream.... just kidding... unless...")
+                else:
+                    print("\nDas ist ein sehr langes Wort... bist du sicher, dass es existiert?")
+                    print("\nIch werde es trotzdem versuchen, Schummler.")
+                    print("\nWenn du wild auf den Tasten herumgehauen hast,\n"
+                          "werde ich dich für die Ewigkeit heimsuchen und sicherstellen,\n"
+                          "dass du im Jenseits nicht träumen wirst... nur ein Scherz... oder auch nicht...")
+                output_dict = fun_dict
+
+        elif language == "german":
+            print("\nI have to admit... I haven't learned german yet... I just dont get the grammar.\n eh... los gehts")
             output_dict = fun_dict
-
-    elif language == "german":
-        print("\nI have to admit... I haven't learned german yet... I just dont get the grammar.\n eh... los gehts")
-        output_dict = fun_dict
-
+            # TODO
+    else:
         # possible upgrade of the function:
+        # check if file-names has/have "sorted" inside
 
-            # display list of files in dictionary-folder if user has decided to use an individual one instead of
-            # the inbuild german or english ones
-            # let user decide before he is asked about the language of his word
-                 # TODO
+        skip_sort = False
+        for file in files_in_dir:
+            if "sorted" in file:
+                skip_sort = True
 
-            # check if file-name has "sorted" inside
-            # if not
+        # variables: files_in_dir, value_which_dictionary)
+        chosen_file = files_in_dir[value_which_dictionary]
 
-                # open dictionary with write
+        if not skip_sort:
+            # open dictionary with write
+            # dict is the one chosen with value_which_dictionary
+            my_dict = open(chosen_file, "r+")
 
-                # sort by length
+            # reading the files
+            data = my_dict.read()
 
-                 # save and close dictionary
-
-             # open dictionary with read
-
-             # choose words with len(word) = len(secret_word)
+            # replacing end splitting the text
+            # when newline ('\n') is seen.
+            data_dict_list = data.split("\n")
 
             # turn every element of dictionary into alpha-mode
+            lower_dict = [word.lower() for word in data_dict_list]
 
-            # TODO
+            # sort by length
+            sorted_data = sorted(lower_dict, key=len)
+
+            # save and close dictionary
+            for word in sorted_data:
+                my_dict.write(str(word)+"\n")
+            my_dict.close()
+
+            # change file name to have sorted appended. using the os module
+            os.rename(f"{chosen_file}", f"{chosen_file}_sorted")
+            chosen_file = f"{files_in_dir[value_which_dictionary]}_sorted"
+
+        # open dictionary with read
+        full_dict = open(chosen_file, "r")
+
+        # choose words with len(word) = len(secret_word)
+        # list comprehension inspi from 15.05.23:
+        # https://stackoverflow.com/questions/26697601/how-to-return-all-list-elements-of-a-given-length
+        full_sliced_dict = [word for word in full_dict if len(word) == length_of_secret_word]
+
+        # select dict for output_dict
+        output_dict = full_sliced_dict
 
     return output_dict
 
@@ -772,3 +787,9 @@ def get_hangman_stage(attempt_number):
     ------------
     """]
     return stages[max_attempts - attempt_number]
+
+
+def files_in_dir(path):
+    # function checks if there are any files in a directory
+    # source 15.05.23: https://stackoverflow.com/questions/33463325/python-check-if-any-file-exists-in-a-given-directory
+    return list(os.listdir(path))
