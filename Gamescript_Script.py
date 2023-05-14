@@ -172,24 +172,45 @@ else:  # The route of challenging with a word
 
     if strategy_value == 3:
         print("")
-        print("--------------------------------------------------")
+
+        # asks if the user wants to use an in-build dictionary for the computer or if he
+        # has provided an own one in the DICTIONARY folder
+        # if he has not, go to ask about language:
+
+        own_dictionary = 0
+
+        print("-----\n")
         if is_english:
-            print("If you fly high, you fall deep, foolish Ikarus.\n")
-            print("I am a villain, and yet I like to play fair. Which language will you write your "
-                  "word in? This is my hellish landscape, so these are my rules:\n"
-                  "english (1) or german (2)")
+            print("Tell me, have you put a dictionary for me into my DICTIONARY box? \n")
+            print("1.Yes 2.No\n")
         else:
-            print("Wenn du hoch fliegst, fällst du tief, törichter Ikarus.\n")
-            print("Ich bin ein Bösewicht, aber ich spiele gerne fair. In welcher Sprache wirst du dein Wort schreiben? "
-                  "Dies ist meine höllische Landschaft, also gelten meine Regeln:\n"
-                  "Englisch (1) oder Deutsch (2)")
+            print("Sag mir, hast du ein Wörterbuch in meine Wörterbuch-Kiste getan? \n")
+            print("1.Ja 2.Nein\n")
 
         lang_value = funcs.give_me_a_value_inbetween(0, 2, is_english, False)
 
-        if lang_value == 2:
-            hard_mode_lang = "german"
+        if own_dictionary == 2:
+            print("--------------------------------------------------")
+            if is_english:
+                print("If you fly high, you fall deep, foolish Ikarus.\n")
+                print("I am a villain, and yet I like to play fair. Which language will you write your "
+                      "word in? This is my hellish landscape, so these are my rules:\n"
+                      "english (1) or german (2)")
+            else:
+                print("Wenn du hoch fliegst, fällst du tief, törichter Ikarus.\n")
+                print("Ich bin ein Bösewicht, aber ich spiele gerne fair. In welcher Sprache wirst du dein Wort schreiben? "
+                      "Dies ist meine höllische Landschaft, also gelten meine Regeln:\n"
+                      "Englisch (1) oder Deutsch (2)")
+
+            lang_value = funcs.give_me_a_value_inbetween(0, 2, is_english, False)
+
+            if lang_value == 2:
+                hard_mode_lang = "german"
+            else:
+                hard_mode_lang = "english"
         else:
-            hard_mode_lang = "english"
+            # TODO build display of files in dir DICTIONARIES that are choosen by variable input,
+            # maybe use hard_mode_lang for that?
 
     print("--------------------------------")
     challenge_word = funcs.user_input_word(is_english)

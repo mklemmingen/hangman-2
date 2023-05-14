@@ -583,6 +583,11 @@ def slice_dict(current_dictionary, language, language_eng, secret_word):
 
         # possible upgrade of the function:
 
+            # display list of files in dictionary-folder if user has decided to use an individual one instead of
+            # the inbuild german or english ones
+            # let user decide before he is asked about the language of his word
+                 # TODO
+
             # check if file-name has "sorted" inside
             # if not
 
@@ -590,15 +595,15 @@ def slice_dict(current_dictionary, language, language_eng, secret_word):
 
                 # sort by length
 
-                # save and close dictionary
+                 # save and close dictionary
 
-            # open dictionary with read
+             # open dictionary with read
 
-            # choose words with len(word) = len(secret_word)
+             # choose words with len(word) = len(secret_word)
 
             # turn every element of dictionary into alpha-mode
 
-        # TODO
+            # TODO
 
     return output_dict
 
