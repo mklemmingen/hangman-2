@@ -582,11 +582,21 @@ def slice_dict(current_dictionary, language, language_eng, secret_word):
         output_dict = fun_dict
 
         # possible upgrade of the function:
-        # choose words with len(word) = len(secret_word)
-        # turn every element of dictionary into alpha-mode
 
-        # sorted_german_dict = sorted(fun_dict, key=len)
-        # for index in length_of_german_dict:
+            # check if file-name has "sorted" inside
+            # if not
+
+                # open dictionary with write
+
+                # sort by length
+
+                # save and close dictionary
+
+            # open dictionary with read
+
+            # choose words with len(word) = len(secret_word)
+
+            # turn every element of dictionary into alpha-mode
 
         # TODO
 
