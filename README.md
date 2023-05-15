@@ -33,11 +33,10 @@ The computer, if the word is in fact in the dictionary, is able to play surprisi
 If you have any tips and tricks on how to improve the code or where to get a big chunk of dictionaries like the one I sneakily forked, feel free to message or create a discussion
 
 TO-DO:
+  - add multiple alphabets for easy and medium difficulty, as well as more word categories with less restrictive letter guessing
+    that include non-standard-english letters 
   - Game Interface
   - Fixes of german
-  - easier dictionary support
-      - change dictionary after being opened to all-small (, no spaces) and sorted by length. 
-      - go over dictionary itself and create intervals by length
   - check if iteration process can be speed-up (late stage tweaking)
   - late-stage: support for spaces?
 
@@ -45,3 +44,35 @@ COMPLETED:
   - Fallback of high strategy to medium difficulty if length of iterated dict == 0 
   - change game-phase layout so the player chooses hard-mode more naturally and has lower difficulty settings as a fallback for more playthroughs
   - split source code inbetween functions, game-run, art and lines
+  - easier dictionary support
+      - simply put a dictionary list into DICTIONARIES folder
+      - make sure words are seperated only by a new line, not ";" etc
+
+Dictionaries already in the program:
+  - https://github.com/dwyl/english-words
+      - words-alpha.txt   [English!]
+  - https://github.com/enz/german-wordlist/blob/master/words
+      - german_words 
+  - https://github.com/OpenTaal/opentaal-wordlist/blob/master/wordlist.txt
+      - dutch_words 
+  - https://github.com/shaunazzopardi/maltese-dictionary/blob/master/wordlist.txt
+      - maltese words
+  - https://github.com/kkrypt0nn/wordlists/tree/main/languages
+      - ukranian 
+      - arabic
+      - croatian
+      - czech
+      - danish
+      - french
+      - georgian
+      - hebrew
+      - italian
+      - norwegian
+      - polish
+      - portugese
+      - russian
+      - serbian
+      - spanish
+      - swedish
+      - turkish
+      - ukranian 
