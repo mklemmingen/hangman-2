@@ -76,6 +76,5 @@ Dictionaries already in the program:
       - spanish
       - swedish
       - turkish
-
 https://github.com/glutanimate/wordlist-medicalterms-en/blob/master/wordlist.txt
       - medical terms
