@@ -33,6 +33,8 @@ The computer, if the word is in fact in the dictionary, is able to play surprisi
 If you have any tips and tricks on how to improve the code or where to get a big chunk of dictionaries like the one I sneakily forked, feel free to message or create a discussion
 
 TO-DO:
+  - add multiple alphabets for easy and medium difficulty, as well as more word categories with less restrictive letter guessing
+    that include non-standard-english letters 
   - Game Interface
   - Fixes of german
   - check if iteration process can be speed-up (late stage tweaking)
@@ -53,3 +55,24 @@ Dictionaries already in the program:
       - german_words 
   - https://github.com/OpenTaal/opentaal-wordlist/blob/master/wordlist.txt
       - dutch_words 
+  - https://github.com/shaunazzopardi/maltese-dictionary/blob/master/wordlist.txt
+      - maltese words
+  - https://github.com/kkrypt0nn/wordlists/tree/main/languages
+      - ukranian 
+      - arabic
+      - croatian
+      - czech
+      - danish
+      - french
+      - georgian
+      - hebrew
+      - italian
+      - norwegian
+      - polish
+      - portugese
+      - russian
+      - serbian
+      - spanish
+      - swedish
+      - turkish
+      - ukranian 
