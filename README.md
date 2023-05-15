@@ -70,9 +70,8 @@ Dictionaries already in the program:
       - norwegian
       - polish
       - portugese
-      - russian
       - serbian
       - spanish
       - swedish
       - turkish
-      - ukranian 
+
