@@ -44,3 +44,4 @@ COMPLETED:
   - split source code inbetween functions, game-run, art and lines
   - easier dictionary support
       - simply put a dictionary list into DICTIONARIES folder
+      - make sure words are seperated only by a new line, not ";" etc
