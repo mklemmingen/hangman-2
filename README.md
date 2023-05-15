@@ -54,16 +54,12 @@ Dictionaries already in the program:
 
   - https://github.com/dwyl/english-words
       - words-alpha.txt   [English!]
-   
   - https://github.com/enz/german-wordlist/blob/master/words
       - german_words 
-    
   - https://github.com/OpenTaal/opentaal-wordlist/blob/master/wordlist.txt
       - dutch_words 
-    
   - https://github.com/shaunazzopardi/maltese-dictionary/blob/master/wordlist.txt
       - maltese words
-    
   - https://github.com/kkrypt0nn/wordlists/tree/main/languages
       - ukranian 
       - arabic
@@ -81,7 +77,5 @@ Dictionaries already in the program:
       - spanish
       - swedish
       - turkish
- 
-https://github.com/glutanimate/wordlist-medicalterms-en/blob/master/wordlist.txt
-
+- https://github.com/glutanimate/wordlist-medicalterms-en/blob/master/wordlist.txt
       - medical terms
