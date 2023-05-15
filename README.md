@@ -47,6 +47,8 @@ COMPLETED:
   - easier dictionary support
       - simply put a dictionary list into DICTIONARIES folder
       - make sure words are seperated only by a new line, not ";" etc
+  - update already existing dictionaries
+  - added game start menu
 
 Dictionaries already in the program:
   - https://github.com/dwyl/english-words
