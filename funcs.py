@@ -671,7 +671,8 @@ def slice_dict(current_dictionary, language, language_eng, secret_word, value_if
             if "sorted" in file:
                 skip_sort = True
 
-        # variables: files_in_dir, value_which_dictionary)
+        # variables: files_in_dir, value_which_dictionary
+
         chosen_file = files_in_dir[value_which_dictionary]
 
         if not skip_sort:

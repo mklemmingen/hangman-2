@@ -25,6 +25,12 @@ guess_player: str
 strategy_value = int
 # string used for language_identification
 hard_mode_lang = str
+# path to dictionaries folder
+path_to_dict = "DICTIONARIES"
+# standard value in value which dictionary
+value_which_dictionary = -1
+value_if_own_dict = -1
+files_in_dir = -1
 
 # Story/Game-Opening ----------------------------
 
@@ -42,7 +48,143 @@ lang_decide = language = funcs.give_me_a_value_inbetween(0, 2, is_english, True)
 if lang_decide == 2:
     is_english = False
 
+# game menu for initial setup
+in_game_menu = True
+while in_game_menu:
+    if is_english:
+        print("----------------------------------\n")
+
+        print("This is the Hangman starting menu\n")
+
+        print("  1. Start the Game   ")
+        print("  2. Manual   ")
+        print("  3. Check Dictionary  directory  ")
+        print("  4. Credits   ")
+
+        menu_choice = funcs.give_me_a_value_inbetween(0, 4, True, False)
+
+        if menu_choice == 1:
+            in_game_menu = False
+        if menu_choice == 2:
+            print("-------------------------------")
+            print("Manual:"
+                  "\n")
+            print("Hanging man is based on the idea of having to guess a word, from which you only know the number\n"
+                  "of letters at first and can only guess a letter at a time. Once you have guessed wrong, it slowly\n"
+                  "draws a person being hanged, hence the name. If the word is guessed in under 6 wrong attempts,\n"
+                  "the person guessing has won.\n"
+                  "  \n")
+            print("Once the game starts, you will be given the opportunity to select to either\n"
+                  "challenge the computer with a word or to be challenged with a word yourself.\n"
+                  " \n"
+                  "The word that you can guess, you can select the category of when you decide to play this way.\n"
+                  " \n"
+                  "If you choose to challenge the computer, you will be able to select one of three difficulties.\n"
+                  "    1. Easy mode. The computer guesses letters randomly\n"
+                  "    2. Medium mode. The computer guesses letters from a weighted alphabet.\n"
+                  "    3. Hard mode. The computer guesses letters by using a specific algorithm "
+                  "with a given dictionary.\n"
+                  " \n"
+                  "If you choose to challenge the computer, the game automatically checks if there are any files\n"
+                  "in the game files directory 'DICTIONARIES'. \n"
+                  " \n"
+                  "If yes, it will ask you if you wish for the computer to use any of these.\n"
+                  " \n"
+                  "     Beware: all letters in file will be made lowercase and words sorted. Filename changed.\n"
+                  " \n"
+                  "If no, you will be asked if your word is from either english or german. \n"
+                  "The computer will then use the in-build dictionaries.\n"
+                  "-----------------------------")
+            # wait for user input
+            input("Press Enter to continue...\n")
+        if menu_choice == 3:
+            # display files in directory with for loop
+            print("These are, if any, the files in Dir DICTIONARIES:")
+            files_in_DICTIONARIES = funcs.files_in_dir(path_to_dict)
+            for file in files_in_DICTIONARIES:
+                print(file)
+            # wait for user input
+            print("")
+            input("Press Enter to continue...\n")
+        if menu_choice == 4:
+            # display the credits
+            print("---------------------\n")
+            print("Created by Marty Lauterbach as a project for a class in the months of March-June 2023\n"
+                  "See github for extended documentaries.\n"
+                  "Sources for inspiration in the code are to be found with links in the code itself.\n"
+                  "Have fun!\n")
+            print("----------------------\n")
+            # wait for user input
+            input("Press Enter to continue...\n")
+
+    else:
+        print("----------------------------------\n")
+
+        print("Hauptmenü von \"Galgenmännchen : Der Henker und sein Wörterbuch\" \n")
+
+        print("  1. Starte das Spiel  ")
+        print("  2. Anleitung   ")
+        print("  3. Zeige das DICTIONARIES (Wörterbuch) Verzeichnis  ")
+        print("  4. Credits   ")
+
+        menu_choice = funcs.give_me_a_value_inbetween(0, 4, True, False)
+
+        if menu_choice == 1:
+            in_game_menu = False
+        if menu_choice == 2:
+            print("")
+            print("Anleitung:")
+            print("Galgenmännchen basiert auf der Idee, ein Wort erraten zu müssen, von dem du anfangs nur die Anzahl\n"
+                  "der Buchstaben kennst und nur einen Buchstaben auf einmal raten kannst. \n"
+                  "Sobald du falsch geraten hast, wird langsam das Bild gemalt, wie eine Person"
+                  " gehängt wird (daher der Name).\n"
+                  "Wenn das Wort in weniger als 6 falschen Versuchen geraten wird, hat die Person, die rät, gewonnen.\n"
+                  " \n")
+            print("Sobald das Spiel beginnt, erhältst du die Möglichkeit, entweder\n"
+                  "den Computer mit einem Wort herauszufordern oder selbst mit einem Wort herausgefordert zu werden.\n"
+                  " \n"
+                  "Das Wort, das du erraten kannst, kannst du durch seine Kategorie auswählen.\n"
+                  " \n"
+                  "Wenn du dich dafür entscheidest, den Computer herauszufordern, kannst du "
+                  "eine von drei Schwierigkeiten auswählen.\n"
+                  "   1. Einfacher Modus. Der Computer wählt Buchstaben zufällig aus.\n"
+                  "   2. Mittlerer Modus. Der Computer wählt Buchstaben aus einem gewichteten Alphabet aus.\n"
+                  "   3. Schwerer Modus. Der Computer wählt Buchstaben anhand eines spezifischen Algorithmus "
+                  "mit einem gegebenen Wörterbuch aus.\n"
+                  " \n"
+                  "Wenn du dich dafür entscheidest, den Computer herauszufordern, überprüft das Spiel automatisch, "
+                  "ob es Dateien im Spielordner 'DICTIONARIES' gibt. \n"
+                  "Wenn ja, wird es dich fragen, ob du möchtest, dass der Computer eine davon verwendet.\n"
+                  "\n"
+                  "     Achtung: Alle Buchstaben in der ausgewählten Datei werden in Kleinbuchstaben "
+                  "umgewandelt und Wörter sortiert.\n "
+                  "              Dateiname geändert.\n"
+                  "\n"
+                  "Wenn nein, wirst du gefragt, ob dein Wort entweder Englisch oder Deutsch ist. \n"
+                  "Der Computer verwendet dann die integrierten Wörterbücher.\n"
+                  "-----------------------")
+            # wait for user input
+            input("Drücke Enter um weiterzufahren...\n")
+        if menu_choice == 3:
+            # display files in directory with for loop
+            print("Dies sind, wenn überhaupt, die Dateien im Dir DICTIONARIES:")
+            files_in_DICTIONARIES = funcs.files_in_dir(path_to_dict)
+            for file in files_in_DICTIONARIES:
+                print(file)
+            # wait for user input
+            print("")
+            input("Drücke Enter um weiterzufahren...\n")
+        if menu_choice == 4:
+            # display the credits
+            print("Erstellt von Marty Lauterbach als ein Projekt für eine Vorlesung in den Monaten Maerz-Juni 2023\n"
+                  "Sehe github für extended documentaries.\n"
+                  "Quellen für Inspiration im Code sind als Kommentare im Code selbst zu finden.\n"
+                  "Viel Spaß!\n")
+            # wait for user input
+            input("Drücke Enter um weiterzufahren...\n")
+
 if is_english:
+    print("-----------------------------\n")
     print("\nYou wake up and find a tall shadowy giant towering above you."
           " He points to a sad, small and thin man in chains, tied to a high beam.\n")
     print("The Executioner: Harharhar. Welcome to my wicked game.")
@@ -174,9 +316,6 @@ else:  # The route of challenging with a word
         # asks if the user wants to use an in-build dictionary for the computer or if he
         # has provided an own one in the DICTIONARY folder
         # if he has not, go to ask about language:
-
-        # path to dictionaries folder
-        path_to_dict = "DICTIONARIES"
         # creates a list of the files in the dir
         files_in_dir = funcs.files_in_dir(path_to_dict)
         # length of former mentioned list
@@ -206,10 +345,10 @@ else:  # The route of challenging with a word
                     print("Welches dieser Wörterbücher wählst du?\n")
 
                 # formats a list of all dictionaries in ~/DICTIONARIES
-                zähler = -1
+                zaehler = -1
                 for i in files_in_dir:
-                    zähler = zähler + 1
-                    print(f" {zähler}  {i} \n")
+                    zaehler = zaehler + 1
+                    print(f" {zaehler}  {i} \n")
 
                 # value for later selection
                 value_which_dictionary = funcs.give_me_a_value_inbetween(-1, own_dictionaries, is_english, False)
@@ -254,7 +393,6 @@ else:  # The route of challenging with a word
 # THE GAME
 # ------------------------------------------------------------
 
-
 # The Player is in charge:
 
 length_of_secret_word = int(len(funcs.get_unique_letters(secret_word)))
@@ -286,7 +424,8 @@ if who_plays == "Player":
                 if is_english:
                     print("\nDamn. You have been right! The letter {} is part of the secret word\n".format(guess))
                 else:
-                    print("\nVerdammt. Du hast recht! Der Buchstabe {} ist Teil des geheimen Wortes\n".format(guess))
+                    print(
+                        "\nVerdammt. Du hast recht! Der Buchstabe {} ist Teil des geheimen Wortes\n".format(guess))
                 print(funcs.select_word(RPG_assets.point_player))
                 guessed_letters += guess
         else:
@@ -361,8 +500,10 @@ if who_plays == "NPC":
                 if guess in guessed_letters:  # meaning the computer has guessed the same thing again
                     # mostly used in case there is a bug somewhere and letters can get chosen more often
                     if is_english:
-                        print("\nI have already guessed this letter '{}'... fool me and my old mind\n".format(guess))
-                        print("Someone contact the matrix-creator please... I dont feel so good repeating myself.\n")
+                        print(
+                            "\nI have already guessed this letter '{}'... fool me and my old mind\n".format(guess))
+                        print(
+                            "Someone contact the matrix-creator please... I dont feel so good repeating myself.\n")
                     else:
                         print("\nIch habe diesen Buchstaben '{}' bereits geraten... "
                               "täusche mich nicht und meinen alten Verstand.\n".format(guess))
@@ -374,7 +515,8 @@ if who_plays == "NPC":
 
                 else:  # meaning that the guess is in secret word, but hasn't been guessed yet
                     if is_english:
-                        print("\nI have been right! The letter {} is part of your secret filthy word\n".format(guess))
+                        print(
+                            "\nI have been right! The letter {} is part of your secret filthy word\n".format(guess))
                     else:
                         print("\nIch habe recht gehabt! Der Buchstabe {} ist "
                               "Teil deines geheimen Wortes.\n".format(guess))
@@ -438,13 +580,15 @@ if who_plays == "NPC":
             if guess_in_secret_word:
                 if guess in guessed_letters:
                     if is_english:
-                        print("\nI have already guessed this letter '{}'... fool me and my old mind\n".format(guess))
+                        print(
+                            "\nI have already guessed this letter '{}'... fool me and my old mind\n".format(guess))
                     else:
                         print("\nIch habe diesen Buchstaben '{}' bereits geraten... "
                               "täusche mich nicht und meinen alten Verstand.\n".format(guess))
                 else:
                     if is_english:
-                        print("\nI have been right! The letter {} is part of your secret filthy word\n".format(guess))
+                        print(
+                            "\nI have been right! The letter {} is part of your secret filthy word\n".format(guess))
                     else:
                         print("\nIch habe recht gehabt! Der Buchstabe {} ist "
                               "Teil deines geheimen Wortes.\n".format(guess))
@@ -511,4 +655,5 @@ if restart == "1":
     os.execl(sys.executable, os.path.abspath(__file__), *sys.argv)
 elif restart == "2":
     print("\nThe matrix will be closed...")
+    # Done! Time to quit.
     sys.exit(0)
