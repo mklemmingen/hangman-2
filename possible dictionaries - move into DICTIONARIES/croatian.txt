@@ -4463,7 +4463,7 @@ dobježali
 doboo
 dobovanje
 dobra
-dobro,
+dobro
 dobrobiti
 dobrobitima
 dobročinitelj
@@ -10943,8 +10943,8 @@ jazavac
 jazavče
 jazi
 jazovi
-je?
-je...
+je
+je
 jebaj
 jebenih
 jebenim
@@ -11852,7 +11852,7 @@ kažnjenoj
 kažnjenom
 kažnjivija
 kažnjivost
-kbr.
+kbr
 kćer
 kćerina
 kćerkicom
@@ -13604,7 +13604,7 @@ krizantemoj
 krizantemom
 kriznom
 križ
-križ,
+križ
 križaju
 križaljaka
 križaljkim
@@ -20243,7 +20243,7 @@ niži
 nižima
 nkv
 nn
-no,
+no
 noć
 noćašnja
 noćašnjeg
@@ -21558,7 +21558,7 @@ odvodila
 odvoditi
 odvodnjavanjem
 odvodnjavanjima
-odvodnje.
+odvodnje
 odvodnjom
 odvodnju
 odvojiju
@@ -24591,7 +24591,7 @@ plug
 pluga
 plugom
 plugovi
-plur.
+plur
 pluralističkom
 pluralizmi
 pluralizmom
@@ -24751,7 +24751,7 @@ počešaše
 počešljaju
 počešljana
 početak
-početi.
+početi
 početniče
 početnička
 početničkoj
@@ -27279,7 +27279,7 @@ predskazivanje
 predsmrtnom
 predsmrtnu
 predstavila
-predstavim.
+predstavim
 predstavljanoj
 predstavnica
 predstavnicom
@@ -27374,7 +27374,7 @@ pregibi
 pregladnjela
 preglasnoga
 pregled
-pregled.
+pregled
 pregledajte
 pregledanjima
 pregledatelj
@@ -35301,7 +35301,7 @@ stazama
 stazicama
 stazici
 staž
-ste?
+ste
 stearin
 stearini
 stearinski
@@ -40155,7 +40155,7 @@ užasnem
 užasnoga
 užasnulo
 uždi
-uže,
+uže
 užegla
 užeglih
 užeglim
@@ -40329,7 +40329,7 @@ važnijih
 važnijima
 važnog
 važnoga
-v.byy.
+vbyy
 večer
 večeranja
 večeranjem
@@ -43055,7 +43055,7 @@ znanstvenostručnih
 znanstvenotehnološki
 znanstvenotehnoloških
 znanstvenotehnološkima
-znanja.
+znanja
 znatiželjan
 znatiželjnih
 znatiželjnim
@@ -46955,7 +46955,7 @@ cvrkutasmo
 ćupovi
 ćurliče
 ćutjela
-d.
+d
 dabrova
 daćoj
 dadaističkom
@@ -47920,7 +47920,7 @@ dobrovoljku
 dobrovoljnima
 dobrovoljnom
 dobrovoljnomu
-doc.
+doc
 docenticom
 dociranja
 dočaravanoj
@@ -49345,7 +49345,7 @@ energetskom
 energičnima
 energiji
 energijskog
-engl.
+engl
 engleskih
 engleskinjom
 engleskoga
@@ -55029,7 +55029,7 @@ kladionicoj
 kladiti
 kladivima
 kladivo
-klamidijayy.
+klamidijayy
 klana
 klanovi
 klanovim
@@ -57592,7 +57592,7 @@ liječnikovoj
 lijećoj
 lijegat
 lijehama
-lijek.
+lijek
 lijekim
 lijekovi
 lijekovim
@@ -59508,7 +59508,7 @@ molekularnih
 molekularnim
 molekulskima
 molekulskom
-molim,
+molim
 molim!
 moliteljicom
 molitelju
@@ -67336,7 +67336,7 @@ pjevanju
 pjevnu
 pjevušite
 pkanalni
-pl.
+pl
 plac
 placem
 placeti
@@ -69322,7 +69322,7 @@ postiglo
 postignem
 postigni
 postignut
-postignuto?
+postignuto
 postignutome
 postizali
 postizanjem
@@ -72386,7 +72386,7 @@ prođe
 prođeju
 prođimo
 proeuropskih
-prof.
+prof
 profanacija
 profanaciju
 profaniraju
@@ -73175,7 +73175,7 @@ prozivnik
 prozodiji
 prozodijom
 prozor
-prozor?
+prozor
 prozorskim
 prozovemo
 prozovu
@@ -75137,7 +75137,7 @@ rezuckati
 rezultanta
 rezultanto
 rezultat
-rezultat?
+rezultat
 rezultira
 rezultiralo
 režala
@@ -75441,7 +75441,7 @@ rožariju
 rože
 rožicom
 rožnica
-rt.
+rt
 rte
 rtovima
 ruandom
@@ -75972,7 +75972,7 @@ sastavljanjom
 sastojalo
 sastojasmo
 sastojci
-sastojci.
+sastojci
 sastoji
 sasuši
 sasuta
@@ -77332,7 +77332,7 @@ smatrati
 smažem
 smećem
 smesti
-smeta?
+smeta
 smetem
 smetemo
 smetenija
@@ -78752,7 +78752,7 @@ stvarnom
 stvorenjima
 stvoritelja
 suadom
-sub.
+sub
 subjekata
 subjektivitet
 subjektivnima
@@ -78976,7 +78976,7 @@ suprotstavljaju
 suprotstavljanoj
 suprotstavljenih
 suprotstavljenim
-supruga?
+supruga
 suprugovoj
 suprugovom
 supruže
@@ -80202,7 +80202,7 @@ teksturom
 tektonskima
 tekućemu
 tekućom
-tel.
+tel
 telaca
 telećom
 telefaksima
@@ -84643,7 +84643,7 @@ zagrebačkoj
 zagrebemo
 zagreboše
 zagrebova
-zagrebu.
+zagrebu
 zagrepčanke
 zagrepčankinome
 zagrijanim
@@ -85539,7 +85539,7 @@ zatitrati
 zatječi
 zatječu
 zato
-zato?
+zato
 zatočeni
 zatočenicima
 zatočenicu
@@ -86694,7 +86694,7 @@ agronomskim
 agronomskima
 agrotehnička
 agu
-aidsyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy.
+aidsyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
 akacijama
 akademicima
 akademijama
@@ -88360,7 +88360,7 @@ birtijama
 birtijska
 birtijskom
 birtiju
-biseksualan.
+biseksualan
 biseksualna
 biseksualnost
 biserni
@@ -90863,7 +90863,7 @@ dioničkima
 dionom
 dioptriji
 dipeptidilyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyypeptidaza
-dipl.
+dipl
 diplomaciju
 diplomat
 diplomati
@@ -91464,7 +91464,7 @@ donositelju
 donjega
 donjemu
 donjogradskom
-d.o.o.
+doo
 dopadati
 dopadljiv
 dopadnih
@@ -95232,7 +95232,7 @@ huškačkim
 huškačkoj
 huškanoj
 huškanja
-hvala,
+hvala
 hvaleći
 hvalećima
 hvalisam
@@ -95582,7 +95582,7 @@ infanterijskom
 infanterijsku
 infantilnoj
 infekcijim
-infektivan.
+infektivan
 infektivni
 inficirana
 infiltracijom
@@ -96563,8 +96563,8 @@ iškolovati
 ištekaj
 italija
 italske
-itd.
-itd.)
+itd
+itd)
 itekakvoj
 iterativnima
 iterativnoj
@@ -97726,7 +97726,7 @@ jezerci
 jezercu
 jezerinca
 jezerskih
-jezgra.
+jezgra
 jezgrici
 jezgrom
 jezičac
@@ -103680,7 +103680,7 @@ nagađajući
 nagađanoj
 nagazi
 nagaženoj
-nagib,
+nagib
 nagibala
 nagibanoj
 naginjanja
@@ -105228,7 +105228,7 @@ nećka
 neću
 nećudorednoj
 nećudorednom
-ned.
+ned
 nedaleka
 nedalekog
 nedalekom
@@ -106803,7 +106803,7 @@ nožnoj
 nožnu
 nožu
 nožurini
-npr.
+npr
 nudeći
 nudi
 nudilo
@@ -107715,7 +107715,7 @@ odnesenu
 odnesla
 odnesoh
 odnijeta
-odnos.
+odnos
 odnosit
 odnosnim
 odnjegovanoj
@@ -118758,7 +118758,7 @@ rođakinjom
 rođendan
 rođendanskih
 rođendanskom
-rođeni?
+rođeni
 rođenjem
 rođenjima
 rogača
@@ -119381,7 +119381,7 @@ sataninoj
 satelitskima
 satelitskom
 satenskima
-sati?
+sati
 satima
 satir
 satirala
@@ -119495,7 +119495,7 @@ scenografska
 scenski
 scenskome
 scensku
-se.
+se
 sebeljubivosti
 sebi!
 sebičnih
@@ -121372,7 +121372,7 @@ srpskome
 srpstvu
 sržu
 ssz
-st.
+st
 stabilizacijskih
 stabilizacijsku
 stabilizirala
@@ -123157,7 +123157,7 @@ svukud
 švicarskom
 švignuo
 švrljanjem
-t.
+t
 tabanje
 tabelarnu
 tabernakuli
@@ -124514,7 +124514,7 @@ tvrdokornostima
 tvrdokrilac
 tvrđem
 tvrđi
-tzv.
+tzv
 u
 ubacilo
 ubacit
@@ -126703,7 +126703,7 @@ vertikalnog
 vertikalnom
 vertikalu
 verući
-verzija,
+verzija
 vesela
 veselica
 veselicama
@@ -130241,7 +130241,7 @@ antenskih
 antenskim
 anti
 antibakterijskom
-antibiotik.
+antibiotik
 antibiotikih
 antici
 anticipativan
@@ -130324,7 +130324,7 @@ antropomorfnima
 antroponimija
 antunu
 anuiteti
-aor.
+aor
 aparatčika
 apartmani
 apatična
@@ -131841,7 +131841,7 @@ boravku
 boravljah
 borbama
 borbenoj
-borcem.
+borcem
 borcima
 bordelskih
 bordelskoj
@@ -131900,7 +131900,7 @@ božićnih
 božjom
 božur
 božurima
-br.
+br
 braceri
 bračankin
 bračka
@@ -134276,7 +134276,7 @@ dojenačkih
 dojenačkima
 dojenačkoj
 dojenoj
-dojenje.
+dojenje
 dojezdim
 dojezditi
 dojilice
@@ -136525,7 +136525,7 @@ gaženjima
 gdjekoja
 gdjekojima
 gdješto
-gđa.
+gđa
 gegavih
 gegavim
 gejši
@@ -138086,7 +138086,7 @@ hvataju
 hvatanjima
 hvatanju
 hvo
-ibid.
+ibid
 ibrahimom
 ibrahimu
 ičija
@@ -138446,7 +138446,7 @@ inercijskim
 inercijskima
 inertnom
 inertnost
-inf.
+inf
 infanterijskima
 infantilni
 infantilnoga
@@ -138779,7 +138779,7 @@ inženjerski
 inženjerskog
 inženjerstvo
 inja
-injekcija.
+injekcija
 injekcijama
 injekcijom
 injektiranju
@@ -140448,7 +140448,7 @@ jazavcom
 jazbina
 jazbinima
 jazova
-je.
+je
 jebeni
 jeca
 jecajući
@@ -142234,7 +142234,7 @@ kondicional
 kondicionalan
 kondicionalnog
 kondicionalnoj
-kondom.
+kondom
 kondor
 kondoti
 kondotijera
@@ -144510,7 +144510,7 @@ ljepšima
 ljepušan
 ljepuškasto
 ljepušnoj
-ljeska,
+ljeska
 ljeskaju
 ljeskajući
 ljeskanja
@@ -149701,7 +149701,7 @@ ništenju
 ništici
 ništili
 ništim
-niti...niti
+nitiniti
 nivoi
 nivou
 nizahu
@@ -150245,7 +150245,7 @@ obraćanju
 obraćenicima
 obraćeniče
 obraćenjem
-obrada,
+obrada
 obradba
 obraditi
 obradom
@@ -158912,7 +158912,7 @@ profesorskim
 profesura
 profesuru
 profetski
-profilaksa,
+profilaksa
 profilaksu
 profilaktičkoj
 profilaktičkom
@@ -162215,7 +162215,7 @@ sadrenih
 sadri
 sadrlo
 sadru
-sadržaj,
+sadržaj
 sadržajan
 sadržajima
 sadržajnima
@@ -166441,7 +166441,7 @@ tajništvom
 tajnog
 tajnoj
 tajnomu
-tajnost.
+tajnost
 tajnošću
 tajnovitih
 tajom
@@ -166577,7 +166577,7 @@ tapiseriju
 tapkajući
 tapkanjima
 tapšanjima
-tar.
+tar
 taracanja
 taracanjima
 tarifni
@@ -169789,7 +169789,7 @@ varijacijom
 varijacijska
 varijacijskim
 varijacijsku
-varikinayy.
+varikinayy
 varira
 variranoj
 variranjima
@@ -170670,7 +170670,7 @@ vrijednosnici
 vrijednosnicom
 vrijednosnom
 vrijednost
-vrijeme?
+vrijeme
 vrijete
 vriskaju
 vriskanju
@@ -172581,7 +172581,7 @@ zornima
 zovem
 zoveš
 zovete
-zovete?
+zovete
 zovneš
 zovnete
 zovnula
@@ -173222,7 +173222,7 @@ alatkom
 alatku
 alatni
 alatnim
-alb.
+alb
 albanci
 albancima
 albanija
@@ -173574,7 +173574,7 @@ antiteroristička
 antiterorističkih
 antiterorističkoj
 antitezu
-antitijela.
+antitijela
 anto
 antologičarski
 antologiji
@@ -174035,7 +174035,7 @@ azura
 ažurirana
 ažuriranu
 ažurnoj
-b.
+b
 babaja
 babića
 babićeva
@@ -175189,7 +175189,7 @@ borbenih
 borbenim
 borbenost
 borca
-borca.
+borca
 bordelska
 bordelskima
 bordelskom
@@ -175254,7 +175254,7 @@ bračnoga
 bračnoj
 bračnomu
 braćom
-brada,
+brada
 bradama
 bradatija
 bradatijoj
@@ -180372,7 +180372,7 @@ gorući
 gorućih
 gorućim
 gorušicom
-gosp.
+gosp
 gospa
 gospićem
 gospićkoj
@@ -180964,7 +180964,7 @@ haljetku
 haljinicom
 haljinicu
 haljinom
-ham,
+ham
 hamburger
 hamburgom
 hamburških
@@ -181460,7 +181460,7 @@ huškačkima
 huškanjoj
 huškati
 hvala
-hvala.
+hvala
 hvaleća
 hvalećom
 hvalevrijedni
@@ -184335,7 +184335,7 @@ kantata
 kantici
 kanticom
 kanticu
-kantidiskriminacija.
+kantidiskriminacija
 kantinama
 kantoni
 kantonizaciji
@@ -185052,7 +185052,7 @@ kneževskima
 kneževskoj
 knežije
 kninskim
-knj.
+knj
 knjigovežama
 knjigovodstva
 knjigovodstvenom
@@ -186113,7 +186113,7 @@ krajnici
 krajnicoj
 krajnosti
 krajnjih
-kraju,
+kraju
 krakova
 kralješci
 kralješcim
@@ -187282,7 +187282,7 @@ lihvarskih
 lihvarskim
 liječena
 liječenu
-liječenje.
+liječenje
 liječi
 liječiti
 liječnica
@@ -196197,7 +196197,7 @@ paprika
 paprikaš
 papuancima
 papučici
-par.
+par
 paraboli
 parabolični
 paraboličnu
@@ -200593,7 +200593,7 @@ prešućivanjem
 prešućujem
 prešute
 prešutjeli
-pret.
+pret
 pretačem
 pretačemo
 pretakala
@@ -206637,7 +206637,7 @@ skutu
 skvrčaju
 skvrčenijoj
 skvrči
-sl.
+sl
 slabašnima
 slabašnoga
 slabašnosti
@@ -207769,7 +207769,7 @@ standardnija
 standardnim
 standardnoj
 staneš
-stanica.
+stanica
 stanicom
 staničnih
 staničnim
@@ -208614,7 +208614,7 @@ sužanjstvom
 sužavanjima
 suženima
 sužnjevih
-sv.
+sv
 svačijem
 svačijima
 svadbena
@@ -210886,7 +210886,7 @@ učenija
 učenijih
 učenijom
 učeniju
-učenika,
+učenika
 učenikovim
 učenja
 učenjacima
@@ -211744,8 +211744,8 @@ upotrijebljena
 upotrijebljenoj
 upotrijebljenu
 upoznaje
-upoznala.
-upoznao.
+upoznala
+upoznao
 upoznavajući
 upoznavanja
 upoznavanju
@@ -214491,7 +214491,7 @@ zaoblimo
 zaobliti
 zaobljavanje
 zaobljenih
-zaobljenog,
+zaobljenog
 zaobljenja
 zaodjenutoj
 zaogrnete
