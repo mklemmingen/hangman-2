@@ -35,9 +35,6 @@ If you have any tips and tricks on how to improve the code or where to get a big
 TO-DO:
   - Game Interface
   - Fixes of german
-  - easier dictionary support
-      - change dictionary after being opened to all-small (, no spaces) and sorted by length. 
-      - go over dictionary itself and create intervals by length
   - check if iteration process can be speed-up (late stage tweaking)
   - late-stage: support for spaces?
 
@@ -45,3 +42,5 @@ COMPLETED:
   - Fallback of high strategy to medium difficulty if length of iterated dict == 0 
   - change game-phase layout so the player chooses hard-mode more naturally and has lower difficulty settings as a fallback for more playthroughs
   - split source code inbetween functions, game-run, art and lines
+  - easier dictionary support
+      - simply put a dictionary list into DICTIONARIES folder
