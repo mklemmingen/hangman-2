@@ -598,10 +598,11 @@ def slice_dict(current_dictionary, language, language_eng, secret_word, value_if
             lower_dict = [word.lower() for word in data_dict_list]
 
             # sort by length
-            sorted_data = sorted(lower_dict, key=len)
+            # temporarily commented out, since it isn't needed though to the 0(n) run of full_sliced_dict
+            # sorted_data = sorted(lower_dict, key=len)
 
             # save and close dictionary
-            for word in sorted_data:
+            for word in lower_dict:
                 my_dict.write(str(word)+"\n")
             my_dict.close()
 
