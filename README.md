@@ -48,6 +48,8 @@ COMPLETED:
 
 Dictionaries already in the program:
   - https://github.com/dwyl/english-words
-      - words-alpha.txt
+      - words-alpha.txt   [English!]
   - https://github.com/enz/german-wordlist/blob/master/words
-      - german words 
+      - german_words 
+  - https://github.com/OpenTaal/opentaal-wordlist/blob/master/wordlist.txt
+      - dutch_words 
