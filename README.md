@@ -79,3 +79,5 @@ Dictionaries already in the program:
       - turkish
 - https://github.com/glutanimate/wordlist-medicalterms-en/blob/master/wordlist.txt
       - medical terms
+- https://github.com/xajkep/wordlists
+      - # TODO
