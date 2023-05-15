@@ -585,7 +585,7 @@ def slice_dict(current_dictionary, language, language_eng, secret_word, value_if
         if not skip_sort:
             # open dictionary with write
             # dict is the one chosen with value_which_dictionary
-            my_dict = open(chosen_file, "r+")
+            my_dict = open(f"DICTIONARIES/{chosen_file}", "r+")
 
             # reading the files
             data = my_dict.read()
@@ -606,11 +606,11 @@ def slice_dict(current_dictionary, language, language_eng, secret_word, value_if
             my_dict.close()
 
             # change file name to have sorted appended. using the os module
-            os.rename(f"{chosen_file}", f"{chosen_file}_sorted")
-            chosen_file = f"{files_in_dir[value_which_dictionary]}_sorted"
+            os.rename(f"DICTIONARIES/{chosen_file}", f"DICTIONARIES/{chosen_file}_sorted")
+            chosen_file = files_in_dir[value_which_dictionary]
 
         # open dictionary with read
-        full_dict = open(chosen_file, "r")
+        full_dict = open(f"DICTIONARIES/{chosen_file}", "r")
 
         # choose words with len(word) = len(secret_word)
         # list comprehension inspi from 15.05.23:

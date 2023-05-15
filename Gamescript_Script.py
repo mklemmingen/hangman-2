@@ -214,7 +214,7 @@ else:  # The route of challenging with a word
                 # value for later selection
                 value_which_dictionary = funcs.give_me_a_value_inbetween(-1, own_dictionaries, is_english, False)
 
-        # if there are no files in dir or if user doesnt want to use them
+        # if there are no files in dir or if user doesn't want to use them
         if own_dictionaries == 0 or value_if_own_dict == 2:
             print("--------------------------------------------------")
             if is_english:
