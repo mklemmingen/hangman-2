@@ -30,7 +30,7 @@ The computer, if the word is in fact in the dictionary, is able to play surprisi
 
 ### See for yourself! 
 
-If you have any tips and tricks on how to improve the code or where to get a big chunk of dictionaries like the one I sneakily forked, feel free to message or create a discussion
+If you have any tips and tricks on how to improve the code, feel free to message or create a discussion
 
 TO-DO:
   - add multiple alphabets for easy and medium difficulty, as well as more word categories with less restrictive letter guessing
