@@ -1,4 +1,5 @@
 # hanging_man
+(unpublished, in building)
 
 The game has a D&D like story-aspect to it to make it stand out against simple vanilla hangman games.
 
