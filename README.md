@@ -1,4 +1,5 @@
 # hanging_man
+(unpublished, in building)
 
 The game has a D&D like story-aspect to it to make it stand out against simple vanilla hangman games.
 
@@ -30,7 +31,7 @@ The computer, if the word is in fact in the dictionary, is able to play surprisi
 
 ### See for yourself! 
 
-If you have any tips and tricks on how to improve the code or where to get a big chunk of dictionaries like the one I sneakily forked, feel free to message or create a discussion
+If you have any tips and tricks on how to improve the code, feel free to message or create a discussion
 
 TO-DO:
   - add multiple alphabets for easy and medium difficulty, as well as more word categories with less restrictive letter guessing
@@ -47,8 +48,11 @@ COMPLETED:
   - easier dictionary support
       - simply put a dictionary list into DICTIONARIES folder
       - make sure words are seperated only by a new line, not ";" etc
+  - update already existing dictionaries
+  - added game start menu
 
 Dictionaries already in the program:
+
   - https://github.com/dwyl/english-words
       - words-alpha.txt   [English!]
   - https://github.com/enz/german-wordlist/blob/master/words
@@ -74,5 +78,7 @@ Dictionaries already in the program:
       - spanish
       - swedish
       - turkish
-https://github.com/glutanimate/wordlist-medicalterms-en/blob/master/wordlist.txt
+- https://github.com/glutanimate/wordlist-medicalterms-en/blob/master/wordlist.txt
       - medical terms
+- https://github.com/xajkep/wordlists
+      - # TODO
