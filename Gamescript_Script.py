@@ -1,5 +1,5 @@
 import time  # used to simulate delays of the npc while choosing a letter and add user-friendliness
-import os  # used to exit and reload programm at end
+import os  # used to exit and reload program at end
 import sys  # "
 import funcs
 import RPG_assets
@@ -13,10 +13,6 @@ guessed_letters = []
 first_choice: int
 # this variable is used in choosing the category of word
 second_choice: int = 0
-# the word first used when challenging the executioner
-# challenge_word = "ErrorNotGivenOther"
-# the secret word, to guess or to e guessed
-# secret_word = "ErrorSecretWordWasntChosen"
 # Variable that is the current guess / chosen word
 guess: str
 # letter of the current guess
