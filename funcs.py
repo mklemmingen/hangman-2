@@ -4,7 +4,10 @@ import RPG_assets
 import os  # used to exit and reload programm at end and to list files in dict dictionary
 
 
-# challenge_word = "ErrorNotGivenOther"
+def clean_window():
+    # removes all words from the pygame window
+    os.system("clear")
+
 
 # --------------------------------------------------
 # Select the word function
@@ -63,7 +66,7 @@ def give_me_a_value_inbetween(value1: int, value2: int, language_eng: bool, star
                 # User is presented with the choice to choose between playing the game or choosing the computers word
                 erg = int(input("\nGebe die Zahl deiner Entscheidung ein: "))
                 print("")
-        except TypeError:
+        except TypeError or ValueError:
             if language_eng:
                 print("That is not an option... and you know it!")
             else:
@@ -256,23 +259,9 @@ def iterate_dict_to_sol_dict(real_dict: list, ghostly_solv_dict: dict):
     # and only holds elements up to the length of the secret word,
     # similar to how sliced dict only holds words as a list that are as long as secret word
 
-    # Question/Steps:
-    # I want to go through a list of words with identical length and iterate over each string in it.
-    # If it finds the letter "t" at position "4", I want to put the index of the word in the list into a dictionary
+    # If it finds the letter "t" at position "4", put the index of the word in the list into a dictionary
     # value where they key corresponds to "t4". the solv_struct starts at "a0". so the word from the
     # example would have to be smth like "aaaataa"
-
-    # Good to know Info and where I got it:
-    # https://stackoverflow.com/questions/538346/iterating-each-character-in-a-string-using-python
-    # Access on the fifth of May 2023
-    # If you need access to the index as you iterate through the string, use enumerate():
-    # >>> for i, c in enumerate('test'):
-    # ...     print i, c
-    # ...
-    # 0 t
-    # 1 e
-    # 2 s
-    # 3 t
 
     # in the wise words of yoda in a theme park: a lot of loops these are
     for index, word in enumerate(real_dict):
@@ -497,8 +486,9 @@ def slice_dict(current_dictionary, language, language_eng, secret_word, value_if
             os.rename(f"DICTIONARIES/{chosen_file}", f"DICTIONARIES/{chosen_file}_sorted")
             chosen_file = files_dict[value_which_dictionary]
 
-        # open dictionary with read
-        full_dict = open(f"DICTIONARIES/{chosen_file}", "r")
+            full_dict = open(f"DICTIONARIES/{chosen_file}_sorted", "r")
+        else:
+            full_dict = open(f"DICTIONARIES/{chosen_file}", "r")
 
         # choose words with len(word) = len(secret_word)
         # list comprehension inspi from 15.05.23:
@@ -766,7 +756,15 @@ def user_input_word(language_eng):
         # does it have numbers in it?
         # is challenge word actually multiple words with space inbetween
         if " " not in user_word and not are_there_numbers(user_word):
-            good_enough_points = True
+            if len(user_word) > 0:
+                good_enough_points = True
+            else:
+                if language_eng:
+                    print("\n Narrator: Numbers??? Multiple words??? Separators?! "
+                          "Not in this game! Repeat, Repeat, Repeeeeat!")
+                else:
+                    print("\n Narrator: Zahlen??? Mehrere Wörter??? Trennzeichen?! Nicht in diesem Spiel! "
+                          "Wiederholen, Wiederholen, Wiederholen!")
         else:
             if language_eng:
                 print("\n Narrator: Numbers??? Multiple words??? Separators?! Not in this game! "
