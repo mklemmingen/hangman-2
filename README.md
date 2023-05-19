@@ -36,7 +36,6 @@ If you have any tips and tricks on how to improve the code, feel free to message
 TO-DO:
   - add multiple alphabets for easy and medium difficulty, as well as more word categories with less restrictive letter guessing
     that include non-standard-english letters 
-  - Game Interface
   - Fixes of german
   - check if iteration process can be speed-up (late stage tweaking)
   - late-stage: support for spaces?
@@ -50,6 +49,9 @@ COMPLETED:
       - make sure words are seperated only by a new line, not ";" etc
   - update already existing dictionaries
   - added game start menu
+  - Game Interface
+      - using pygame and pygame_gui.
+      - TODO: event handling. change game_events to display wanted events.
 
 Dictionaries already in the program:
 
