@@ -2,7 +2,7 @@ import time  # used to simulate delays of the npc while choosing a letter and ad
 import os  # used to exit and reload program at end
 import sys  # "
 import funcs
-import RPG_assets
+import text_assets
 
 # (head + body + arms + legs are 6 pieces)
 remaining_attempts = 6
@@ -31,7 +31,7 @@ files_in_dir = -1
 # Story/Game-Opening ----------------------------
 
 # prints the hangman logo
-print(RPG_assets.hangman_art)
+print(text_assets.hangman_art)
 
 print("Willkommen zu Galgenmännchen!   Welcome to Hangman!\n")
 print("Choose your language / Wähle deine Sprache:\n")
@@ -245,19 +245,19 @@ if first_choice == 2:  # the route of being challenged with a word
 
     # nested if statements for choosing the right secret word
     if second_choice == 1:
-        secret_word = funcs.select_word(RPG_assets.animals)
+        secret_word = funcs.select_word(text_assets.animals)
     elif second_choice == 2:
-        secret_word = funcs.select_word(RPG_assets.cities)
+        secret_word = funcs.select_word(text_assets.cities)
     elif second_choice == 3:
-        secret_word = funcs.select_word(RPG_assets.food)
+        secret_word = funcs.select_word(text_assets.food)
     elif second_choice == 4:
-        secret_word = funcs.select_word(RPG_assets.presidents)
+        secret_word = funcs.select_word(text_assets.presidents)
     elif second_choice == 5:
-        secret_word = funcs.select_word(RPG_assets.cartoon_characters)
+        secret_word = funcs.select_word(text_assets.cartoon_characters)
     elif second_choice == 6:
-        secret_word = funcs.select_word(RPG_assets.hard_words)
+        secret_word = funcs.select_word(text_assets.hard_words)
     elif second_choice == 7:
-        secret_word = funcs.select_word(RPG_assets.animals_german)
+        secret_word = funcs.select_word(text_assets.animals_german)
         print("\n-----------"
               "\nah.... deutsche Tiere... jaja, guten Tag Herr Osterhase."
               "\n----------")
@@ -428,7 +428,7 @@ if who_plays == "Player":
                 else:
                     print(
                         "\nVerdammt. Du hast recht! Der Buchstabe {} ist Teil des geheimen Wortes\n".format(guess))
-                print(funcs.select_word(RPG_assets.point_player))
+                print(funcs.select_word(text_assets.point_player))
                 guessed_letters += guess
         else:
             if is_english:
@@ -436,7 +436,7 @@ if who_plays == "Player":
             else:
                 print("\nNein! Der Buchstabe {} ist nicht Teil des geheimen Wortes\n".format(guess))
 
-            print(funcs.select_word(RPG_assets.point_computer))
+            print(funcs.select_word(text_assets.point_computer))
             remaining_attempts -= 1
 
         print(funcs.get_hangman_stage(remaining_attempts))
@@ -481,7 +481,7 @@ if who_plays == "NPC":
         while remaining_attempts > 0 and len(guessed_letters) < length_of_secret_word:
             # the while-loop runs while the attempts haven't run out and the computer hasn't won
 
-            empty_solv_dict = funcs.letter_frequency_structure_maker(secret_word, RPG_assets.alphabet)
+            empty_solv_dict = funcs.letter_frequency_structure_maker(secret_word, text_assets.alphabet)
 
             # creates a dict where frequency of elements at letter positions
             # are measured for remaining words in sliced_dict
@@ -522,7 +522,7 @@ if who_plays == "NPC":
                     else:
                         print("\nIch habe recht gehabt! Der Buchstabe {} ist "
                               "Teil deines geheimen Wortes.\n".format(guess))
-                    print(funcs.select_word(RPG_assets.point_computer))
+                    print(funcs.select_word(text_assets.point_computer))
                     print(funcs.get_hangman_stage(remaining_attempts))
                     guessed_letters.append(guess)
                     funcs.pri_secret_word(secret_word, guessed_letters)
@@ -537,7 +537,7 @@ if who_plays == "NPC":
                     print("\n Nooooo.... The letter {} is not part of your word...\n".format(guess))
                 else:
                     "\n Nein! Der Buchstabe {} ist nicht Teil deines Wortes ...\n".format(guess)
-                print(funcs.select_word(RPG_assets.point_player))
+                print(funcs.select_word(text_assets.point_player))
                 remaining_attempts -= 1
                 remove_letters.append(guess)
                 sliced_dict = funcs.thinner_the_sliced_dict(sliced_dict, solving_dict, remove_letters)
@@ -594,14 +594,14 @@ if who_plays == "NPC":
                     else:
                         print("\nIch habe recht gehabt! Der Buchstabe {} ist "
                               "Teil deines geheimen Wortes.\n".format(guess))
-                    print(funcs.select_word(RPG_assets.point_computer))
+                    print(funcs.select_word(text_assets.point_computer))
                     guessed_letters += guess
             else:
                 if is_english:
                     print("\n Nooooo.... The letter {} is not part of your word...\n".format(guess))
                 else:
                     "\n Nein! Der Buchstabe {} ist nicht Teil deines Wortes ...\n".format(guess)
-                print(funcs.select_word(RPG_assets.point_player))
+                print(funcs.select_word(text_assets.point_player))
                 remaining_attempts -= 1
 
             print(funcs.get_hangman_stage(remaining_attempts))
