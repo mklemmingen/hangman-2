@@ -23,7 +23,7 @@ window_surface = pygame.display.set_mode((X, Y))
 manager = pygame_gui.UIManager((X, Y))
 
 background = pygame.Surface((X, Y))
-background.fill(pygame.Color("#000000"))
+background.fill(pygame.Color("#1E2633"))
 
 # font = pygame.font.Font('monospace', 15)
 
