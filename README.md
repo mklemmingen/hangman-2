@@ -39,8 +39,6 @@ import random
 import time
 import sys
 import os
-import pygame
-import pygame_gui
 ```
 
 TO-DO:
