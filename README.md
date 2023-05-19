@@ -33,6 +33,16 @@ The computer, if the word is in fact in the dictionary, is able to play surprisi
 
 If you have any tips and tricks on how to improve the code, feel free to message or create a discussion
 
+- Dependencies -
+```python
+import random
+import time
+import sys
+import os
+import pygame
+import pygame_gui
+```
+
 TO-DO:
   - add multiple alphabets for easy and medium difficulty, as well as more word categories with less restrictive letter guessing
     that include non-standard-english letters 
