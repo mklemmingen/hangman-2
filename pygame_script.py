@@ -46,6 +46,11 @@ text_content = assets.hangman_art
 text_box.set_text(text_content)
 # command used to write on text_box
 
+# text line input window
+
+textline = pygame_gui.elements.UITextEntryLine(relative_rect=pygame.Rect(200, 475, 600, 50),
+                                               manager=manager,
+                                               placeholder_text="<Enter your word or your guess letter here>")
 # size of buttons
 button_layout_rect = pygame.Rect(10, 10, 100, 50)
 
@@ -67,18 +72,12 @@ push_enter_button = pygame_gui.elements.UIButton(relative_rect=button_layout_rec
                                                           "right": "right",
                                                           "right_target": push_quit_button})
 
-textline = pygame_gui.elements.UITextEntryLine(relative_rect=pygame.Rect(0, 0, 200, 20),
-                                               manager=manager,
-                                               anchors={"bottom": "bottom",
-                                                        "right": "right",
-                                                        "right_target": push_enter_button})
-
 push_8_button = pygame_gui.elements.UIButton(relative_rect=button_layout_rect,
                                              text="8",
                                              manager=manager,
                                              anchors={"bottom": "bottom",
                                                       "right": "right",
-                                                      "right_target": textline})
+                                                      "right_target": push_enter_button})
 
 push_7_button = pygame_gui.elements.UIButton(relative_rect=button_layout_rect,
                                              text="7",
@@ -139,23 +138,24 @@ while is_running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
+
+        # if event.type == pygame_gui.UI_TEXt_ENTRY_FINISHED:
+        #   event.ui_object_id == '#textline')
+
+        if event.type == pygame_gui.UI_BUTTON_PRESSED:
+            #    if event.ui_element == push_1_button:
+            #    if event.ui_element == push_2_button:
+            #    if event.ui_element == push_3_button:
+            #    if event.ui_element == push_4_button:
+            #    if event.ui_element == push_5_button:
+            #    if event.ui_element == push_6_button:
+            #    if event.ui_element == push_7_button:
+            #    if event.ui_element == push_8_button:
+            #    if event.ui_element == push_enter_button:
+            if event.ui_element == push_quit_button:
+                event = pygame.QUIT
+
         pygame.display.update()
-
-        # if event.type == pygame_gui.UI_TEXt_ENTRY_FINISHED and
-        #     event.ui_object_id == '#textline')::
-        #
-
-        # if event.type == pygame_gui.UI_BUTTON_PRESSED:
-        #    if event.ui_element == push_1_button:
-        #    if event.ui_element == push_2_button:
-        #    if event.ui_element == push_3_button:
-        #    if event.ui_element == push_4_button:
-        #    if event.ui_element == push_5_button:
-        #    if event.ui_element == push_6_button:
-        #    if event.ui_element == push_7_button:
-        #    if event.ui_element == push_8_button:
-        #    if event.ui_element == push_enter_button:
-        #    if event.ui,element == push_quit_button:
 
         manager.process_events(event)
 
