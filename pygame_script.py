@@ -4,6 +4,9 @@ import pygame_gui
 # import game_events as ge
 import text_assets as assets
 
+# pygame
+pygame.init()
+
 # RGB values of certain colours for quick matching.
 white = (255, 255, 255)
 green = (0, 255, 0)
@@ -13,9 +16,6 @@ black = (0, 0, 0)
 # assigning values to X and Y variable for quick screen sizing
 X = 1000
 Y = 600
-
-# pygame
-pygame.init()
 
 pygame.display.set_caption("Hangman - the dictionaries strike back")
 window_surface = pygame.display.set_mode((X, Y))
@@ -140,7 +140,7 @@ while is_running:
             pygame.quit()
 
         # if event.type == pygame_gui.UI_TEXt_ENTRY_FINISHED:
-        #   event.ui_object_id == '#textline')
+        #    event.ui_object_id == "#textline":
 
         if event.type == pygame_gui.UI_BUTTON_PRESSED:
             #    if event.ui_element == push_1_button:
