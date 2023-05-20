@@ -40,6 +40,7 @@ import random
 import time
 import sys
 import os
+import rich
 ```
 
 TO-DO:
