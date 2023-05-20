@@ -17,7 +17,8 @@ The structure of the game is fairly simple and follows basic control structures.
   - medium: knows which letters of the alphabet are most used and weights them more than others in his random decision making.
   - hard: here is where the fun begins:
   
-      - The computer limits (as of now this has to be added manually) the interchangeable dictionary by length of the word you give him.
+      - takes either an in-build or a dictionary in the DICTIONARIES dir to use for guessing. Sorts it the first time it runs a new one. 
+      - The computer limits the interchangeable dictionary it reads by length of the word you give him.
       - He then iterates through each element of each word and adds the index values of the whole words into a dictionary of alphabet_at_position (meaning a0, a1, a2...,x30)
       - At the end, these values are measured, summed up by letter and altogether, the biggest letter gets choosen to be guessed.
     
