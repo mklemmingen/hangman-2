@@ -43,6 +43,7 @@ import os
 ```
 
 TO-DO:
+  - add the possibility for mistake into the computer guessing, so that the player always has a chance and doesnt have to resort to using ultra-long words
   - add multiple alphabets for easy and medium difficulty, as well as more word categories with less restrictive letter guessing
     that include non-standard-english letters 
   - layout for terminal execution
