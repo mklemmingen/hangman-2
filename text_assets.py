@@ -69,9 +69,9 @@ hard_words = ["Supercalifragilistic", "ketoacidosis", "Dephosphorylation", "Deox
               "Personalstaerkeuntergrenzengesetz", "dichlorodiphenyltrichloroethane"]
 
 # ---------------------------------------------------
-# words for the computer to say when he gives a wrong answer and for when player gets it right
+# words for the computer to say when he gives a wrong answer and for when the player gets it right
 
-point_player = ["I damn you and your tricky wordplays",
+point_player = ["I damn you and your tricky wordplay's",
                 "I should have stayed at home today",
                 "With my luck, I hope I turned off the oven this morning",
                 "If god had given me jurisdiction, I would ban this game...",
@@ -137,7 +137,7 @@ point_player_german = ["Ich verfluche dich und deine trickreichen Wortspiele",
                        "Ich beobachte dich immer, warte immer darauf, dass du einen Fehler machst. \n"
                        "Und wenn du das tust, werde ich bereit sein, zuzuschlagen."]
 
-# words for the computer to say when he gives the right answers or when player has it wrong
+# words for the computer to say when he gives the right answers or when the player has it wrong
 
 point_computer = ["Hah, I pity the fool that you are!",
                   "If you win, I'll let the innocent man go free. If I win, well...\n"
@@ -153,7 +153,7 @@ point_computer = ["Hah, I pity the fool that you are!",
                   "Looks like I've got you in a tight noose, my friend!",
                   "I hope you're good at spelling 'guilty' because that's where you're headed!",
                   "You're the perfect contestant for my game show: 'Hangman: Live or Die!'",
-                  "I'm going to make you swing from the gallows like a piñata at a children's party!",
+                  "I'm going to make you swing from the gallows like a pinata at a children's party!",
                   "I learned how to spell 'vengeance' after my dog ran away with my family to Las Vegas.\n"
                   " You don't stand a chance."
                   ]
@@ -172,7 +172,7 @@ point_computer_german = ["Hah, ich bedaure dich, du Dummkopf!",
                          "Sieht aus, als hätte ich dich in eine enge Schlinge gebracht, mein Freund!",
                          "Ich hoffe, du kannst 'schuldig' richtig schreiben, denn dort geht es hin!",
                          "Du bist der perfekte Kandidat für meine Spielshow: 'Hangman: Leben oder Sterben!'",
-                         "Ich werde dich an der Galgen schwingen lassen wie eine Piñata auf einer Kinderparty!",
+                         "Ich werde dich an der Galgen schwingen lassen wie eine Pinata auf einer Kinderparty!",
                          "Ich habe gelernt, wie man 'Rache' buchstabiert, "
                          "nachdem mein Hund mit meiner Familie nach Las Vegas weggelaufen ist.\n"
                          "Du hast keine Chance."
@@ -205,7 +205,7 @@ npc_wins_german = ["Mein Vater pflegte zu sagen: 'Schummler haben niemals Erfolg
 # words for when the computer loses
 
 player_wins = ["I knew I should have added Umlaut!", "Congrats, i guess, you and Jeff can go now",
-               "You used Umlaute, didnt you? Damn germans"]
+               "You used Umlaute, didn't you? Damn germans"]
 
 player_wins_german = ["Ich wusste, ich hätte Umlaute hinzufügen sollen!",
                       "Herzlichen Glückwunsch, nehme ich an, du und Jeff könnt jetzt gehen",
@@ -233,7 +233,7 @@ choose_german = ["Wähle weise, oder Thor wird dich hart treffen. WÄHLE!",
 alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u",
             "v", "w", "x", "y", "z"]
 
-# words that the npc is thinking  # some of these were created by chatgpt after an appropriate input
+# words that the npc is thinking # some of these were created by chatgpt after an appropriate input
 
 npc_inner_thoughts = ["I have an idea... but it may be risky!",
                       "My mother always said, 'Don't gamble with your life,' but she clearly never met me.",
@@ -275,7 +275,7 @@ npc_inner_thoughts = ["I have an idea... but it may be risky!",
                       "As an immortal godly executioner, I've seen it all. The pain, the suffering, the screams.\n "
                       "But what I wouldn't give for just a moment of peace,"
                       "a chance to talk to someone who understands\n "
-                      "the burden of my existence. But seeing as tho what you choosed... you are not it.",
+                      "the burden of my existence. But seeing as tho what you chosen... you are not it.",
                       "I once had a dog that could spell better than most people. \n"
                       "Too bad he ran off with my ex-wife and kids.",
                       "I don't need a reason to claim another victim. It's just what I do. And I do it well.",
@@ -290,7 +290,7 @@ npc_inner_thoughts_german = ["Ich habe eine Idee... aber es könnte riskant sein
                              "Ich war schon immer ein Mann der Worte, aber dieses Hangman-Spiel "
                              "bringt mich an meine Grenzen.\n "
                              "Vielleicht sollte ich mich lieber meinem üblichen Hobby widmen, d"
-                             "iabolische Pläne zu schmieden, um die Welt zu erobern.\n "
+                             "diabolische Pläne zu schmieden, um die Welt zu erobern.\n "
                              "Ha ha ha! Nur ein Scherz... oder auch nicht?",
                              "Ich war noch nie jemand, der fair spielt, \n"
                              "also benutze ich meine böse Intelligenz, um dieses Hangman-Rätsel zu knacken.\n "
@@ -419,7 +419,7 @@ npc_general_german = ["Hmm, ein herausforderndes Wort hast du gewählt. \n"
                       "Ein cleverer Versuch, mich in die Irre zu führen, aber letztendlich erfolglos.\n"
                       "Du hättest besser wissen müssen, als mich herauszufordern, denn ich bin der Henker,\n"
                       "und ich bekomme immer, was ich will. Nun lasst uns zum Aufhängen übergehen, sollen wir?",
-                      "Ich habe einen Doktortitel in Galgenmännchenologie. Du hast keine Chance.",
+                      "Ich habe einen Doktortitel in Galgenmaennchenologie. Du hast keine Chance.",
                       "Ich war schon immer schlecht darin, ein Wörterbuch zu benutzen, "
                       "aber das gibt mir nur mehr Zeit, um clevere Möglichkeiten zu überlegen, dieses Spiel zu beenden",
                       "Ich habe zwar meine Familie verloren, "

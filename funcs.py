@@ -1,11 +1,11 @@
 import random  # used to choose randomly out of lists, see "https://docs.python.org/3/library/random.html"
 import time  # used to simulate delays of the npc while choosing a letter and add user-friendliness
 import text_assets
-import os  # used to exit and reload program at end and to list files in dict dictionary
+import os  # used to exit and reload program at the end and to list files in dict dictionary
 
-# for rich formatting
-from game_script import console
-
+# used for colouring and formatting the output
+from rich.console import Console
+console = Console()
 
 # --------------------------
 # some rules for certain words that should be treated specifically in rich
@@ -34,7 +34,7 @@ def select_word(words):
 # console.print(select_word(presidents))
 
 # -----------------------------------------------------
-# function to check if users challenge word has a number in it, uses regex to include "-"
+# function to check if users' challenge word has a number in it, uses regex to include "-"
 # function is used when challenge_word is created after junction of first_choice
 
 def are_there_numbers(word):
@@ -45,7 +45,7 @@ def are_there_numbers(word):
 # def function to use for the underscores as "unknown" letters
 
 def pri_secret_word(word, gues_letters):
-    # this is used to console.print the missing letters with an _ and the known letters fittingly
+    # this is used to console.print the missing letters with an _ and the known letters fitting
     # inspiration found in: https://codefather.tech/blog/hangman-game-python/
     # "end" used so the console.print function writes in one line
     for letter in word:
@@ -73,12 +73,12 @@ def give_me_a_value_inbetween(value1: int, value2: int, language_eng: bool, star
                 console.print("")
                 start_of_game = False
             elif language_eng:
-                # User is presented with the choice to choose between playing the game or choosing the computers word
+                # User is presented with the choice to choose between playing the game or choosing the computer word
                 give_separators()
                 erg = int(input("\nEnter your choices number: "))
                 console.print("")
             else:
-                # User is presented with the choice to choose between playing the game or choosing the computers word
+                # User is presented with the choice to choose between playing the game or choosing the computer word
                 give_separators()
                 erg = int(input("\nGebe die Zahl deiner Entscheidung ein: "))
                 console.print("")
@@ -103,7 +103,7 @@ def guess_player_letter(language_eng):
             console.print(select_word(text_assets.choose), end="")
         else:
             console.print(select_word(text_assets.choose_german), end="")
-        guess_func = str(input())
+        guess_func = str(input(":  "))
         give_separators()
         if len(guess_func) > 1 or not guess_func.isalpha():
             if language_eng:
@@ -181,7 +181,7 @@ def open_dictionary(language):
     # reading the files
     data = my_dict.read()
 
-    # replacing end splitting the text
+    # replacing an end splitting the text
     # when newline ('\n') is seen.
 
     data_dict_list = data.split("\n")
@@ -203,7 +203,7 @@ def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, langua
     time.sleep(2)
 
     # Creating a skeleton dict without positional arguments.
-    # Add onto the length of lists of corresponding key:value-pairs
+    # Add onto the length of lists of a corresponding key:value-pairs
     # The biggest elements value gets chosen to be the high_guess
 
     # Variables
@@ -272,26 +272,28 @@ def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, langua
 def iterate_dict_to_sol_dict(real_dict: list, ghostly_solv_dict: dict):
     # I take the "sliced by len(secretword)"-dictionary "short_dict" and iterate over each of its strings.
     # I want to add, at each element, the index of its current word to the value list of
-    # the current element corresponding empty dict key.
+    # the current element corresponding an empty dict key.
     # the empty dict was created using letter_frequency_struct_maker,
     # and only holds elements up to the length of the secret word,
     # similar to how sliced dict only holds words as a list that are as long as secret word
 
     # If it finds the letter "t" at position "4", put the index of the word in the list into a dictionary
-    # value where they key corresponds to "t4". the solv_struct starts at "a0". so the word from the
-    # example would have to be smth like "aaaataa"
+    # value where they key corresponds to "t4".
+    # The solv_struct starts at "a0".
+    # So the word from the
+    # example would have to be something like "aaaataa."
 
     # in the wise words of yoda in a theme park: a lot of loops these are
     for index, word in enumerate(real_dict):
         try:
-            # loops through list (real sliced dictionary)
+            # loops through a list (real sliced dictionary)
             for position, letter in enumerate(word):
                 # loops through all letters at each position and adds
                 # onto values of corr. key:value-pairs
                 ghostly_solv_dict["{0}{1}".format(letter, position)].append(index)
                 # Vorbild: opposite_keys.append("a{0}".format(number))
         except KeyError:
-            # to over-go errors produced by a letter not being existent anymore
+            # to over-go errors produced by a letter not being existent any more
             continue
 
     return ghostly_solv_dict  # full solving_dict
@@ -301,7 +303,7 @@ def thinner_the_sliced_dict(eunuch_dict: list, sol_dict: dict, already_guessed_l
     # each time remove_letters gets a new one, which is letters not in the secret word
     # this goes and looks at solving_dict,
     # gets their index from values,
-    # removes those index from sliced_dct(here eunuch_dict),
+    # removes those indexes from sliced_dct(here eunuch_dict),
     # and gives back a better sliced_dict
 
     # https://stackoverflow.com/questions/176918/finding-the-index-of-an-item-in-a-list
@@ -326,7 +328,7 @@ def thinner_the_sliced_dict(eunuch_dict: list, sol_dict: dict, already_guessed_l
     # Try 3
     # (Source: https://stackoverflow.com/questions/35786279/adding-dictionary-values-to-a-list, Access: 07.05.23)
     # for key, value in sol_dict.items():
-    #    for letter in already_guessed_let:
+    #    for a letter in already_guessed_let:
     #        if key.startswith(letter):
     #            remove_index_list.append(sol_dict[key])
 
@@ -344,8 +346,8 @@ def thinner_the_sliced_dict(eunuch_dict: list, sol_dict: dict, already_guessed_l
 
 def format_the_hidden_word(sec_word, gues_letters):
     # coming from the output the user can see like "a_s_h", and make conclusions
-    # based on the fact that certain words cannot be included
-    # this creates a list that holds all keys that are not possible anymore
+    # based on the fact that certain words cannot be included,
+    # this creates a list that holds all keys that are not possible any more
     # Question:
     # create lists of both the direct values and opposite values
     non_opposite_keys = []
@@ -392,13 +394,13 @@ def format_the_hidden_word(sec_word, gues_letters):
 
 
 def letter_sniper(sol_dict, real_dict_list, remove_key_list):
-    # this checks a specially created list of values created from the info one can get from
+    # This checks a specially created list of values created from the info one can get from
     # correctly guessed letters. Meaning that when a_s_h is displayed, the list used here
     # contains elements that are in opposition, like all keys not a0, but at position 0.
 
     remove_index_list = []
 
-    # goes through the sol_dict and gets the keys, then for each key iterates through the remove_key_list
+    # Goes through the sol_dict and gets the keys, then for each key iterates through the remove_key_list
     # and checks if they are the same. If they are the same, it adds the sol_dict keys values, which are index values,
     # to the remove_index_list
 
@@ -448,7 +450,7 @@ def remove_duplicates_in_list(func_list: list):
 
 def slice_dict(current_dictionary, language, language_eng, secret_word, value_if_own_dict, files_dict,
                value_which_dictionary):
-    # if user uses in-build dict:
+    # if a user uses in-build dict:
     # uses set known intervals of the length of words from the english dict and german dict
     # to save processor time
 
@@ -477,14 +479,14 @@ def slice_dict(current_dictionary, language, language_eng, secret_word, value_if
         chosen_file = files_dict[value_which_dictionary]
 
         if not skip_sort:
-            # open dictionary with write
+            # open dictionary with written
             # dict is the one chosen with value_which_dictionary
             my_dict = open(f"DICTIONARIES/{chosen_file}", "r+")
 
             # reading the files
             data = my_dict.read()
 
-            # replacing end splitting the text
+            # replacing an end splitting the text
             # when newline ('\n') is seen.
             data_dict_list = data.split("\n")
 
@@ -715,7 +717,7 @@ def slice_the_english(fun_dict, language_eng, length_of_secret_word):
             else:
                 console.print("\nDas ist ein sehr langes Wort... bist du sicher, dass es existiert?")
                 console.print("\nIch werde es trotzdem versuchen, Schummler.")
-                console.print("\nWenn du wild auf den Tasten herumgehauen hast,\n"
+                console.print("\nWenn du wild auf den Tasten hermeneutical hast,\n"
                               "werde ich dich für die Ewigkeit heimsuchen und sicherstellen,\n"
                               "dass du im Jenseits nicht träumen wirst... nur ein Scherz... oder auch nicht...")
             output_dict = fun_dict
@@ -727,7 +729,7 @@ def slice_the_english(fun_dict, language_eng, length_of_secret_word):
 def letter_frequency_structure_maker(sec_word_for_func: str, alph_in_func: list):
     # creates an array of keys of the length of secret word with the other axis being the alphabet
     # since initialising 806 possible combinations would be unnecessary.
-    # all the values of the arrays are lists with the index values of the corresponding words
+    # all the values of the arrays are listed with the index values of the corresponding words
     # starts at a0
 
     sec_le = len(sec_word_for_func)
@@ -744,7 +746,7 @@ def letter_frequency_structure_maker(sec_word_for_func: str, alph_in_func: list)
 # -----------------------------------------
 
 def is_guess_in_secret_word(gues_letter, sec_word):
-    # function that checks if letter is in secret word
+    # function that checks if a letter is in secret word
     if gues_letter in sec_word:
         return True
     else:
@@ -763,7 +765,7 @@ def get_unique_letters(word):
 def user_input_word(language_eng):
     # Function handles the user-input for the challenge_word
 
-    # variable used for control while statement
+    # variable used for control while a statement
     global user_word
     good_enough_points = False
 
@@ -772,10 +774,10 @@ def user_input_word(language_eng):
         if language_eng:
             user_word = str(input("\n... so be it... write your human word on this card and do not tell me: "))
         else:
-            user_word = str(input("\n... so sei es... schreib dein menschliches Wort hierdrauf und sag es mir nicht: "))
+            user_word = str(input("\n... so sei es... schreib dein menschliches Wort hier drauf und sag es mir nicht: "))
         # checking the challenge_word for anything bad
         # does it have numbers in it?
-        # is challenge word actually multiple words with space inbetween
+        # is challenge word actually multiple words with space between
         if " " not in user_word and not are_there_numbers(user_word):
             if len(user_word) > 0:
                 good_enough_points = True

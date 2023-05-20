@@ -1,5 +1,5 @@
 import time  # used to simulate delays of the npc while choosing a letter and add user-friendliness
-import os  # used to exit and reload program at end
+import os  # used to exit and reload program at the end
 import sys  # "
 
 # used for colouring and formatting the output
@@ -212,7 +212,7 @@ if is_english:
     console.print("\nYou wake up and find a tall shadowy giant towering above you."
                   " He points to a sad, small and thin man in chains, tied to a high beam.\n")
     console.print("The Executioner: Harharhar. Welcome to my wicked game.")
-    console.print("Tell me, you dwarv wrangler, to safe this unspoiled being, do you challenge me or do you challenge "
+    console.print("Tell me, you dwarf wrangler, to safe this unspoiled being, do you challenge me or do you challenge "
                   "yourself?\n")
 
     # choice inbetween being challenged or challenging
@@ -224,7 +224,7 @@ else:
         "Er zeigt auf einen traurigen, kleinen und dünnen Mann in Ketten, "
         "der an einem hohen Balken festgebunden ist.\n")
     console.print("Der Henker: Harharhar. Willkommen in meinem verzwickten Spiel.\n")
-    console.print("Sag mir, du Zwergenfänger, willst du dieses unschuldige Wesen retten, \n"
+    console.print("Sag mir, du Zwerganfänger, willst du dieses unschuldige Wesen retten, \n"
                   "indem du mich herausforderst oder dich selbst herausforderst?\n")
     console.print(" ")
     console.print("1. Nenne dem Henker ein Wort, das er erraten muss\n"
@@ -325,7 +325,7 @@ else:  # The route of challenging with a word
 
         console.print(
             "\nIch werde mein unendlich endliches Wissen gegen dich verwenden, um dein Untergang hervorzurufen.\n"
-            "Obwohl ich dich zerstören könnte mit dem Schnips meines Fingers, mmöchte ich dir eine Chance geben...\n"
+            "Obwohl ich dich zerstören könnte mit dem Schnipse meines Fingers, möchte ich dir eine Chance geben...\n"
             "... damit es ür mich noch Spaß macht...\n")
 
         console.print("   1. Ja, bitte. Ich bin immer noch verwirrt! (leicht)\n"
@@ -346,7 +346,7 @@ else:  # The route of challenging with a word
         # if he has not, go to ask about language:
         # creates a list of the files in the dir
         files_in_dir = funcs.files_in_dir(path_to_dict)
-        # length of former mentioned list
+        # length of the former mentioned list
         own_dictionaries = len(files_in_dir)
 
         # activated if anything in dir
@@ -381,7 +381,7 @@ else:  # The route of challenging with a word
                 # value for later selection
                 value_which_dictionary = funcs.give_me_a_value_inbetween(-1, own_dictionaries, is_english, False)
 
-        # if there are no files in dir or if user doesn't want to use them
+        # if there are no files in dir, or if user doesn't want to use them
         if own_dictionaries == 0 or value_if_own_dict == 2:
             funcs.give_separators()
             if is_english:
@@ -486,10 +486,10 @@ if who_plays == "Player":
 if who_plays == "NPC":
 
     if strategy_value == 3:
-        # here the version for the high-strategy computer-way, seperated for better overview
+        # here the version for the high-strategy computer-way, separated for better overview
 
         if not value_if_own_dict == 1:
-            # chosen if user wants to use an inbuild-dict
+            # chosen if user wants to use an inbuilt-dict
             # implemented variable outside of loop, so it doesn't load each time
             dict_before_slice = funcs.open_dictionary(hard_mode_lang)
             sliced_dict = funcs.slice_dict(dict_before_slice, hard_mode_lang, is_english,
@@ -510,8 +510,8 @@ if who_plays == "NPC":
 
             empty_solv_dict = funcs.letter_frequency_structure_maker(secret_word, text_assets.alphabet)
 
-            # creates a dict where frequency of elements at letter positions
-            # are measured for remaining words in sliced_dict
+            # creates a dict where the frequency of elements at letter positions
+            # is measured for remaining words in sliced_dict
             solving_dict = funcs.iterate_dict_to_sol_dict(sliced_dict, empty_solv_dict)
 
             # computer takes a guess based on the highest amount of an element it found in solving_dict
@@ -554,7 +554,7 @@ if who_plays == "NPC":
                     console.print(funcs.get_hangman_stage(remaining_attempts), highlight=False, style="bold")
                     guessed_letters.append(guess)
                     funcs.pri_secret_word(secret_word, guessed_letters)
-                    # creates list that is used in understanding where a known element is in the secret word
+                    # creates a list that is used in understanding where a known element is in the secret word
                     half_hidden_word_list = funcs.format_the_hidden_word(secret_word, guessed_letters)
                     # the just created list and its opposite are used in eliminating
                     # the words that contradict known positional letters
@@ -578,9 +578,9 @@ if who_plays == "NPC":
             guessed_letters = funcs.remove_duplicates_in_list(guessed_letters)
 
             if remaining_attempts > 0:
-                # a simple enter anything input that changes nothing, but creates a simple break for
+                # A simple enter anything input that changes nothing, but creates a simple break for
                 # the player, so that the computer doesn't run through the skript too quickly.
-                # In case the user likes to read the canon of the Executioner.
+                # In case, the user likes to read the canon of the Executioner.
                 if is_english:
                     console.print("\n I have another {} attempts to go.\n".format(remaining_attempts))
                     time.sleep(1)
@@ -643,9 +643,9 @@ if who_plays == "NPC":
             funcs.pri_secret_word(secret_word, guessed_letters)
 
             if remaining_attempts >= 1:
-                # a simple enter anything input that changes nothing, but creates a simple break for
+                # A simple enter anything input that changes nothing, but creates a simple break for
                 # the player, so that the computer doesn't run through the skript too quickly.
-                # In case the user likes to read the canon of the Executioner.
+                # In case, the user likes to read the canon of the Executioner.
                 if is_english:
                     console.print("\n I have another {} attempts to go.\n".format(remaining_attempts))
                     input("Press Enter to continue...")
