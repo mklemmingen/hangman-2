@@ -36,8 +36,6 @@ value_which_dictionary = -1
 value_if_own_dict = -1
 files_in_dir = -1
 
-
-
 # Story/Game-Opening ----------------------------
 
 # console.prints the hangman logo
@@ -45,7 +43,7 @@ funcs.clean_window()
 console.print(text_assets.hangman_art, highlight=False, style="bold red")
 
 console.print("Willkommen zu Galgenmännchen!   Welcome to Hangman!\n")
-console.print("Choose your language / Wähle deine Sprache:\n")
+console.print("Choose your language / Wähle deine Sprache:\n", highlight=False)
 console.print(" --- 1. English/Englisch --- 2. German/Deutsch --- ")
 
 # call just for this one function

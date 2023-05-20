@@ -13,7 +13,7 @@ console = Console()
 # some rules for certain words that should be treated specifically in rich
 def give_separators():
     # prints out seperators
-    console.print("----------------------------", style="cornsilk1")
+    console.print("----------------------------", style="wheat1")
 
 
 def clean_window():
