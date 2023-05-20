@@ -3,10 +3,23 @@ import time  # used to simulate delays of the npc while choosing a letter and ad
 import text_assets
 import os  # used to exit and reload program at end and to list files in dict dictionary
 
+# for rich formatting
+from rich.console import Console
+
+console = Console()
+
+
+# --------------------------
+# some rules for certain words that should be treated specifically in rich
+def give_separators():
+    # prints out seperators
+    console.print("----------------------------", style="cornsilk1")
+
 
 def clean_window():
     # removes all words from the pygame window
-    os.system("clear")
+    console.clear()
+    # similar to os.system("clear")
 
 
 # --------------------------------------------------
@@ -20,7 +33,7 @@ def select_word(words):
 
 
 # test to see if a random word is selected from the lists
-# print(select_word(presidents))
+# console.print(select_word(presidents))
 
 # -----------------------------------------------------
 # function to check if users challenge word has a number in it, uses regex to include "-"
@@ -34,15 +47,15 @@ def are_there_numbers(word):
 # def function to use for the underscores as "unknown" letters
 
 def pri_secret_word(word, gues_letters):
-    # this is used to print the missing letters with an _ and the known letters fittingly
+    # this is used to console.print the missing letters with an _ and the known letters fittingly
     # inspiration found in: https://codefather.tech/blog/hangman-game-python/
-    # "end" used so the print function writes in one line
+    # "end" used so the console.print function writes in one line
     for letter in word:
         if letter in gues_letters:
-            print(" {} ".format(letter), end="")
+            console.print(" {} ".format(letter), end="")
         else:
-            print(" _ ", end="")
-    print("\n")
+            console.print(" _ ", end="")
+    console.print("\n")
 
 
 # ------------------------------------------
@@ -50,27 +63,32 @@ def pri_secret_word(word, gues_letters):
 def give_me_a_value_inbetween(value1: int, value2: int, language_eng: bool, start_of_game: bool) -> int:
     # Function for choosing a letter between two values
     erg = -1
+    console.bell()
     while erg <= value1 or erg > value2:
         # A while-loop is used to stop the user from ending the game with anything not allowed,
         # except is used to prevent errors
         try:
             if start_of_game:
-                erg = int(input("\nEnter your choices number ... Geb die Nummer deiner Entscheidung ein: "))
-                print("")
+                give_separators()
+                erg = int(input("Enter your choices number ... Geb die Nummer deiner Entscheidung ein: "))
+                console.print("")
                 start_of_game = False
             elif language_eng:
                 # User is presented with the choice to choose between playing the game or choosing the computers word
+                give_separators()
                 erg = int(input("\nEnter your choices number: "))
-                print("")
+                console.print("")
             else:
                 # User is presented with the choice to choose between playing the game or choosing the computers word
+                give_separators()
                 erg = int(input("\nGebe die Zahl deiner Entscheidung ein: "))
-                print("")
-        except TypeError or ValueError:
+                console.print("")
+        except ValueError or TypeError:
             if language_eng:
-                print("That is not an option... and you know it!")
+                console.print("That is not an option... and you know it!")
             else:
-                print("Das war keine Möglichkeit! Nochmal!")
+                console.print("Das war keine Möglichkeit! Nochmal!")
+    clean_window()
     return erg
 
 
@@ -81,24 +99,25 @@ def give_me_a_value_inbetween(value1: int, value2: int, language_eng: bool, star
 def guess_player_letter(language_eng):
     # reoccurring function for guessing a letter as the PLAYER
     while True:
-        print("-----------------------------------")
+        give_separators()
         if language_eng:
-            print(select_word(text_assets.choose), end="")
+            console.print(select_word(text_assets.choose), end="")
         else:
-            print(select_word(text_assets.choose_german), end="")
-        guess_func = str(input(": "))
-        print("-----------------------------------")
+            console.print(select_word(text_assets.choose_german), end="")
+        guess_func = str(input())
+        give_separators()
         if len(guess_func) > 1 or not guess_func.isalpha():
             if language_eng:
-                print("\nYou fool of a tuck, only single letters are to be guessed. Do you want to break"
-                      "the simulation?... go again... this time remember the rules of only one letter at a time!")
+                console.print("\nYou fool of a tuck, only single letters are to be guessed. Do you want to break"
+                              "the simulation?... go again... this time remember the rules of only one letter at a time!")
             else:
-                print("\nDu Möchtegern-Hobbit, es darf nur ein einzelner Buchstabe geraten werden.\n "
-                      "Möchtest du die Simulation zerstören? Versuche es erneut und denke daran, "
-                      "dass nur ein Buchstabe auf einmal geraten werden darf!")
+                console.print("\nDu Möchtegern-Hobbit, es darf nur ein einzelner Buchstabe geraten werden.\n "
+                              "Möchtest du die Simulation zerstören? Versuche es erneut und denke daran, "
+                              "dass nur ein Buchstabe auf einmal geraten werden darf!")
 
         if len(guess_func) == 1 & guess_func.isalpha():
             break
+    clean_window()
     return guess_func.lower()
 
 
@@ -106,16 +125,16 @@ def guess_computer_letter(language_eng):
     # reoccurring function for guessing a letter as the NPC (Executioner) does
     in_func_guess = select_word(text_assets.alphabet)
     if language_eng:
-        print("\n*The Executioner looks into the distance... thinking hard...*")
+        console.print("\n*The Executioner looks into the distance... thinking hard...*", style="italic")
     else:
-        print("\nDer Henker schaut nachdenklich in die Ferne...")
+        console.print("\nDer Henker schaut nachdenklich in die Ferne...", style="italic")
     time.sleep(2)
-    print("-----------------------------------------\n")
+    give_separators()
     if language_eng:
-        print(select_word(text_assets.npc_inner_thoughts))
+        console.print(select_word(text_assets.npc_inner_thoughts))
     else:
-        print(select_word(text_assets.npc_inner_thoughts_german))
-    print("\n-----------------------------------------")
+        console.print(select_word(text_assets.npc_inner_thoughts_german))
+    give_separators()
     time.sleep(2)
     return in_func_guess
 
@@ -138,14 +157,14 @@ def guess_computer_letters_strategy(language_eng, gues_let_func: list):
         if in_function_guess not in gues_let_func:
             break
 
-    print("\n*The Executioner looks into the distance... thinking real hard...*")
+    console.print("\n*The Executioner looks into the distance... thinking real hard...*")
     time.sleep(2)
-    print("-----------------------------------------\n")
+    give_separators()
     if language_eng:
-        print(select_word(text_assets.npc_general))
+        console.print(select_word(text_assets.npc_general))
     else:
-        print(select_word(text_assets.npc_general_german))
-    print("\n-----------------------------------------")
+        console.print(select_word(text_assets.npc_general_german))
+    give_separators()
     time.sleep(2)
     in_function_guess = str(in_function_guess[0])
     return in_function_guess
@@ -174,14 +193,14 @@ def open_dictionary(language):
 # ----------------------------------------------
 
 def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, language_eng):
-    print("\n*The Executioner looks into the distance... thinking hard...*")
+    console.print("\n*The Executioner looks into the distance... thinking hard...*")
     time.sleep(2)
-    print("-----------------------------------------\n")
+    give_separators()
     if language_eng:
-        print(select_word(text_assets.npc_general))
+        console.print(select_word(text_assets.npc_general))
     else:
-        print(select_word(text_assets.npc_general_german))
-    print("\n-----------------------------------------")
+        console.print(select_word(text_assets.npc_general_german))
+    give_separators()
     time.sleep(2)
 
     # Creating a skeleton dict without positional arguments.
@@ -560,13 +579,13 @@ def slice_the_german(fun_dict, language_eng, length_of_secret_word):
         elif length_of_secret_word == 26:
             output_dict = fun_dict
             if language_eng:
-                print("mhhh, I do not know any words with 26 letters...")
-                print("I will try anyway, but I will take some more time, mortal.")
-                print("I hope you have some more left... muahahah\n")
+                console.print("mhhh, I do not know any words with 26 letters...")
+                console.print("I will try anyway, but I will take some more time, mortal.")
+                console.print("I hope you have some more left... muahahah\n")
             else:
-                print("Hmm, ich kenne keine Wörter mit 26 Buchstaben...")
-                print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.")
-                print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n")
+                console.print("Hmm, ich kenne keine Wörter mit 26 Buchstaben...")
+                console.print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.")
+                console.print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n")
         elif length_of_secret_word == 27:
             output_dict = fun_dict[370097:370099]
         elif length_of_secret_word == 28:
@@ -576,27 +595,27 @@ def slice_the_german(fun_dict, language_eng, length_of_secret_word):
         elif length_of_secret_word == 30:
             output_dict = fun_dict
             if language_eng:
-                print("mhhh, I do not know any words with 30 letters...")
-                print("I will try anyway, but I will take some more time, mortal.")
-                print("I hope you have some more left... muahahah\n")
+                console.print("mhhh, I do not know any words with 30 letters...")
+                console.print("I will try anyway, but I will take some more time, mortal.")
+                console.print("I hope you have some more left... muahahah\n")
             else:
-                print("Hmm, ich kenne keine Wörter mit 30 Buchstaben...")
-                print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.")
-                print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n")
+                console.print("Hmm, ich kenne keine Wörter mit 30 Buchstaben...")
+                console.print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.")
+                console.print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n")
         elif length_of_secret_word == 31:
             output_dict = fun_dict[370105:370105]
         else:
             if language_eng:
-                print("\nthat's a very long word... are you sure it exists?")
-                print("\nI will try anyway, cheat.")
-                print("\nIf you button-smashed, I will haunt your dreams for eternity and make sure that "
-                      "in the after-life you won`t have the chance to dream.... just kidding... unless...")
+                console.print("\nthat's a very long word... are you sure it exists?")
+                console.print("\nI will try anyway, cheat.")
+                console.print("\nIf you button-smashed, I will haunt your dreams for eternity and make sure that "
+                              "in the after-life you won`t have the chance to dream.... just kidding... unless...")
             else:
-                print("\nDas ist ein sehr langes Wort... bist du sicher, dass es existiert?")
-                print("\nIch werde es trotzdem versuchen, Schummler.")
-                print("\nWenn du wild auf den Tasten herumgehauen hast,\n"
-                      "werde ich dich für die Ewigkeit heimsuchen und sicherstellen,\n"
-                      "dass du im Jenseits nicht träumen wirst... nur ein Scherz... oder auch nicht...")
+                console.print("\nDas ist ein sehr langes Wort... bist du sicher, dass es existiert?")
+                console.print("\nIch werde es trotzdem versuchen, Schummler.")
+                console.print("\nWenn du wild auf den Tasten herumgehauen hast,\n"
+                              "werde ich dich für die Ewigkeit heimsuchen und sicherstellen,\n"
+                              "dass du im Jenseits nicht träumen wirst... nur ein Scherz... oder auch nicht...")
             output_dict = fun_dict
 
     return output_dict
@@ -661,13 +680,13 @@ def slice_the_english(fun_dict, language_eng, length_of_secret_word):
         elif length_of_secret_word == 26:
             output_dict = fun_dict
             if language_eng:
-                print("mhhh, I do not know any words with 26 letters...")
-                print("I will try anyway, but I will take some more time, mortal.")
-                print("I hope you have some more left... muahahah\n")
+                console.print("mhhh, I do not know any words with 26 letters...")
+                console.print("I will try anyway, but I will take some more time, mortal.")
+                console.print("I hope you have some more left... muahahah\n")
             else:
-                print("Hmm, ich kenne keine Wörter mit 26 Buchstaben...")
-                print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.")
-                print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n")
+                console.print("Hmm, ich kenne keine Wörter mit 26 Buchstaben...")
+                console.print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.")
+                console.print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n")
         elif length_of_secret_word == 27:
             output_dict = fun_dict[370097:370099]
         elif length_of_secret_word == 28:
@@ -677,27 +696,27 @@ def slice_the_english(fun_dict, language_eng, length_of_secret_word):
         elif length_of_secret_word == 30:
             output_dict = fun_dict
             if language_eng:
-                print("mhhh, I do not know any words with 30 letters...")
-                print("I will try anyway, but I will take some more time, mortal.")
-                print("I hope you have some more left... muahahah\n")
+                console.print("mhhh, I do not know any words with 30 letters...")
+                console.print("I will try anyway, but I will take some more time, mortal.")
+                console.print("I hope you have some more left... muahahah\n")
             else:
-                print("Hmm, ich kenne keine Wörter mit 30 Buchstaben...")
-                print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.")
-                print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n")
+                console.print("Hmm, ich kenne keine Wörter mit 30 Buchstaben...")
+                console.print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.")
+                console.print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n")
         elif length_of_secret_word == 31:
             output_dict = fun_dict[370105:370105]
         else:
             if language_eng:
-                print("\nthat's a very long word... are you sure it exists?")
-                print("\nI will try anyway, cheat.")
-                print("\nIf you button-smashed, I will haunt your dreams for eternity and make sure that "
-                      "in the after-life you won`t have the chance to dream.... just kidding... unless...")
+                console.print("\nthat's a very long word... are you sure it exists?")
+                console.print("\nI will try anyway, cheat.")
+                console.print("\nIf you button-smashed, I will haunt your dreams for eternity and make sure that "
+                              "in the after-life you won`t have the chance to dream.... just kidding... unless...")
             else:
-                print("\nDas ist ein sehr langes Wort... bist du sicher, dass es existiert?")
-                print("\nIch werde es trotzdem versuchen, Schummler.")
-                print("\nWenn du wild auf den Tasten herumgehauen hast,\n"
-                      "werde ich dich für die Ewigkeit heimsuchen und sicherstellen,\n"
-                      "dass du im Jenseits nicht träumen wirst... nur ein Scherz... oder auch nicht...")
+                console.print("\nDas ist ein sehr langes Wort... bist du sicher, dass es existiert?")
+                console.print("\nIch werde es trotzdem versuchen, Schummler.")
+                console.print("\nWenn du wild auf den Tasten herumgehauen hast,\n"
+                              "werde ich dich für die Ewigkeit heimsuchen und sicherstellen,\n"
+                              "dass du im Jenseits nicht träumen wirst... nur ein Scherz... oder auch nicht...")
             output_dict = fun_dict
 
     return output_dict
@@ -760,18 +779,18 @@ def user_input_word(language_eng):
                 good_enough_points = True
             else:
                 if language_eng:
-                    print("\n Narrator: Numbers??? Multiple words??? Separators?! "
-                          "Not in this game! Repeat, Repeat, Repeeeeat!")
+                    console.print("\n Narrator: Numbers??? Multiple words??? Separators?! "
+                                  "Not in this game! Repeat, Repeat, Repeeeeat!")
                 else:
-                    print("\n Narrator: Zahlen??? Mehrere Wörter??? Trennzeichen?! Nicht in diesem Spiel! "
-                          "Wiederholen, Wiederholen, Wiederholen!")
+                    console.print("\n Narrator: Zahlen??? Mehrere Wörter??? Trennzeichen?! Nicht in diesem Spiel! "
+                                  "Wiederholen, Wiederholen, Wiederholen!")
         else:
             if language_eng:
-                print("\n Narrator: Numbers??? Multiple words??? Separators?! Not in this game! "
-                      "Repeat, Repeat, Repeeeeat!")
+                console.print("\n Narrator: Numbers??? Multiple words??? Separators?! Not in this game! "
+                              "Repeat, Repeat, Repeeeeat!")
             else:
-                print("\n Narrator: Zahlen??? Mehrere Wörter??? Trennzeichen?! Nicht in diesem Spiel! "
-                      "Wiederholen, Wiederholen, Wiederholen!")
+                console.print("\n Narrator: Zahlen??? Mehrere Wörter??? Trennzeichen?! Nicht in diesem Spiel! "
+                              "Wiederholen, Wiederholen, Wiederholen!")
     return user_word
 
 
@@ -780,29 +799,29 @@ def user_input_word(language_eng):
 def games_callout(who_won, language_eng):
     # function that gives out a statement according to who won - perspective player
     if who_won == "NPC":
-        print(text_assets.npc_art_win)
-        print("")
+        console.print(text_assets.npc_art_win, style="grey30")
+        console.print("")
         time.sleep(2)
-        print("---------------------------------------")
-        print(select_word(text_assets.npc_wins))
-        print("")
+        give_separators()
+        console.print(select_word(text_assets.npc_wins))
+        console.print("")
         if language_eng:
-            print("Narrator: The Exorcist... or was it Executioner?... has won! pity you!\n")
+            console.print("Narrator: The Exorcist... or was it Executioner?... has won! pity you!\n")
         else:
-            print("Narrator: Der Exorzist... oder war es der Henker?... hat gewonnen! Schade für dich!\n")
-        print("---------------------------------------\n")
+            console.print("Narrator: Der Exorzist... oder war es der Henker?... hat gewonnen! Schade für dich!\n")
+        give_separators()
     if who_won == "Player":
-        print("---------------------------------------\n")
-        print(select_word(text_assets.player_wins))
-        print("")
+        give_separators()
+        console.print(select_word(text_assets.player_wins))
+        console.print("")
         if language_eng:
-            print("Narrator: Wow! You have actually managed to win! good job you!\n")
+            console.print("Narrator: Wow! You have actually managed to win! good job you!\n")
         else:
-            print("Narrator: Wow! Du hast es tatsächlich geschafft zu gewinnen! Gut gemacht!\n")
-        print("")
-        print(text_assets.player_art_win)
-        print("")
-        print("---------------------------------------\n")
+            console.print("Narrator: Wow! Du hast es tatsächlich geschafft zu gewinnen! Gut gemacht!\n")
+        console.print("")
+        console.print(text_assets.player_art_win)
+        console.print("")
+        give_separators()
 
 
 # -----------------------------------------
