@@ -44,6 +44,7 @@ import os
 TO-DO:
   - add multiple alphabets for easy and medium difficulty, as well as more word categories with less restrictive letter guessing
     that include non-standard-english letters 
+  - layout for terminal execution
   - Fixes of german
   - check if iteration process can be speed-up (late stage tweaking)
   - late-stage: support for spaces?
@@ -57,9 +58,12 @@ COMPLETED:
       - make sure words are seperated only by a new line, not ";" etc
   - update already existing dictionaries
   - added game start menu
+
+EXCLUDED AND TERMINATED:
   - Game Interface
       - using pygame and pygame_gui.
-      - TODO: event handling. change game_events to display wanted events.
+      - after laying out the UI, the script has proven to complicated for easy beginner implimentation. Classes and threading needed.
+      -> interface-idea thrown out. now focus on making the game run smoothly and pretty in a terminal. 
 
 Dictionaries already in the program:
 
