@@ -1,8 +1,14 @@
 import time  # used to simulate delays of the npc while choosing a letter and add user-friendliness
 import os  # used to exit and reload program at end
 import sys  # "
+
+# used for colouring and formatting the output
+from rich import print
+
+# other files including functions and assets respectively
 import funcs
 import text_assets
+
 
 # (head + body + arms + legs are 6 pieces)
 remaining_attempts = 6
