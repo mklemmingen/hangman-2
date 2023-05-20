@@ -4,15 +4,13 @@ import text_assets
 import os  # used to exit and reload program at end and to list files in dict dictionary
 
 # for rich formatting
-from rich.console import Console
-
-console = Console()
+from game_script import console
 
 
 # --------------------------
 # some rules for certain words that should be treated specifically in rich
 def give_separators():
-    # prints out seperators
+    # prints out separators
     console.print("----------------------------", style="wheat1")
 
 
@@ -68,6 +66,7 @@ def give_me_a_value_inbetween(value1: int, value2: int, language_eng: bool, star
         # A while-loop is used to stop the user from ending the game with anything not allowed,
         # except is used to prevent errors
         try:
+            console.bell()
             if start_of_game:
                 give_separators()
                 erg = int(input("Enter your choices number ... Geb die Nummer deiner Entscheidung ein: "))
@@ -454,16 +453,16 @@ def slice_dict(current_dictionary, language, language_eng, secret_word, value_if
     # to save processor time
 
     length_of_secret_word = len(secret_word)
-    output_dict = dict
+    output__in_func_dict = dict
 
     if not value_if_own_dict == 1:
 
         fun_dict = current_dictionary
 
         if language == "english":
-            output_dict = slice_the_english(fun_dict, language_eng, length_of_secret_word)
+            output__in_func_dict = slice_the_english(fun_dict, language_eng, length_of_secret_word)
         elif language == "german":
-            output_dict = slice_the_german(fun_dict, language_eng, length_of_secret_word)
+            output__in_func_dict = slice_the_german(fun_dict, language_eng, length_of_secret_word)
     else:
         # possible upgrade of the function:
         # check if file-names has/have "sorted" inside
@@ -515,14 +514,15 @@ def slice_dict(current_dictionary, language, language_eng, secret_word, value_if
         full_sliced_dict = [word for word in full_dict if len(word) == length_of_secret_word]
 
         # select dict for output_dict
-        output_dict = full_sliced_dict
+        output__in_func_dict = full_sliced_dict
 
-    return output_dict
+    return output__in_func_dict
 
 
 def slice_the_german(fun_dict, language_eng, length_of_secret_word):
     # slices the german according to predefined index values
     # TODO add german index interval values
+    global output_dict
     if length_of_secret_word <= 10:
         if length_of_secret_word == 1:
             output_dict = fun_dict[0:25]
@@ -624,6 +624,7 @@ def slice_the_german(fun_dict, language_eng, length_of_secret_word):
 def slice_the_english(fun_dict, language_eng, length_of_secret_word):
     # slices the german dict
 
+    global output_dict
     if length_of_secret_word <= 10:
         if length_of_secret_word == 1:
             output_dict = fun_dict[0:25]
@@ -763,6 +764,7 @@ def user_input_word(language_eng):
     # Function handles the user-input for the challenge_word
 
     # variable used for control while statement
+    global user_word
     good_enough_points = False
 
     while not good_enough_points:
