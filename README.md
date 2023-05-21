@@ -1,20 +1,24 @@
 # hanging_man
-(unpublished, in building)
+
+terminal-optimised hanging man game. simply clone and python run the game_script to start the game.
 
 The game has a D&D like story-aspect to it to make it stand out against simple vanilla hangman games.
 
 It supports both english and german.
 
-Decisions are made by typing in one of the displayed numbers, and as of now, all that is done in the console.
+Decisions are made by typing in one of the displayed numbers or by input of words and letters.
 
-The structure of the game is fairly simple and follows basic control structures.
+If you want the computer to use another language for guessing your words, simply put one of the dictonaries in the corresponding
+dictionaries directory into the user_input_dictionaries folder. You can then choose it in game. 
+You can alternatively use your own wordlist of any kind of topic in there.
 
-- You either play yourself and try to solve a secret word, or you can challenge the villain with a word you can individually give him.
-
+## You either play yourself and try to solve a secret word, or you can challenge the villain with a word you can individually give him.
 ### The user can select 3 difficulty options.
 
   - easy: simply chooses a random letter of the alphabet and acts as if its a toddler who just gained colour sight
+  
   - medium: knows which letters of the alphabet are most used and weights them more than others in his random decision making.
+  
   - hard: here is where the fun begins:
   
       - takes either an in-build or a dictionary in the DICTIONARIES dir to use for guessing. Sorts it the first time it runs a new one. 
@@ -27,10 +31,10 @@ The structure of the game is fairly simple and follows basic control structures.
         from the pool from which it iterates at each loop.
       - if the guess has been incorrect, all index vallues of words where that element has been a part of at whatever position gets yeeted into nothingness. 
 
-the computers "high strategy" is based on how an adult player would make his choices, if he didnt know what words are, and just knows they consist of up to 26 individual letters.
+The computers "high strategy" is based on how an adult player would make his choices, if he didnt know what words are, and just knows they consist of up to 26 individual letters.
 The computer, if the word is in fact in the dictionary, is able to play surprisingly well. 
 
-### See for yourself! 
+## See for yourself! 
 
 If you have any tips and tricks on how to improve the code, feel free to message or create a discussion
 
@@ -47,7 +51,6 @@ TO-DO:
   - add the possibility for mistake into the computer guessing, so that the player always has a chance and doesnt have to resort to using ultra-long words
   - add multiple alphabets for easy and medium difficulty, as well as more word categories with less restrictive letter guessing
     that include non-standard-english letters 
-  - layout for terminal execution
   - Fixes of german
   - check if iteration process can be speed-up (late stage tweaking)
   - late-stage: support for spaces?
@@ -61,6 +64,7 @@ COMPLETED:
       - make sure words are seperated only by a new line, not ";" etc
   - update already existing dictionaries
   - added game start menu
+  - layout for terminal execution
 
 EXCLUDED AND TERMINATED:
   - Game Interface
@@ -71,7 +75,7 @@ EXCLUDED AND TERMINATED:
 Dictionaries already in the program:
 
   - https://github.com/dwyl/english-words
-      - words-alpha.txt   [English!]
+      - words-alpha.txt   [English!] [as english_words_outside.txt in the repo]
   - https://github.com/enz/german-wordlist/blob/master/words
       - german_words 
   - https://github.com/OpenTaal/opentaal-wordlist/blob/master/wordlist.txt
@@ -98,4 +102,3 @@ Dictionaries already in the program:
 - https://github.com/glutanimate/wordlist-medicalterms-en/blob/master/wordlist.txt
       - medical terms
 - https://github.com/xajkep/wordlists
-      - # TODO
