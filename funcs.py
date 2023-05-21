@@ -5,13 +5,15 @@ import os  # used to exit and reload program at the end and to list files in dic
 
 # used for colouring and formatting the output
 from rich.console import Console
+
 console = Console()
+
 
 # --------------------------
 # some rules for certain words that should be treated specifically in rich
 def give_separators():
     # prints out separators
-    console.print("----------------------------", style="wheat1")
+    console.print("-----------------------------------------------------------------------", style="wheat1")
 
 
 def clean_window():
@@ -24,10 +26,10 @@ def clean_window():
 # Select the word function
 
 
-def select_word(words):
+def select_word(func_words: str) -> str:
     # function to select a word from a list.
     # it uses the random module to help with the random word pick
-    return random.choice(words).lower()
+    return random.choice(func_words).lower()
 
 
 # test to see if a random word is selected from the lists
@@ -37,14 +39,14 @@ def select_word(words):
 # function to check if users' challenge word has a number in it, uses regex to include "-"
 # function is used when challenge_word is created after junction of first_choice
 
-def are_there_numbers(word):
-    return any(char.isdigit() for char in word)
+def are_there_numbers(func_word: str) -> bool:
+    return any(char.isdigit() for char in func_word)
 
 
 # -----------------------------------------------------
 # def function to use for the underscores as "unknown" letters
 
-def pri_secret_word(word, gues_letters):
+def pri_secret_word(word: str, gues_letters: list):
     # this is used to console.print the missing letters with an _ and the known letters fitting
     # inspiration found in: https://codefather.tech/blog/hangman-game-python/
     # "end" used so the console.print function writes in one line
@@ -95,7 +97,7 @@ def give_me_a_value_inbetween(value1: int, value2: int, language_eng: bool, star
 # these functions are either for the player to guess letters or for the
 # computer to do so with different difficulty settings
 
-def guess_player_letter(language_eng):
+def guess_player_letter(language_eng: bool) -> str:
     # reoccurring function for guessing a letter as the PLAYER
     while True:
         give_separators()
@@ -120,7 +122,7 @@ def guess_player_letter(language_eng):
     return guess_func.lower()
 
 
-def guess_computer_letter(language_eng):
+def guess_computer_letter(language_eng: bool) -> str:
     # reoccurring function for guessing a letter as the NPC (Executioner) does
     in_func_guess = select_word(text_assets.alphabet)
     if language_eng:
@@ -138,7 +140,7 @@ def guess_computer_letter(language_eng):
     return in_func_guess
 
 
-def guess_computer_letters_strategy(language_eng, gues_let_func: list):
+def guess_computer_letters_strategy(language_eng: bool, gues_let_func: list) -> str:
     # this reoccurring functions uses a simple vowel-first strategy to solve the user input words
     # https://pynative.com/python-weighted-random-choices-with-probability/
     # used for inspiration for guesses with probability
@@ -171,7 +173,7 @@ def guess_computer_letters_strategy(language_eng, gues_let_func: list):
 
 # ----------------------------------------------
 
-def open_dictionary(language):
+def open_dictionary(language: str) -> list:
     # opening the dictionary in read mode
     if language == "german":
         my_dict = open("german_words_outside.txt", "r")
@@ -191,7 +193,7 @@ def open_dictionary(language):
 
 # ----------------------------------------------
 
-def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, language_eng):
+def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, language_eng: bool) -> str:
     console.print("\n*The Executioner looks into the distance... thinking hard...*")
     time.sleep(2)
     give_separators()
@@ -269,7 +271,7 @@ def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, langua
     return highest_value_elem  # guess as char
 
 
-def iterate_dict_to_sol_dict(real_dict: list, ghostly_solv_dict: dict):
+def iterate_dict_to_sol_dict(real_dict: list, ghostly_solv_dict: dict) -> dict:
     # I take the "sliced by len(secretword)"-dictionary "short_dict" and iterate over each of its strings.
     # I want to add, at each element, the index of its current word to the value list of
     # the current element corresponding an empty dict key.
@@ -299,7 +301,7 @@ def iterate_dict_to_sol_dict(real_dict: list, ghostly_solv_dict: dict):
     return ghostly_solv_dict  # full solving_dict
 
 
-def thinner_the_sliced_dict(eunuch_dict: list, sol_dict: dict, already_guessed_let: list):
+def thinner_the_sliced_dict(eunuch_dict: list, sol_dict: dict, already_guessed_let: list) -> list:
     # each time remove_letters gets a new one, which is letters not in the secret word
     # this goes and looks at solving_dict,
     # gets their index from values,
@@ -344,7 +346,7 @@ def thinner_the_sliced_dict(eunuch_dict: list, sol_dict: dict, already_guessed_l
     return super_sliced_dict  # sliced_dict
 
 
-def format_the_hidden_word(sec_word, gues_letters):
+def format_the_hidden_word(sec_word: str, gues_letters: list) -> list:
     # coming from the output the user can see like "a_s_h", and make conclusions
     # based on the fact that certain words cannot be included,
     # this creates a list that holds all keys that are not possible any more
@@ -393,7 +395,7 @@ def format_the_hidden_word(sec_word, gues_letters):
     return opposite_keys  # list of keys which index should be deleted
 
 
-def letter_sniper(sol_dict, real_dict_list, remove_key_list):
+def letter_sniper(sol_dict: dict, real_dict_list: list, remove_key_list: list) -> list:
     # This checks a specially created list of values created from the info one can get from
     # correctly guessed letters. Meaning that when a_s_h is displayed, the list used here
     # contains elements that are in opposition, like all keys not a0, but at position 0.
@@ -414,7 +416,7 @@ def letter_sniper(sol_dict, real_dict_list, remove_key_list):
     return super_sliced_dict
 
 
-def slice_shine_and_burn(list_to_burn, real_dict_list):
+def slice_shine_and_burn(list_to_burn: list, real_dict_list: list) -> list:
     # using list comprehension to break up the list in list
     popped_remove_index_list = [item for sublist in list_to_burn for item in sublist]
 
@@ -438,7 +440,7 @@ def slice_shine_and_burn(list_to_burn, real_dict_list):
     return real_dict_list  # new sliced_dict
 
 
-def remove_duplicates_in_list(func_list: list):
+def remove_duplicates_in_list(func_list: list) -> list:
     # remove duplicates by creating a new list
     filtered_removal_list = list()
     for item in func_list:
@@ -448,8 +450,8 @@ def remove_duplicates_in_list(func_list: list):
     return filtered_removal_list
 
 
-def slice_dict(current_dictionary, language, language_eng, secret_word, value_if_own_dict, files_dict,
-               value_which_dictionary):
+def slice_dict(current_dictionary: list, language: str, language_eng: bool, secret_word: str, value_if_own_dict: int,
+               files_dict: list, value_which_dictionary: int) -> list:
     # if a user uses in-build dict:
     # uses set known intervals of the length of words from the english dict and german dict
     # to save processor time
@@ -521,7 +523,7 @@ def slice_dict(current_dictionary, language, language_eng, secret_word, value_if
     return output__in_func_dict
 
 
-def slice_the_german(fun_dict, language_eng, length_of_secret_word):
+def slice_the_german(fun_dict: list, language_eng: bool, length_of_secret_word: int) -> list:
     # slices the german according to predefined index values
     # TODO add german index interval values
     global output_dict
@@ -623,7 +625,7 @@ def slice_the_german(fun_dict, language_eng, length_of_secret_word):
     return output_dict
 
 
-def slice_the_english(fun_dict, language_eng, length_of_secret_word):
+def slice_the_english(fun_dict: list, language_eng: bool, length_of_secret_word: int) -> list:
     # slices the german dict
 
     global output_dict
@@ -726,9 +728,9 @@ def slice_the_english(fun_dict, language_eng, length_of_secret_word):
 
 
 #          -------------------------------
-def letter_frequency_structure_maker(sec_word_for_func: str, alph_in_func: list):
+def letter_frequency_structure_maker(sec_word_for_func: str, alph_in_func: list) -> dict:
     # creates an array of keys of the length of secret word with the other axis being the alphabet
-    # since initialising 806 possible combinations would be unnecessary.
+    # since initializing 806 possible combinations would be unnecessary.
     # all the values of the arrays are listed with the index values of the corresponding words
     # starts at a0
 
@@ -745,9 +747,9 @@ def letter_frequency_structure_maker(sec_word_for_func: str, alph_in_func: list)
 
 # -----------------------------------------
 
-def is_guess_in_secret_word(gues_letter, sec_word):
+def is_guess_in_secret_word(guess_in_func: str, sec_word: str) -> bool:
     # function that checks if a letter is in secret word
-    if gues_letter in sec_word:
+    if guess_in_func in sec_word:
         return True
     else:
         return False
@@ -756,13 +758,13 @@ def is_guess_in_secret_word(gues_letter, sec_word):
 # ----------------------------------------
 
 # function used to put the secret_word string into a set, so we can remove duplicates and iterate easy
-def get_unique_letters(word):
+def get_unique_letters(word: str) -> str:
     return "".join(set(word))
 
 
 # -----------------------------------------
 
-def user_input_word(language_eng):
+def user_input_word(language_eng: bool) -> str:
     # Function handles the user-input for the challenge_word
 
     # variable used for control while a statement
@@ -774,7 +776,8 @@ def user_input_word(language_eng):
         if language_eng:
             user_word = str(input("\n... so be it... write your human word on this card and do not tell me: "))
         else:
-            user_word = str(input("\n... so sei es... schreib dein menschliches Wort hier drauf und sag es mir nicht: "))
+            user_word = str(
+                input("\n... so sei es... schreib dein menschliches Wort hier drauf und sag es mir nicht: "))
         # checking the challenge_word for anything bad
         # does it have numbers in it?
         # is challenge word actually multiple words with space between
@@ -800,7 +803,7 @@ def user_input_word(language_eng):
 
 # ----------------------------------------
 
-def games_callout(who_won, language_eng):
+def games_callout(who_won: str, language_eng: bool):
     # function that gives out a statement according to who won - perspective player
     if who_won == "NPC":
         console.print(text_assets.npc_art_win, style="grey30")
@@ -831,7 +834,7 @@ def games_callout(who_won, language_eng):
 # -----------------------------------------
 # Hangman stages as a function corresponding to the remaining_attempts
 
-def get_hangman_stage(attempt_number):
+def get_hangman_stage(attempt_number: int):
     max_attempts = 6
     stages = ["""
         ------
@@ -900,7 +903,7 @@ def get_hangman_stage(attempt_number):
     return stages[max_attempts - attempt_number]
 
 
-def files_in_dir(path):
+def files_in_dir(path: str) -> list:
     # function checks if there are any files in a directory
     # source 15.05.23: https://stackoverflow.com/questions/33463325/python-check-if-any-file-exists-in-a-given-directory
     return list(os.listdir(path))

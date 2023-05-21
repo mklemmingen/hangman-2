@@ -498,8 +498,8 @@ if who_plays == "NPC":
         else:
             # uses the user-input-dictionary
             # we don't need the open dict function, since it is implemented in the slice_dict function
-
-            sliced_dict = funcs.slice_dict(list, hard_mode_lang, is_english, secret_word,
+            empty_list: list = []
+            sliced_dict = funcs.slice_dict(empty_list, hard_mode_lang, is_english, secret_word,
                                            value_if_own_dict, files_in_dir,
                                            value_which_dictionary)
 
