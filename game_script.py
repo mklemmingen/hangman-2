@@ -436,10 +436,12 @@ if who_plays == "Player":
         console.print(
             "The letter you wish to guess has {} letter´s... do with this Information what you like.\n".format(
                 len(secret_word)), justify="left")
+        time.sleep(1)
     else:
         console.print(
             "Der gesuchte Buchstabe hat {} Buchstaben... mache mit dieser Information, was du willst.\n".format(
                 len(secret_word)), justify="left")
+        time.sleep(1)
 
     while remaining_attempts > 0 and len(guessed_letters) < length_of_secret_word:
         # the while-loop runs while the attempts haven't run out and the player hasn't won
@@ -455,6 +457,8 @@ if who_plays == "Player":
                     console.print("\nYou have already guessed the letter {}\n".format(guess), justify="left")
                 else:
                     console.print("\nDu hast bereits den Buchstaben {} geraten.\n".format(guess), justify="left")
+                funcs.give_separators()
+                time.sleep(1)
             else:
                 if is_english:
                     console.print(
@@ -464,7 +468,10 @@ if who_plays == "Player":
                     console.print(
                         "\nVerdammt. Du hast recht! Der Buchstabe {} ist Teil des geheimen Wortes\n".format(guess),
                         justify="left")
+                funcs.give_separators()
+                time.sleep(1)
                 console.print(funcs.select_word(text_assets.point_player), justify="left")
+                time.sleep(1)
                 guessed_letters += guess
         else:
             if is_english:
@@ -472,12 +479,15 @@ if who_plays == "Player":
             else:
                 console.print("\nNein! Der Buchstabe {} ist nicht Teil des geheimen Wortes\n".format(guess),
                               justify="left")
-
+            funcs.give_separators()
+            time.sleep(1)
             console.print(funcs.select_word(text_assets.point_computer), justify="left")
+            time.sleep(1)
             remaining_attempts -= 1
 
         console.print(funcs.get_hangman_stage(remaining_attempts), highlight=False, style="bold", justify="left")
         funcs.pri_secret_word(secret_word, guessed_letters)
+        time.sleep(1)
 
         if is_english:
             console.print("\n You can make {} more mistakes... I would say be careful, but I hope you lose.\n"
@@ -485,6 +495,7 @@ if who_plays == "Player":
         else:
             console.print("\nDu hast noch {} Fehler übrig... Ich würde sagen, sei vorsichtig, "
                           "aber ich hoffe, dass du verlierst.\n".format(remaining_attempts), justify="left")
+        time.sleep(1)
 
     if len(guessed_letters) == len(funcs.get_unique_letters(secret_word)):
         funcs.games_callout("Player", is_english)

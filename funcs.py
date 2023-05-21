@@ -55,10 +55,10 @@ def pri_secret_word(word: str, gues_letters: list):
     # "end" used so the console.print function writes in one line
     for letter in word:
         if letter in gues_letters:
-            console.print(" {} ".format(letter), end="", justify="left")
+            console.print(" {} ".format(letter), end="")
         else:
-            console.print(" _ ", end="", justify="left")
-    console.print("\n", justify="left")
+            console.print(" _ ", end="")
+    console.print("\n")
 
 
 # ------------------------------------------
@@ -105,9 +105,9 @@ def guess_player_letter(language_eng: bool) -> str:
     while True:
         give_separators()
         if language_eng:
-            console.print(select_word(text_assets.choose), end="", justify="left")
+            console.print(select_word(text_assets.choose), end="",  style="#db6825")
         else:
-            console.print(select_word(text_assets.choose_german), end="", justify="left")
+            console.print(select_word(text_assets.choose_german), end="", style="#db6825")
         guess_func = str(input(":  "))
         give_separators()
         if len(guess_func) > 1 or not guess_func.isalpha():
@@ -130,7 +130,7 @@ def guess_computer_letter(language_eng: bool) -> str:
     # reoccurring function for guessing a letter as the NPC (Executioner) does
     in_func_guess = select_word(text_assets.alphabet)
     if language_eng:
-        console.print("\n*The Executioner looks into the distance... thinking hard...*", style="italic",
+        console.print("\n*The [bold magenta]Executioner[/bold magenta] looks into the distance... thinking hard...*", style="italic",
                       justify="left")
     else:
         console.print("\nDer Henker schaut nachdenklich in die Ferne...", style="italic",
@@ -138,9 +138,9 @@ def guess_computer_letter(language_eng: bool) -> str:
     time.sleep(2)
     give_separators()
     if language_eng:
-        console.print(select_word(text_assets.npc_inner_thoughts), justify="left")
+        console.print(select_word(text_assets.npc_inner_thoughts), style="#19700a", justify="left")
     else:
-        console.print(select_word(text_assets.npc_inner_thoughts_german), justify="left")
+        console.print(select_word(text_assets.npc_inner_thoughts_german), style="#19700a", justify="left")
     give_separators()
     time.sleep(2)
     return in_func_guess
@@ -164,13 +164,13 @@ def guess_computer_letters_strategy(language_eng: bool, gues_let_func: list) -> 
         if in_function_guess not in gues_let_func:
             break
 
-    console.print("\n*The Executioner looks into the distance... thinking real hard...*", justify="left")
+    console.print("\n*The [bold magenta]Executioner[/bold magenta] looks into the distance... thinking real hard...*", justify="left")
     time.sleep(2)
     give_separators()
     if language_eng:
-        console.print(select_word(text_assets.npc_general), justify="left")
+        console.print(select_word(text_assets.npc_inner_thoughts), style="#19700a", justify="left")
     else:
-        console.print(select_word(text_assets.npc_general_german), justify="left")
+        console.print(select_word(text_assets.npc_inner_thoughts_german), style="#19700a", justify="left")
     give_separators()
     time.sleep(2)
     in_function_guess = str(in_function_guess[0])
@@ -182,9 +182,9 @@ def guess_computer_letters_strategy(language_eng: bool, gues_let_func: list) -> 
 def open_dictionary(language: str) -> list:
     # opening the dictionary in read mode
     if language == "german":
-        my_dict = open("~/DICTIONARIES/in-build-dictionaries/german_words_outside.txt", "r")
+        my_dict = open("DICTIONARIES/in-build-dictionaries/german_words_outside.txt", "r")
     else:
-        my_dict = open("~/DICTIONARIES/in-build-dictionaries/english_words_outside.txt", "r")
+        my_dict = open("DICTIONARIES/in-build-dictionaries/english_words_outside.txt", "r")
 
     # reading the files
     data = my_dict.read()
@@ -200,13 +200,13 @@ def open_dictionary(language: str) -> list:
 # ----------------------------------------------
 
 def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, language_eng: bool) -> str:
-    console.print("\n*The Executioner looks into the distance... thinking hard...*", justify="left")
+    console.print("\n*The [bold magenta]Executioner[/bold magenta] looks into the distance... thinking hard...*", justify="left")
     time.sleep(2)
     give_separators()
     if language_eng:
-        console.print(select_word(text_assets.npc_general), justify="left")
+        console.print(select_word(text_assets.npc_inner_thoughts), justify="left")
     else:
-        console.print(select_word(text_assets.npc_general_german), justify="left")
+        console.print(select_word(text_assets.npc_inner_thoughts_german), justify="left")
     give_separators()
     time.sleep(2)
 
@@ -831,7 +831,7 @@ def games_callout(who_won: str, language_eng: bool):
         console.print(select_word(text_assets.npc_wins), justify="left")
         console.print("", justify="left")
         if language_eng:
-            console.print("Narrator: The Exorcist... or was it Executioner?... has won! pity you!\n", justify="left")
+            console.print("Narrator: The Exorcist... or was it [bold magenta]Executioner[/bold magenta]?... has won! pity you!\n", justify="left")
         else:
             console.print("Narrator: Der Exorzist... oder war es der Henker?... hat gewonnen! Schade für dich!\n",
                           justify="left")

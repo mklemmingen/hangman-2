@@ -149,7 +149,6 @@ point_computer = ["Hah, I pity the fool that you are!",
                   "Why do I always wake up those unworthy of my challenge?",
                   "*the executioner dances* *shakes his bloody axe in the air like he dont care*",
                   "The Narrator *whispers*: Are you sure that that was a good choice?",
-                  "The Executioner is canonically a ... and the programmer got tired of narrating *seals off 4th wall*",
                   "Looks like I've got you in a tight noose, my friend!",
                   "I hope you're good at spelling 'guilty' because that's where you're headed!",
                   "You're the perfect contestant for my game show: 'Hangman: Live or Die!'",
@@ -282,7 +281,30 @@ npc_inner_thoughts = ["I have an idea... but it may be risky!",
                       "My therapist says I have a compulsive need for control, \n"
                       "but she's not the one holding the power in this game.",
                       "I'm like a character straight out of Shakespeare's tragedy, \n"
-                      "but this time I'm the one writing the ending.\n"]
+                      "but this time I'm the one writing the ending.\n",
+                      "Hmm, a challenging word you have chosen. \n"
+                      "But do you have the guts to face the consequences if I guess it correctly? \n"
+                      "Think carefully before you answer, for your life is at stake here. Remember, \n"
+                      "the game of hanging man is not for the faint of heart.",
+                      "Interesting choice of letters. But I see you have left some crucial ones out. \n"
+                      "Perhaps you are trying to outsmart me? But I assure you, I am not easily fooled.\n"
+                      "I have played this game with many before you, and I have yet to lose.",
+                      "You think you have me stumped, don't you? But I am a master of deduction.\n "
+                      "I can see the patterns in your word, the subtle hints that you have left for me to follow.\n"
+                      "You may think you have the upper hand, but I assure you, the tables will turn soon enough.",
+                      "A valiant effort, but alas, not good enough. \n"
+                      "You should have chosen a simpler word, one that would not have tested my skills to the limit. \n"
+                      "But I suppose it is too late for regrets now. The noose is waiting, "
+                      "and you have no choice but to accept your fate.",
+                      "Ah, I see what you were trying to do there. \n"
+                      "A clever attempt to mislead me, but ultimately unsuccessful.\n"
+                      "You should have known better than to challenge me, for I am the executioner,\n"
+                      "and I always get my way. Now, let us proceed to the hanging, shall we?",
+                      "I'll have you know, I have a PhD in Hangmanology. You don't stand a chance.",
+                      "I've always been bad at using a dictionary, "
+                      "but that just gives me more time to think of clever ways to end this game.",
+                      "I may have lost my family, but I still have my trusty dictionary. You're in trouble now.",
+                      ]
 
 npc_inner_thoughts_german = ["Ich habe eine Idee... aber es könnte riskant sein!",
                              "Meine Mutter hat immer gesagt: 'Spiele nicht mit deinem Leben', aber sie hat mich "
@@ -367,66 +389,36 @@ npc_inner_thoughts_german = ["Ich habe eine Idee... aber es könnte riskant sein
                              "Mein Therapeut sagt, ich habe ein zwanghaftes Bedürfnis nach Kontrolle, \n"
                              "aber sie ist nicht diejenige, die die Macht in diesem Spiel hat.",
                              "Ich bin wie eine Figur direkt aus Shakespeares Tragödie, \n"
-                             "aber dieses Mal schreibe ich das Ende."]
-
-# thoughts of the computer when a strategy is used
-
-npc_general = ["Hmm, a challenging word you have chosen. \n"
-               "But do you have the guts to face the consequences if I guess it correctly? \n"
-               "Think carefully before you answer, for your life is at stake here. Remember, \n"
-               "the game of hanging man is not for the faint of heart.",
-               "Interesting choice of letters. But I see you have left some crucial ones out. \n"
-               "Perhaps you are trying to outsmart me? But I assure you, I am not easily fooled.\n"
-               "I have played this game with many before you, and I have yet to lose.",
-               "You think you have me stumped, don't you? But I am a master of deduction.\n "
-               "I can see the patterns in your word, the subtle hints that you have left for me to follow.\n"
-               "You may think you have the upper hand, but I assure you, the tables will turn soon enough.",
-               "A valiant effort, but alas, not good enough. \n"
-               "You should have chosen a simpler word, one that would not have tested my skills to the limit. \n"
-               "But I suppose it is too late for regrets now. The noose is waiting, "
-               "and you have no choice but to accept your fate.",
-               "Ah, I see what you were trying to do there. \n"
-               "A clever attempt to mislead me, but ultimately unsuccessful.\n"
-               "You should have known better than to challenge me, for I am the executioner,\n"
-               "and I always get my way. Now, let us proceed to the hanging, shall we?",
-               "I'll have you know, I have a PhD in Hangmanology. You don't stand a chance.",
-               "I've always been bad at using a dictionary, "
-               "but that just gives me more time to think of clever ways to end this game.",
-               "I may have lost my family, but I still have my trusty dictionary. You're in trouble now.",
-               ]
-
-npc_general_german = ["Hmm, ein herausforderndes Wort hast du gewählt. \n"
-                      "Aber hast du den Mut, die Konsequenzen zu tragen, wenn ich es richtig errate? \n"
-                      "Überlege dir sorgfältig, bevor du antwortest, denn hier steht dein Leben auf dem Spiel. Denk "
-                      "daran, \n"
-                      "das Spiel Galgenmännchen ist nichts für schwache Nerven.",
-                      "Interessante Wahl der Buchstaben. Aber ich sehe, dass du einige entscheidende ausgelassen "
-                      "hast. \n"
-                      "Vielleicht versuchst du, mich zu übertreffen? Aber ich versichere dir, "
-                      "ich bin nicht leicht zu täuschen.\n"
-                      "Ich habe dieses Spiel mit vielen vor dir gespielt und noch nie verloren.",
-                      "Du denkst, du hast mich festgenagelt, oder? Aber ich bin ein Meister der Deduktion.\n "
-                      "Ich kann die Muster in deinem Wort sehen, die subtilen Hinweise, "
-                      "die du für mich hinterlassen hast, um zu folgen.\n"
-                      "Du magst denken, dass du die Oberhand hast, aber ich versichere dir, d"
-                      "ie Karten werden sich bald genug wenden.",
-                      "Ein tapferer Versuch, aber leider nicht gut genug. \n"
-                      "Du hättest ein einfacheres Wort wählen sollen, eins, "
-                      "das meine Fähigkeiten nicht bis zum Äußersten getestet hätte. \n"
-                      "Aber ich nehme an, es ist jetzt zu spät für Reue. Der Strick wartet, "
-                      "und du hast keine Wahl, als dein Schicksal zu akzeptieren.",
-                      "Ah, ich sehe, was du da versucht hast. \n"
-                      "Ein cleverer Versuch, mich in die Irre zu führen, aber letztendlich erfolglos.\n"
-                      "Du hättest besser wissen müssen, als mich herauszufordern, denn ich bin der Henker,\n"
-                      "und ich bekomme immer, was ich will. Nun lasst uns zum Aufhängen übergehen, sollen wir?",
-                      "Ich habe einen Doktortitel in Galgenmaennchenologie. Du hast keine Chance.",
-                      "Ich war schon immer schlecht darin, ein Wörterbuch zu benutzen, "
-                      "aber das gibt mir nur mehr Zeit, um clevere Möglichkeiten zu überlegen, dieses Spiel zu beenden",
-                      "Ich habe zwar meine Familie verloren, "
-                      "aber ich habe immer noch mein treues Wörterbuch. Du bist jetzt in Schwierigkeiten.", ]
-
-# ------------------------------------------------------
-# Variables needed for the game
+                             "aber dieses Mal schreibe ich das Ende.",
+                             "Hmm, ein herausforderndes Wort hast du gewählt. \n"
+                             "Aber hast du den Mut, die Konsequenzen zu tragen, wenn ich es richtig errate? \n"
+                             "Überlege dir sorgfältig, bevor du antwortest, denn hier steht dein Leben auf dem Spiel. Denk "
+                             "daran, \n"
+                             "das Spiel Galgenmännchen ist nichts für schwache Nerven.",
+                             "Interessante Wahl der Buchstaben. Aber ich sehe, dass du einige entscheidende ausgelassen "
+                             "hast. \n"
+                             "Vielleicht versuchst du, mich zu übertreffen? Aber ich versichere dir, "
+                             "ich bin nicht leicht zu täuschen.\n"
+                             "Ich habe dieses Spiel mit vielen vor dir gespielt und noch nie verloren.",
+                             "Du denkst, du hast mich festgenagelt, oder? Aber ich bin ein Meister der Deduktion.\n "
+                             "Ich kann die Muster in deinem Wort sehen, die subtilen Hinweise, "
+                             "die du für mich hinterlassen hast, um zu folgen.\n"
+                             "Du magst denken, dass du die Oberhand hast, aber ich versichere dir, d"
+                             "ie Karten werden sich bald genug wenden.",
+                             "Ein tapferer Versuch, aber leider nicht gut genug. \n"
+                             "Du hättest ein einfacheres Wort wählen sollen, eins, "
+                             "das meine Fähigkeiten nicht bis zum Äußersten getestet hätte. \n"
+                             "Aber ich nehme an, es ist jetzt zu spät für Reue. Der Strick wartet, "
+                             "und du hast keine Wahl, als dein Schicksal zu akzeptieren.",
+                             "Ah, ich sehe, was du da versucht hast. \n"
+                             "Ein cleverer Versuch, mich in die Irre zu führen, aber letztendlich erfolglos.\n"
+                             "Du hättest besser wissen müssen, als mich herauszufordern, denn ich bin der Henker,\n"
+                             "und ich bekomme immer, was ich will. Nun lasst uns zum Aufhängen übergehen, sollen wir?",
+                             "Ich habe einen Doktortitel in Galgenmaennchenologie. Du hast keine Chance.",
+                             "Ich war schon immer schlecht darin, ein Wörterbuch zu benutzen, "
+                             "aber das gibt mir nur mehr Zeit, um clevere Möglichkeiten zu überlegen, dieses Spiel zu beenden",
+                             "Ich habe zwar meine Familie verloren, "
+                             "aber ich habe immer noch mein treues Wörterbuch. Du bist jetzt in Schwierigkeiten.", ]
 
 # hangman art (Source: https://ascii.co.uk/art/hangman , Access: 07.05.23)
 hangman_art = " _\n| |\n| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __\n" \
