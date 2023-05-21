@@ -232,6 +232,8 @@ choose_german = ["Wähle weise, oder Thor wird dich hart treffen. WÄHLE!",
 alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u",
             "v", "w", "x", "y", "z"]
 
+advanced_alphabet = []
+
 # words that the npc is thinking # some of these were created by chatgpt after an appropriate input
 
 npc_inner_thoughts = ["I have an idea... but it may be risky!",
