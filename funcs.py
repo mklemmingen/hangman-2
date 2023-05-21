@@ -29,8 +29,8 @@ def clean_window():
 # Select the word function
 
 
-def select_word(func_words: str) -> str:
-    # function to select a word from a list.
+def select_word(func_words: list) -> str:
+    # function to select a string from a list.
     # it uses the random module to help with the random word pick
     return random.choice(func_words).lower()
 
@@ -64,6 +64,10 @@ def pri_secret_word(word: str, gues_letters: list):
 # ------------------------------------------
 # used repeating
 def give_me_a_value_inbetween(value1: int, value2: int, language_eng: bool, start_of_game: bool) -> int:
+    """
+
+    :rtype: object
+    """
     # Function for choosing a letter between two values
     erg = -1
     console.bell()
@@ -105,7 +109,7 @@ def guess_player_letter(language_eng: bool) -> str:
     while True:
         give_separators()
         if language_eng:
-            console.print(select_word(text_assets.choose), end="",  style="#db6825")
+            console.print(select_word(text_assets.choose), end="", style="#db6825")
         else:
             console.print(select_word(text_assets.choose_german), end="", style="#db6825")
         guess_func = str(input(":  "))
@@ -126,11 +130,12 @@ def guess_player_letter(language_eng: bool) -> str:
     return guess_func.lower()
 
 
-def guess_computer_letter(language_eng: bool) -> str:
+def guess_computer_letter(language_eng: bool, alphabet: list) -> str:
     # reoccurring function for guessing a letter as the NPC (Executioner) does
-    in_func_guess = select_word(text_assets.alphabet)
+    in_func_guess: str = select_word(alphabet)
     if language_eng:
-        console.print("\n*The [bold magenta]Executioner[/bold magenta] looks into the distance... thinking hard...*", style="italic",
+        console.print("\n*The [bold magenta]Executioner[/bold magenta] looks into the distance... thinking hard...*",
+                      style="italic",
                       justify="left")
     else:
         console.print("\nDer Henker schaut nachdenklich in die Ferne...", style="italic",
@@ -153,18 +158,20 @@ def guess_computer_letters_strategy(language_eng: bool, gues_let_func: list) -> 
     # used for probabilities: https://www.wordcheats.com/blog/most-used-letters-in-english
 
     while True:
-        in_function_guess = random.choices(text_assets.alphabet, weights=(8.4966, 2.0720, 4.5388, 3.3844, 11.1607,
-                                                                          1.8121, 2.4705, 3.0034, 7.5448, 0.1965,
-                                                                          1.1016, 5.4893, 3.0129, 6.6544, 7.1635,
-                                                                          3.1671, 0.1962, 7.5809, 5.7351, 6.9509,
-                                                                          3.6308, 1.0074, 1.2899, 0.2902, 1.7779,
-                                                                          0.2722), k=1)
+        in_function_guess = random.choices(text_assets.standard_alphabet,
+                                           weights=(8.4966, 2.0720, 4.5388, 3.3844, 11.1607,
+                                                    1.8121, 2.4705, 3.0034, 7.5448, 0.1965,
+                                                    1.1016, 5.4893, 3.0129, 6.6544, 7.1635,
+                                                    3.1671, 0.1962, 7.5809, 5.7351, 6.9509,
+                                                    3.6308, 1.0074, 1.2899, 0.2902, 1.7779,
+                                                    0.2722), k=1)
         if in_function_guess in gues_let_func:
             continue
         if in_function_guess not in gues_let_func:
             break
 
-    console.print("\n*The [bold magenta]Executioner[/bold magenta] looks into the distance... thinking real hard...*", justify="left")
+    console.print("\n*The [bold magenta]Executioner[/bold magenta] looks into the distance... thinking real hard...*",
+                  justify="left")
     time.sleep(2)
     give_separators()
     if language_eng:
@@ -179,28 +186,9 @@ def guess_computer_letters_strategy(language_eng: bool, gues_let_func: list) -> 
 
 # ----------------------------------------------
 
-def open_dictionary(language: str) -> list:
-    # opening the dictionary in read mode
-    if language == "german":
-        my_dict = open("DICTIONARIES/in-build-dictionaries/german_words_outside.txt", "r")
-    else:
-        my_dict = open("DICTIONARIES/in-build-dictionaries/english_words_outside.txt", "r")
-
-    # reading the files
-    data = my_dict.read()
-
-    # replacing an end splitting the text
-    # when newline ('\n') is seen.
-
-    data_dict_list = data.split("\n")
-
-    return data_dict_list
-
-
-# ----------------------------------------------
-
 def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, language_eng: bool) -> str:
-    console.print("\n*The [bold magenta]Executioner[/bold magenta] looks into the distance... thinking hard...*", justify="left")
+    console.print("\n*The [bold magenta]Executioner[/bold magenta] looks into the distance... thinking hard...*",
+                  justify="left")
     time.sleep(2)
     give_separators()
     if language_eng:
@@ -352,7 +340,7 @@ def thinner_the_sliced_dict(eunuch_dict: list, sol_dict: dict, already_guessed_l
     return super_sliced_dict  # sliced_dict
 
 
-def format_the_hidden_word(sec_word: str, gues_letters: list) -> list:
+def format_the_hidden_word(sec_word: str, gues_letters: list, alphabet: list) -> list:
     # coming from the output the user can see like "a_s_h", and make conclusions
     # based on the fact that certain words cannot be included,
     # this creates a list that holds all keys that are not possible any more
@@ -364,39 +352,18 @@ def format_the_hidden_word(sec_word: str, gues_letters: list) -> list:
     # puts stuff into the non_opposite_key-list
     for position, letter in enumerate(sec_word):
         if letter in gues_letters:
-            non_opposite_keys.append("{0}{1}".format(letter, position))
-            # creates a list of positional keys
-            number = str(position)
-            opposite_keys.append("a{0}".format(number))
-            opposite_keys.append("b{0}".format(number))
-            opposite_keys.append("c{0}".format(number))
-            opposite_keys.append("d{0}".format(number))
-            opposite_keys.append("e{0}".format(number))
-            opposite_keys.append("f{0}".format(number))
-            opposite_keys.append("g{0}".format(number))
-            opposite_keys.append("h{0}".format(number))
-            opposite_keys.append("i{0}".format(number))
-            opposite_keys.append("j{0}".format(number))
-            opposite_keys.append("k{0}".format(number))
-            opposite_keys.append("l{0}".format(number))
-            opposite_keys.append("m{0}".format(number))
-            opposite_keys.append("n{0}".format(number))
-            opposite_keys.append("o{0}".format(number))
-            opposite_keys.append("p{0}".format(number))
-            opposite_keys.append("q{0}".format(number))
-            opposite_keys.append("r{0}".format(number))
-            opposite_keys.append("s{0}".format(number))
-            opposite_keys.append("t{0}".format(number))
-            opposite_keys.append("u{0}".format(number))
-            opposite_keys.append("v{0}".format(number))
-            opposite_keys.append("w{0}".format(number))
-            opposite_keys.append("x{0}".format(number))
-            opposite_keys.append("y{0}".format(number))
-            opposite_keys.append("z{0}".format(number))
+            for element in alphabet:
+                non_opposite_keys.append("{0}{1}".format(letter, position))
+                # creates a list of positional keys
+                number = str(position)
+                opposite_keys.append("{0}{1}".format(element, number))
 
     # takes out the known keys, so their index values persist
     for key in non_opposite_keys:
-        opposite_keys.remove(key)
+        try:
+            opposite_keys.remove(key)
+        except ValueError:
+            continue
 
     return opposite_keys  # list of keys which index should be deleted
 
@@ -456,189 +423,113 @@ def remove_duplicates_in_list(func_list: list) -> list:
     return filtered_removal_list
 
 
-def slice_dict(current_dictionary: list, language: str, language_eng: bool, secret_word: str, value_if_own_dict: int,
+def slice_dict(language: str, language_eng: bool, secret_word: str, value_if_own_dict: int,
                files_dict: list, value_which_dictionary: int) -> list:
-    # if a user uses in-build dict:
-    # uses set known intervals of the length of words from the english dict and german dict
-    # to save processor time
+    global my_dict, chosen_file, full_dict, in_built, output_in_func_dict
 
     length_of_secret_word = len(secret_word)
-    output__in_func_dict = dict
 
-    if not value_if_own_dict == 1:
-
-        fun_dict = current_dictionary
-
-        if language == "english":
-            output__in_func_dict = slice_the_english(fun_dict, language_eng, length_of_secret_word)
-        elif language == "german":
-            output__in_func_dict = slice_the_german(fun_dict, language_eng, length_of_secret_word)
-    else:
-        # possible upgrade of the function:
-        # check if file-names has/have "sorted" inside
-
-        skip_sort = False
-        for file in files_dict:
-            if "sorted" in file:
-                skip_sort = True
-
-        # variables: files_in_dir, value_which_dictionary
-
+    skip_change = False
+    change_me = False
+    # variables: files_in_dir, value_which_dictionary
+    if value_if_own_dict == 1:
+        # check if file-names have "sorted" inside
         chosen_file = files_dict[value_which_dictionary]
 
-        if not skip_sort:
+        for file in files_dict:
+            if "changed" in file:
+                skip_change = True
+
+        chosen_file = files_dict[value_which_dictionary]
+        if skip_change:  # if the file has changed in name and is thereby already changed
+            full_dict = open(f"DICTIONARIES/user_input_dicts/{chosen_file}", "r")
+        else:  # if it does not have sorted in it and has to be sorted
             # open dictionary with written
             # dict is the one chosen with value_which_dictionary
-            my_dict = open(f"DICTIONARIES/{chosen_file}", "r+")
-
-            # reading the files
-            data = my_dict.read()
-
-            # replacing an end splitting the text
-            # when newline ('\n') is seen.
-            data_dict_list = data.split("\n")
-
-            # turn every element of dictionary into alpha-mode
-            lower_dict = [word.lower() for word in data_dict_list]
-
-            # sort by length
-            # temporarily commented out, since it isn't needed though to the 0(n) run of full_sliced_dict
-            # sorted_data = sorted(lower_dict, key=len)
-
-            # save and close dictionary
-            for word in lower_dict:
-                my_dict.write(str(word) + "\n")
-
-            my_dict.close()
-
-            # change file name to have sorted appended. using the os module
-            os.rename(f"DICTIONARIES/{chosen_file}", f"DICTIONARIES/{chosen_file}_sorted")
-            chosen_file = files_dict[value_which_dictionary]
-
-            full_dict = open(f"DICTIONARIES/{chosen_file}_sorted", "r")
-        else:
-            full_dict = open(f"DICTIONARIES/{chosen_file}", "r")
-
-        # choose words with len(word) = len(secret_word)
-        # list comprehension inspi from 15.05.23:
-        # https://stackoverflow.com/questions/26697601/how-to-return-all-list-elements-of-a-given-length
-        full_sliced_dict = [word for word in full_dict if len(word) == length_of_secret_word]
-
-        # select dict for output_dict
-        output__in_func_dict = full_sliced_dict
-
-    return output__in_func_dict
-
-
-def slice_the_german(fun_dict: list, language_eng: bool, length_of_secret_word: int) -> list:
-    # slices the german according to predefined index values
-    # TODO add german index interval values
-    global output_dict
-    if length_of_secret_word <= 10:
-        if length_of_secret_word == 1:
-            output_dict = fun_dict[0:25]
-        elif length_of_secret_word == 2:
-            output_dict = fun_dict[26:452]
-        elif length_of_secret_word == 3:
-            output_dict = fun_dict[453:2582]
-        elif length_of_secret_word == 4:
-            output_dict = fun_dict[2583:9768]
-        elif length_of_secret_word == 5:
-            output_dict = fun_dict[9769:25688]
-        elif length_of_secret_word == 6:
-            output_dict = fun_dict[25689:55562]
-        elif length_of_secret_word == 7:
-            output_dict = fun_dict[55563:97560]
-        elif length_of_secret_word == 8:
-            output_dict = fun_dict[97561:149187]
-        elif length_of_secret_word == 9:
-            output_dict = fun_dict[149188:202589]
-        elif length_of_secret_word == 10:
-            output_dict = fun_dict[202590:248462]
-    elif length_of_secret_word <= 20:
-        if length_of_secret_word == 11:
-            output_dict = fun_dict[248463:286001]
-        elif length_of_secret_word == 12:
-            output_dict = fun_dict[286001:315125]
-        elif length_of_secret_word == 13:
-            output_dict = fun_dict[315126:336069]
-        elif length_of_secret_word == 14:
-            output_dict = fun_dict[336070:350218]
-        elif length_of_secret_word == 15:
-            output_dict = fun_dict[350219:359064]
-        elif length_of_secret_word == 16:
-            output_dict = fun_dict[359065:364247]
-        elif length_of_secret_word == 17:
-            output_dict = fun_dict[364248:367214]
-        elif length_of_secret_word == 18:
-            output_dict = fun_dict[367215:368684]
-        elif length_of_secret_word == 19:
-            output_dict = fun_dict[368685:369444]
-        elif length_of_secret_word == 20:
-            output_dict = fun_dict[369445:369803]
+            my_dict = open(f"DICTIONARIES/user_input_dicts/{chosen_file}", "r+")
+            change_me = True
+    elif language == "english":
+        # make use of already known intervals in the english wordlist
+        output_in_func_dict = slice_the_english(language_eng, length_of_secret_word)
     else:
-        if length_of_secret_word == 21:
-            output_dict = fun_dict[369804:369971]
-        elif length_of_secret_word == 22:
-            output_dict = fun_dict[369972:370046]
-        elif length_of_secret_word == 23:
-            output_dict = fun_dict[370046:370077]
-        elif length_of_secret_word == 24:
-            output_dict = fun_dict[370078:370088]
-        elif length_of_secret_word == 25:
-            output_dict = fun_dict[370089:370096]
-        elif length_of_secret_word == 26:
-            output_dict = fun_dict
-            if language_eng:
-                console.print("mhhh, I do not know any words with 26 letters...", justify="left")
-                console.print("I will try anyway, but I will take some more time, mortal.", justify="left")
-                console.print("I hope you have some more left... muahahah\n", justify="left")
-            else:
-                console.print("Hmm, ich kenne keine Wörter mit 26 Buchstaben...", justify="left")
-                console.print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.",
-                              justify="left")
-                console.print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n", justify="left")
-        elif length_of_secret_word == 27:
-            output_dict = fun_dict[370097:370099]
-        elif length_of_secret_word == 28:
-            output_dict = fun_dict[370100:370101]
-        elif length_of_secret_word == 29:
-            output_dict = fun_dict[370102:370104]
-        elif length_of_secret_word == 30:
-            output_dict = fun_dict
-            if language_eng:
-                console.print("mhhh, I do not know any words with 30 letters...", justify="left")
-                console.print("I will try anyway, but I will take some more time, mortal.", justify="left")
-                console.print("I hope you have some more left... muahahah\n", justify="left")
-            else:
-                console.print("Hmm, ich kenne keine Wörter mit 30 Buchstaben...", justify="left")
-                console.print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.",
-                              justify="left")
-                console.print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n", justify="left")
-        elif length_of_secret_word == 31:
-            output_dict = fun_dict[370105:370105]
-        else:
-            if language_eng:
-                console.print("\nthat's a very long word... are you sure it exists?", justify="left")
-                console.print("\nI will try anyway, cheat.", justify="left")
-                console.print("\nIf you button-smashed, I will haunt your dreams for eternity and make sure that "
-                              "in the after-life you won`t have the chance to dream.... just kidding... unless...",
-                              justify="left")
-            else:
-                console.print("\nDas ist ein sehr langes Wort... bist du sicher, dass es existiert?",
-                              justify="left")
-                console.print("\nIch werde es trotzdem versuchen, Schummler.", justify="left")
-                console.print("\nWenn du wild auf den Tasten herumgehauen hast,\n"
-                              "werde ich dich für die Ewigkeit heimsuchen und sicherstellen,\n"
-                              "dass du im Jenseits nicht träumen wirst... nur ein Scherz... oder auch nicht...",
-                              justify="left")
-            output_dict = fun_dict
+        # open files to my_dict depending on language in hard_mode_lang
+        change_me = True
+        in_built = True
+        if language == "croatian":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/croatian.txt", "r")
+        elif language == "german":
+            my_dict = my_dict = open(f"DICTIONARIES/in-build-dictionaries/german.txt", "r")
+        elif language == "czech":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/czech.txt", "r")
+        elif language == "danish":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/danish.txt", "r")
+        elif language == "dutch":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/dutch.txt", "r")
+        elif language == "french":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/french.txt", "r")
+        elif language == "georgian":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/georgian.txt", "r")
+        elif language == "italian":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/italian.txt", "r")
+        elif language == "maltese":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/maltese_words.txt", "r")
+        elif language == "norwegian":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/norwegian.txt", "r")
+        elif language == "polish":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/polish.txt", "r")
+        elif language == "portuguese":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/portuguese.txt", "r")
+        elif language == "serbian":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/serbian.txt", "r")
+        elif language == "spanish":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/spanish.txt", "r")
+        elif language == "swedish":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/swedish.txt", "r")
+        elif language == "turkish":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/turkish.txt", "r")
+        elif language == "ukranian":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/ukrainian.txt", "r")
+        else:  # if all fails
+            my_dict = slice_the_english(language_eng, length_of_secret_word)
 
-    return output_dict
+    # if it hasn't skipped the change or if we use an in_build_dictionary:
+    if change_me:
+        # reading the files
+        data = my_dict.read()
+
+        # replacing an end splitting the text
+        # when newline ('\n') is seen.
+        data_dict_list = data.split("\n")
+
+        if not in_built:
+            # save into new dict and close dictionary
+            for word in data_dict_list:
+                my_dict.write(str(word) + "\n")
+            my_dict.close()
+            os.rename(f"DICTIONARIES/{chosen_file}", f"DICTIONARIES/{chosen_file}_changed")
+
+        # turn every element of dictionary into alpha-mode
+        # slices/chooses only words with the right length, does so with all before selected lists.
+        # choose words with len(word) = len(secret_word)
+        in_func_list = []
+        for word in data_dict_list:
+            if len(word) == len(secret_word):
+                low_word = word.lower()
+                in_func_list.append(low_word)
+        output_in_func_dict = in_func_list
+
+    return output_in_func_dict
 
 
-def slice_the_english(fun_dict: list, language_eng: bool, length_of_secret_word: int) -> list:
-    # slices the german dict
+def slice_the_english(language_eng: bool, length_of_secret_word: int) -> list:
+    opened_dict = open("DICTIONARIES/in-build-dictionaries/english.txt", "r")
+
+    # reading the files
+    data = opened_dict.read()
+
+    # replacing an end splitting the text
+    # when newline ('\n') is seen.
+    fun_dict = data.split("\n")
 
     global output_dict
     if length_of_secret_word <= 10:
@@ -831,7 +722,9 @@ def games_callout(who_won: str, language_eng: bool):
         console.print(select_word(text_assets.npc_wins), justify="left")
         console.print("", justify="left")
         if language_eng:
-            console.print("Narrator: The Exorcist... or was it [bold magenta]Executioner[/bold magenta]?... has won! pity you!\n", justify="left")
+            console.print(
+                "Narrator: The Exorcist... or was it [bold magenta]Executioner[/bold magenta]?... has won! pity you!\n",
+                justify="left")
         else:
             console.print("Narrator: Der Exorzist... oder war es der Henker?... hat gewonnen! Schade für dich!\n",
                           justify="left")

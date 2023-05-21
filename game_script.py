@@ -90,7 +90,7 @@ while in_game_menu:
                           "If you choose to challenge the computer, you will be able to select one of three "
                           "difficulties.\n"
                           "    1. Easy mode. The computer guesses letters randomly\n"
-                          "    2. Medium mode. The computer guesses letters from a weighted alphabet.\n"
+                          "    2. Medium mode (only english) The computer guesses letters from a weighted alphabet.\n"
                           "    3. Hard mode. The computer guesses letters by using a specific algorithm "
                           "with a given dictionary.\n"
                           " \n"
@@ -319,7 +319,8 @@ else:  # The route of challenging with a word
                       'Would you like me to go easier on you?\n', justify="left")
 
         console.print("   1. Yes, please. I am still confused! (easy)\n"
-                      "   2. I do not want your pity, but I do want a chance. (medium)\n"
+                      "   2. I do not want your pity, but I do want a chance. (only english, medium)\n"
+
                       "\n   3. Give me the best that you got. You will be my prey. (hard)\n",
                       justify="left")
 
@@ -335,7 +336,7 @@ else:  # The route of challenging with a word
             "... damit es ür mich noch Spaß macht...\n", justify="left")
 
         console.print("   1. Ja, bitte. Ich bin immer noch verwirrt! (leicht)\n"
-                      "   2. Ich möchte dein Mitleid nicht, aber ich möchte eine Chance. (mittel)\n"
+                      "   2. Ich möchte dein Mitleid nicht, aber ich möchte eine Chance. (nur englisch, mittel)\n"
 
                       "\n    3. Geb mir das Beste was du hast. ICH werde dein Untergang sein. (schweeer)\n",
                       justify="left")
@@ -346,6 +347,125 @@ else:  # The route of challenging with a word
     who_plays = "NPC"
 
     strategy_value = funcs.give_me_a_value_inbetween(0, 3, is_english, False)
+
+    funcs.clean_window()
+    funcs.give_separators()
+
+    if is_english:
+        console.print("Which language will you write your word in?:\n"
+                      "\nenglish (1)\n"
+                      "german (2)\n"
+                      "croatian (3)\n"
+                      "czech (4)\n"
+                      "danish (5)\n"
+                      "dutch (6)\n"
+                      "french(7)\n"
+                      "georgian(8)\n"
+                      "italian (9)\n"
+                      "maltese (10\n"
+                      "norwegian (11)\n"
+                      "polish (12)\n"
+                      "portuguese (13)\n"
+                      "serbian (14)\n"
+                      "spanish (15)\n"
+                      "swedish (16)\n"
+                      "turkish (17)\n"
+                      "ukranian (18)\n",
+                      "\nNarrator: for more -> add into user_input_dictionaries folder!\n",
+                      justify="left")
+    else:
+        console.print(
+            "Vorinstalliert:\n"
+            "\nEnglisch (1)\n"
+            "Deutsch (2)\n"
+            "Kroatisch (3)\n"
+            "Tschechisch (4)\n"
+            "Dänisch (5)\n"
+            "Niederländisch (6)\n"
+            "Französisch (7)\n"
+            "Georgisch (8)\n"
+            "Italienisch (9)\n"
+            "Maltesisch (10)\n"
+            "Norwegisch (11)\n"
+            "Polnisch (12)\n"
+            "Portugiesisch (13)\n"
+            "Serbisch (14)\n"
+            "Spanisch (15)\n"
+            "Schwedisch (16)\n"
+            "Türkisch (17)\n"
+            "Ukrainisch (18)\n",
+            "\n Narrator: für mehr -> füge eine Liste in user_input_dictionaries Ordner ein!\n",
+            justify="left")
+
+    lang_value = funcs.give_me_a_value_inbetween(0, 18, is_english, False)
+
+    if lang_value == 1:
+        hard_mode_lang = "english"
+        alphabet = text_assets.english_alphabet
+    elif lang_value == 2:
+        hard_mode_lang = "german"
+        alphabet = text_assets.german_alphabet
+    elif lang_value == 3:
+        hard_mode_lang = "croatian"
+        alphabet = text_assets.croatian_alphabet
+    elif lang_value == 4:
+        hard_mode_lang = "czech"
+        alphabet = text_assets.czech_alphabet
+    elif lang_value == 5:
+        hard_mode_lang = "danish"
+        alphabet = text_assets.danish_alphabet
+    elif lang_value == 6:
+        hard_mode_lang = "dutch"
+        alphabet = text_assets.dutch_alphabet
+    elif lang_value == 7:
+        hard_mode_lang = "french"
+        alphabet = text_assets.french_alphabet
+    elif lang_value == 8:
+        hard_mode_lang = "georgian"
+        alphabet = text_assets.georgian_alphabet
+    elif lang_value == 9:
+        hard_mode_lang = "italian"
+        alphabet = text_assets.italian_alphabet
+    elif lang_value == 10:
+        hard_mode_lang = "maltese"
+        alphabet = text_assets.maltese_alphabet
+    elif lang_value == 11:
+        hard_mode_lang = "norwegian"
+        alphabet = text_assets.norwegian_alphabet
+    elif lang_value == 12:
+        hard_mode_lang = "polish"
+        alphabet = text_assets.polish_alphabet
+    elif lang_value == 13:
+        hard_mode_lang = "portuguese"
+        alphabet = text_assets.polish_alphabet
+    elif lang_value == 14:
+        hard_mode_lang = "serbian"
+        alphabet = text_assets.serbian_alphabet
+    elif lang_value == 15:
+        hard_mode_lang = "spanish"
+        alphabet = text_assets.spanish_alphabet
+    elif lang_value == 16:
+        hard_mode_lang = "swedish"
+        alphabet = text_assets.swedish_alphabet
+    elif lang_value == 17:
+        hard_mode_lang = "turkish"
+        alphabet = text_assets.turkish_alphabet
+    elif lang_value == 18:
+        hard_mode_lang = "ukranian"
+        alphabet = text_assets.ukrainian_alphabet
+    else:
+        hard_mode_lang = "---All of them!---"
+        # if all fails - resort to advanced alphabet
+        alphabet = text_assets.advanced_alphabet
+
+    if is_english:
+        console.print(f"Narrator:You have chosen {hard_mode_lang}! Have fun!", style="#fc5e02")
+    else:
+        console.print(f"Erzähler: Du hast dich für {hard_mode_lang} entschieden! Viel Spaß!", style="#fc5e02")
+
+    funcs.give_separators()
+    time.sleep(2)
+    funcs.clean_window()
 
     if strategy_value == 3:
         # asks if the user wants to use an in-build dictionary for the computer or if he
@@ -387,26 +507,8 @@ else:  # The route of challenging with a word
 
                 # value for later selection
                 value_which_dictionary = funcs.give_me_a_value_inbetween(-1, own_dictionaries, is_english, False)
-
-        # if there are no files in dir, or if user doesn't want to use them
-        if own_dictionaries == 0 or value_if_own_dict == 2:
             funcs.give_separators()
-            if is_english:
-                console.print("Which language will you write your word in?:\n"
-                              "\nenglish (1) or german (2)", justify="left")
-            else:
-                console.print(
-                    "In welcher Sprache wirst du dein Wort schreiben? :\n"
-                    "\nEnglisch (1) oder Deutsch (2)", justify="left")
 
-            lang_value = funcs.give_me_a_value_inbetween(0, 2, is_english, False)
-
-            if lang_value == 2:
-                hard_mode_lang = "german"
-            else:
-                hard_mode_lang = "english"
-
-    funcs.give_separators()
     challenge_word = funcs.user_input_word(is_english)
     secret_word = challenge_word.lower()
 
@@ -509,27 +611,16 @@ if who_plays == "NPC":
     if strategy_value == 3:
         # here the version for the high-strategy computer-way, separated for better overview
 
-        if not value_if_own_dict == 1:
-            # chosen if user wants to use an inbuilt-dict
-            # implemented variable outside of loop, so it doesn't load each time
-            dict_before_slice = funcs.open_dictionary(hard_mode_lang)
-            sliced_dict = funcs.slice_dict(dict_before_slice, hard_mode_lang, is_english,
-                                           secret_word, value_if_own_dict, files_in_dir,
-                                           value_which_dictionary)
-        else:
-            # uses the user-input-dictionary
-            # we don't need the open dict function, since it is implemented in the slice_dict function
-            empty_list: list = []
-            sliced_dict = funcs.slice_dict(empty_list, hard_mode_lang, is_english, secret_word,
-                                           value_if_own_dict, files_in_dir,
-                                           value_which_dictionary)
+        sliced_dict = funcs.slice_dict(hard_mode_lang, is_english,
+                                       secret_word, value_if_own_dict, files_in_dir,
+                                       value_which_dictionary)
 
         remove_letters = []
 
         while remaining_attempts > 0 and len(guessed_letters) < length_of_secret_word:
             # the while-loop runs while the attempts haven't run out and the computer hasn't won
 
-            empty_solv_dict = funcs.letter_frequency_structure_maker(secret_word, text_assets.alphabet)
+            empty_solv_dict = funcs.letter_frequency_structure_maker(secret_word, alphabet)
 
             # creates a dict where the frequency of elements at letter positions
             # is measured for remaining words in sliced_dict
@@ -583,7 +674,7 @@ if who_plays == "NPC":
                     guessed_letters.append(guess)
                     funcs.pri_secret_word(secret_word, guessed_letters)
                     # creates a list that is used in understanding where a known element is in the secret word
-                    half_hidden_word_list = funcs.format_the_hidden_word(secret_word, guessed_letters)
+                    half_hidden_word_list = funcs.format_the_hidden_word(secret_word, guessed_letters, alphabet)
                     # the just created list and its opposite are used in eliminating
                     # the words that contradict known positional letters
                     sliced_dict = funcs.letter_sniper(solving_dict, sliced_dict, half_hidden_word_list)
@@ -638,7 +729,7 @@ if who_plays == "NPC":
             # the while-loop runs while the attempts haven't run out and the computer hasn't won
 
             if strategy_value == 1:
-                guess = funcs.guess_computer_letter(is_english)  # computer takes a guess
+                guess = funcs.guess_computer_letter(is_english, alphabet)  # computer takes a guess
             else:
                 guess = funcs.guess_computer_letters_strategy(is_english, guessed_letters)
                 # computer takes a structured guess with a higher success chance
