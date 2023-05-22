@@ -76,7 +76,6 @@ EXCLUDED AND TERMINATED:
       - after laying out the UI, the script has proven to complicated for easy beginner implimentation. Classes and threading needed.
       -> interface-idea thrown out. now focus on making the game run smoothly and pretty in a terminal. 
 
-Dictionaries already in the program:
 
 ## DICTIONARY SOURCES:
 
