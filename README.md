@@ -40,7 +40,7 @@ The computer, if the word is in fact in the dictionary, is able to play surprisi
 
 If you have any tips and tricks on how to improve the code, feel free to message or create a discussion
 
-- Dependencies -
+Dependencies
 ```python
 import random
 import time
