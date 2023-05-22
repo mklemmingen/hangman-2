@@ -2,7 +2,7 @@
 
 terminal-optimised hanging man game. simply clone and python run the game_script to start the game.
 
-It supports both english and german in the UI and many more languages through dictionary selection [see manual in game]
+It supports both english and german in the UI and many more languages through language/dictionary selection [see manual in game]
   - supported languages: english, german, ukranian, arabic, croatian, czech, danish, french, 
                          georgian, hebrew, italian, norwegian, polish, portugese, serbian, 
                          spanish, swedish, maltese, turkish
