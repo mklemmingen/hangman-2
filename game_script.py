@@ -258,7 +258,12 @@ if first_choice == 2:  # the route of being challenged with a word
                       "\n9. Sports"
                       "\n10. Fields of Science"
                       "\n11. Technology Terms"
-                      "\n12. Music genres",
+                      "\n12. Music genres"
+                      "\n13. Historical figures"
+                      "\n14. Persons/Entities of mythology"
+                      "\n15. Famous Landmarks"
+                      "\n16. Famous Literature"
+                      "\n17. Big Inventions",
                       justify="left")
 
     else:
@@ -282,7 +287,12 @@ if first_choice == 2:  # the route of being challenged with a word
                       "\n9. Sports (englisch)"
                       "\n10. Wissenschaft-Disziplinen (englisch)"
                       "\n11. Technologie-Bezeichnungen (englisch)"
-                      "\n12. Musik Genres (englisch/deutsch)",
+                      "\n12. Musik Genres (englisch/deutsch)"
+                      "\n13. Historische Figuren"
+                      "\n14. Personen/Entitäten der Mythologie (englisch)"
+                      "\n15. Berühmte Sehenswürdigkeiten (englisch/deutsch)"
+                      "\n16. Berühmte literarische Werke (englisch/deutsch)"
+                      "\n17. Große Erfindungen (englisch)",
                       justify="left")
 
     second_choice = funcs.give_me_a_value_inbetween(0, 12, is_english, False)
@@ -316,6 +326,16 @@ if first_choice == 2:  # the route of being challenged with a word
         secret_word = funcs.select_word(text_assets.technology)
     elif second_choice == 12:
         secret_word = funcs.select_word(text_assets.music_genres)
+    elif second_choice == 13:
+        secret_word = funcs.select_word(text_assets.historical_figures)
+    elif second_choice == 14:
+        secret_word = funcs.select_word(text_assets.mythology)
+    elif second_choice == 15:
+        secret_word = funcs.select_word(text_assets.landmarks)
+    elif second_choice == 16:
+        secret_word = funcs.select_word(text_assets.literature)
+    elif second_choice == 17:
+        secret_word = funcs.select_word(text_assets.inventions)
     else:
         secret_word = "errorviernullvier"
 
