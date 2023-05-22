@@ -1,4 +1,4 @@
-# hangman 2 . the dictionaries strike back
+# hangman 2 - the dictionaries strike back
 
 terminal-optimised hanging man game. simply clone and python run the game_script to start the game.
 
