@@ -59,7 +59,7 @@ COMPLETED:
   - change game-phase layout so the player chooses hard-mode more naturally and has lower difficulty settings as a fallback for more playthroughs
   - split source code inbetween functions, game-run, art and lines
   - easier dictionary support
-      - simply put a dictionary list into DICTIONARIES folder
+      - simply put a dictionary list into user-input-dictionary folder (code has to run atleast once before for the dir to be created)
       - make sure words are seperated only by a new line, not ";" etc
   - update already existing dictionaries
   - added game start menu
