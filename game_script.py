@@ -295,7 +295,7 @@ if first_choice == 2:  # the route of being challenged with a word
                       "\n17. Große Erfindungen (englisch)",
                       justify="left")
 
-    second_choice = funcs.give_me_a_value_inbetween(0, 12, is_english, False)
+    second_choice = funcs.give_me_a_value_inbetween(0, 17, is_english, False)
 
     # nested if statements for choosing the right secret word
     if second_choice == 1:
@@ -337,20 +337,22 @@ if first_choice == 2:  # the route of being challenged with a word
     elif second_choice == 17:
         secret_word = funcs.select_word(text_assets.inventions)
     else:
-        secret_word = "errorviernullvier"
+        secret_word = "error404"
 
     funcs.clean_window()
     # testing
     # console.print(secret_word)
     if is_english:
         funcs.give_separators()
-        console.print("Very well, let it BEGIN!", justify="left")
+        console.print("Narrator: Very well, let it BEGIN!\n", justify="left")
+        funcs.let_it_begin_art()
         funcs.give_separators()
     else:
         funcs.give_separators()
-        console.print("Nun gut, möge deine Folter beginnen.", justify="left")
+        console.print("Erzähler: Nun gut, möge deine Folter beginnen!", justify="left")
+        funcs.let_it_begin_art()
         funcs.give_separators()
-    time.sleep(2)
+    time.sleep(4)
     funcs.clean_window()
     # used for controlling who gets to play / which part of the code is used
     who_plays: str = "Player"
@@ -581,13 +583,15 @@ else:  # The route of challenging with a word
     funcs.clean_window()
     if is_english:
         funcs.give_separators()
-        console.print("Very well, let it BEGIN!", justify="left")
+        console.print("Narrator: Very well, let it BEGIN!", justify="left")
+        funcs.let_it_begin_art()
         funcs.give_separators()
     else:
         funcs.give_separators()
-        console.print("Nun gut, möge deine Folter beginnen.", justify="left")
+        console.print("Erzähler: Nun gut, möge deine Folter beginnen.", justify="left")
+        funcs.let_it_begin_art()
         funcs.give_separators()
-    time.sleep(2)
+    time.sleep(4)
     funcs.clean_window()
 
 # ------------------------------------------------------------
@@ -615,8 +619,9 @@ if who_plays == "Player":
     guessed_letters: list = [" ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "!", ".", "-", "*", "+", "=", "&"]
     # empty list for end-game check
     only_player_guessed_letters: list = []
+    all_used_letters: list = []
 
-    while remaining_attempts > 0 and len(guessed_letters) < length_of_secret_word:
+    while remaining_attempts > 0 and len(only_player_guessed_letters) < length_of_secret_word:
         # the while-loop runs while the attempts haven't run out and the player hasn't won
 
         guess = funcs.guess_player_letter(is_english)  # player takes a guess
@@ -625,7 +630,7 @@ if who_plays == "Player":
         # gives out a True or False value which we store in the variable and use in the following if statements
 
         if guess_in_secret_word:
-            if guess in guessed_letters:
+            if guess in all_used_letters:
                 if is_english:
                     console.print("\nYou have already guessed the letter {}\n".format(guess), justify="left")
                 else:
@@ -647,6 +652,7 @@ if who_plays == "Player":
                 time.sleep(1)
                 guessed_letters += guess
                 only_player_guessed_letters += guess
+                all_used_letters += guess
         else:
             if is_english:
                 console.print("\nNo! The letter {} is not part of the secret word\n".format(guess), justify="left")
@@ -658,20 +664,25 @@ if who_plays == "Player":
             console.print(funcs.select_word(text_assets.point_computer), justify="left")
             time.sleep(1)
             remaining_attempts -= 1
+            all_used_letters += guess
 
         console.print(funcs.get_hangman_stage(remaining_attempts), highlight=False, style="bold", justify="left")
         funcs.pri_secret_word(secret_word, guessed_letters)
+        if is_english:
+            console.print(f"You have already guessed these letters: {all_used_letters}")
+        else:
+            console.print(f"Du hast bereits diese Buchstaben eingegeben: {all_used_letters}")
         time.sleep(1)
 
         if is_english:
-            console.print("\n You can make {} more mistakes... I would say be careful, but I hope you lose.\n"
+            console.print("\nYou can make {} more mistakes... I would say be careful, but I hope you lose.\n"
                           .format(remaining_attempts), justify="left")
         else:
             console.print("\nDu hast noch {} Fehler übrig... Ich würde sagen, sei vorsichtig, "
                           "aber ich hoffe, dass du verlierst.\n".format(remaining_attempts), justify="left")
         time.sleep(1)
 
-    if len(only_player_guessed_letters) == len(funcs.get_unique_letters(secret_word)):
+    if len(only_player_guessed_letters) == length_of_secret_word:
         funcs.games_callout("Player", is_english)
     else:
         funcs.games_callout("NPC", is_english)
@@ -865,42 +876,26 @@ if who_plays == "NPC":
 
     if len(guessed_letters) == len(funcs.get_unique_letters(secret_word)):
         # Function that celebrates the victory of whoever has won
+        funcs.clean_window()
         funcs.games_callout("NPC", is_english)
     else:
+        funcs.clean_window()
         funcs.games_callout("Player", is_english)
 
 if is_english:
-    console.print("The secret word was {}\n".format(secret_word), justify="left")
-    funcs.give_separators()
-
-    console.print("*the executioner drags jeff behind him, neither dead or alive, "
-                  "trapped in a eternal state of being used as a joke in a video game*\n", justify="left")
+    console.print("The secret word was {}".format(secret_word), justify="left")
 
     funcs.give_separators()
 
-    console.print("Narrator: Would you like to face him again? I can always send you back in time\n", justify="left")
-    console.print("1. Go again\n"
-                  "2. End this, please!\n", justify="left")
+    console.print(f"Narrator: Let's end this - press Enter to quit the game. Feel free to start the code again!",
+                  style="#f98100")
 else:
-    console.print("Das geheime Wort war {}\n".format(secret_word), justify="left")
+    console.print("Das geheime Wort war {}".format(secret_word), justify="left")
 
     funcs.give_separators()
 
-    console.print("der Henker zieht Jeff hinter sich her, weder tot noch lebendig, gefangen in einem ewigen Zustand, "
-                  "als Witz in einem Videospiel verwendet zu werden\n", justify="left")
-
-    funcs.give_separators()
-
-    console.print("Erzähler: Möchtest du dich ihm erneut stellen? Ich kann dich jederzeit zurück "
-                  "in die Vergangenheit schicken.\n", justify="left")
-    console.print("1. Nochmal spielen\n"
-                  "2. Beende dies bitte!\n", justify="left")
-
-restart = funcs.give_me_a_value_inbetween(0, 2, is_english, False)
-
-if restart == "1":
-    os.execl(sys.executable, os.path.abspath(__file__), *sys.argv)
-elif restart == "2":
-    console.print("\nThe matrix will be closed...", justify="left")
-    # Done! Time to quit.
-    sys.exit(0)
+    console.print(f"Erzähler: Lass uns das Spiel hier beenden. Drücke Enter um zu beenden. Spiel gerne erneut, indem"
+                  f"du die Datei erneut laufen lässt!",
+                  style="#f98100")
+input()
+sys.exit(0)

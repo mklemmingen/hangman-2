@@ -123,8 +123,7 @@ def guess_player_letter(language_eng: bool) -> str:
                 console.print("\nDu Möchtegern-Hobbit, es darf nur ein einzelner Buchstabe geraten werden.\n "
                               "Möchtest du die Simulation zerstören? Versuche es erneut und denke daran, "
                               "dass nur ein Buchstabe auf einmal geraten werden darf!", justify="left")
-
-        if len(guess_func) == 1 & guess_func.isalpha():
+        else:
             break
     clean_window()
     return guess_func.lower()
@@ -187,7 +186,6 @@ def guess_computer_letters_strategy(language_eng: bool, gues_let_func: list) -> 
 # ----------------------------------------------
 
 def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, alphabet: list, language_eng: bool) -> str:
-
     console.print("\n*The [bold magenta]Executioner[/bold magenta] looks into the distance... thinking hard...*",
                   justify="left")
     time.sleep(2)
@@ -695,7 +693,7 @@ def user_input_word(language_eng: bool) -> str:
 def games_callout(who_won: str, language_eng: bool):
     # function that gives out a statement according to who won - perspective player
     if who_won == "NPC":
-        console.print(text_assets.npc_art_win, style="grey30", justify="left")
+        console.print(text_assets.npc_art_win, highlight=True, justify="left")
         console.print("", justify="left")
         time.sleep(2)
         give_separators()
@@ -711,7 +709,7 @@ def games_callout(who_won: str, language_eng: bool):
         give_separators()
     if who_won == "Player":
         give_separators()
-        console.print(select_word(text_assets.player_wins), justify="left")
+        console.print(select_word(text_assets.player_wins), highlight=False, justify="left")
         console.print("", justify="left")
         if language_eng:
             console.print("Narrator: Wow! You have actually managed to win! good job you!\n", justify="left")
@@ -724,8 +722,13 @@ def games_callout(who_won: str, language_eng: bool):
 
 
 # -----------------------------------------
-# Hangman stages as a function corresponding to the remaining_attempts
+# function for printing out a cool executioner
+def let_it_begin_art():
+    console.print(text_assets.executioner_game_start)
 
+
+# -----------------------------------------
+# Hangman stages as a function corresponding to the remaining_attempts
 def get_hangman_stage(attempt_number: int):
     max_attempts = 6
     stages = ["""
