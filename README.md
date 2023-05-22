@@ -5,12 +5,14 @@ terminal-optimised hanging man game. simply clone and python run the game_script
 The game has a D&D like story-aspect to it to make it stand out against simple vanilla hangman games.
 
 It supports both english and german in the UI and many more languages through dictionary selection [see manual in game]
+  - supported languages: english, german, ukranian, arabic, croatian, czech, danish, french, 
+                         georgian, hebrew, italian, norwegian, polish, portugese, serbian, 
+                         spanish, swedish, maltese, turkish
 
 Decisions are made by typing in one of the displayed numbers or by input of words and letters.
 
-If you want the computer to use another language for guessing your words, simply put one of the dictonaries in the corresponding
-dictionaries directory into the user_input_dictionaries folder. You can then choose it in game. 
-You can alternatively use your own wordlist of any kind of topic in there.
+If you want the computer to use another wordlist for guessing your words, simply put one of the dictonaries
+into the user_input_dictionaries folder. You can then choose it in game the next time you start it.
 
 ## You either play yourself and try to solve a secret word, or you can challenge the villain with a word you can individually give him.
 ### The user can select 3 difficulty options.
@@ -21,7 +23,7 @@ You can alternatively use your own wordlist of any kind of topic in there.
   
   - hard: here is where the fun begins:
   
-      - takes either an in-build or a dictionary in the DICTIONARIES dir to use for guessing. Sorts it the first time it runs a new one. 
+      - takes either an in-build or a dictionary in the user_input_dict dir to use for guessing. Sorts it the first time it runs a new one. 
       - The computer limits the interchangeable dictionary it reads by length of the word you give him.
       - He then iterates through each element of each word and adds the index values of the whole words into a dictionary of alphabet_at_position (meaning a0, a1, a2...,x30)
       - At the end, these values are measured, summed up by letter and altogether, the biggest letter gets choosen to be guessed.
@@ -48,12 +50,7 @@ import rich
 ```
 
 TO-DO:
-  - add the possibility for mistake into the computer guessing, so that the player always has a chance and doesnt have to resort to using ultra-long words
-  - add multiple alphabets for easy and medium difficulty, as well as more word categories with less restrictive letter guessing
-    that include non-standard-english letters 
-  - Fixes of german
-  - check if iteration process can be speed-up (late stage tweaking)
-  - late-stage: support for spaces?
+  -
 
 COMPLETED:
   - Fallback of high strategy to medium difficulty if length of iterated dict == 0 
@@ -65,6 +62,11 @@ COMPLETED:
   - update already existing dictionaries
   - added game start menu
   - layout for terminal execution
+  - add multiple alphabets for easy and medium difficulty, as well as more word categories with less restrictive letter guessing
+    that include non-standard-english letters 
+  - Fixes of german
+  - add the possibility for mistake into the computer guessing, so that the player always has a chance and doesnt have to resort to using ultra-long words,
+    and so there is replayability
 
 EXCLUDED AND TERMINATED:
   - Game Interface
@@ -75,7 +77,7 @@ EXCLUDED AND TERMINATED:
 Dictionaries already in the program:
 
   - https://github.com/dwyl/english-words
-      - words-alpha.txt   [English!] [as english_words_outside.txt in the repo]
+      - words-alpha.txt   [English!] [as english_words.txt in the repo]
   - https://github.com/enz/german-wordlist/blob/master/words
       - german_words 
   - https://github.com/OpenTaal/opentaal-wordlist/blob/master/wordlist.txt
