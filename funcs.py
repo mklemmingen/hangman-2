@@ -232,7 +232,14 @@ def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, alphab
     # makes use of the max function in pair with the get function to use the value
     # specifically of the key:value-pair
 
-    highest_value_elem: str = max(length_dict, key=length_dict.get)
+    highest_value_elem_unchosen: str = max(length_dict, key=length_dict.get)
+
+    # simulate mistakes, so the computer isn't too good and acts different with the same word each time
+    random_letter = select_word(alphabet)
+    # creates a list out of a random alphabetic letter and the highest_value_element
+    probability_bowl: list = [random_letter, highest_value_elem_unchosen]
+
+    highest_value_elem = random.choices(probability_bowl, weights=(10, 90), k=1)
 
     return highest_value_elem  # guess as char
 
