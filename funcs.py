@@ -239,8 +239,8 @@ def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, alphab
     # creates a list out of a random alphabetic letter and the highest_value_element
     probability_bowl: list = [random_letter, highest_value_elem_unchosen]
 
-    highest_value_elem = random.choices(probability_bowl, weights=(10, 90), k=1)
-
+    highest_value_elem: str = random.choices(probability_bowl, weights=(10, 90), k=1)
+    highest_value_elem = str(highest_value_elem[0])
     return highest_value_elem  # guess as char
 
 
