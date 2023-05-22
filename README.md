@@ -26,15 +26,15 @@ into the user_input_dictionaries folder. You can then choose it in game the next
       - takes either an in-build or a dictionary in the user_input_dict dir to use for guessing. Sorts it the first time it runs a new one. 
       - The computer limits the interchangeable dictionary it reads by length of the word you give him.
       - He then iterates through each element of each word and adds the index values of the whole words into a dictionary of alphabet_at_position (meaning a0, a1, a2...,x30)
-      - At the end, these values are measured, summed up by letter and altogether, the biggest letter gets choosen to be guessed.
+      - At the end, these values are measured, summed up by letter and altogether, the biggest letter (90%) or a random letter (10%) gets choosen to be guessed.
     
       - if it has guessed correct, it receives positional information, like a real player would, where in the secret word the guessed letter would be. 
-      - It then calculates the oppositional elements that cannot be at that position (guessed letter: a2 oppos.: b2,c2,...,x2), collects the index values and deletes those
+      - It then calculates the oppositional elements that cannot be at that position (guessed letter: a2 oppos.: b2,c2,...,x2), collects the index values and deletes those from right to left
         from the pool from which it iterates at each loop.
-      - if the guess has been incorrect, all index vallues of words where that element has been a part of at whatever position gets yeeted into nothingness. 
+      - if the guess has been incorrect, all index vallues of words where that guess-element has been a part of at whatever position gets yeeted into nothingness. 
 
-The computers "high strategy" is based on how an adult player would make his choices, if he didnt know what words are, and just knows they consist of up to 26 individual letters.
-The computer, if the word is in fact in the dictionary, is able to play surprisingly well. 
+The computers "high strategy" is based on how an adult player would make his choices, if he didnt know what words are, and just knows they consist of up to an individual numbers of funny looking letters.
+The computer, if the word is in fact in the dictionary, is able to play surprisingly well, since the usage of a random letter being able to be guessed to increase replayability and chance for the player.
 
 ## See for yourself! 
 
