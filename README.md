@@ -49,7 +49,7 @@ import os
 import rich
 ```
 
-## FUTURE 
+## FUTURE of the Game
 
 TO-DO:
   -
