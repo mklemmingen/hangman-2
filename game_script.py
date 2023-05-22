@@ -241,13 +241,19 @@ if first_choice == 2:  # the route of being challenged with a word
         console.print("\nFrom which of these categories should the word of your challenge be from?\n", justify="left")
 
         console.print("\nThese are the choices that lay before you:"
-                      "\n1. animals"
-                      "\n2. cities"
-                      "\n3. food"
-                      "\n4. presidents"
-                      "\n5. cartoon characters "
-                      "\n6. hard words (mixed language)"
-                      "\n7. Tiere des deutschen Waldes (german)", justify="left")
+                      "\n1. Animals"
+                      "\n2. Cities"
+                      "\n3. Food"
+                      "\n4. Presidents"
+                      "\n5. Cartoon characters "
+                      "\n6. Hard words (mixed language)"
+                      "\n7. Tiere des deutschen Waldes (german)"
+                      "\n8. Movies"
+                      "\n9. Sports"
+                      "\n10. Fields of Science"
+                      "\n11. Technology Terms"
+                      "\n12. Music genres",
+                      justify="left")
 
     else:
         funcs.give_separators()
@@ -265,10 +271,15 @@ if first_choice == 2:  # the route of being challenged with a word
                       "\n4. Präsidenten (englisch)"
                       "\n5. Cartoon-Charaktere"
                       "\n6. Schwierige Wörter (gemischt)"
-                      "\n7. Tiere des deutschen Waldes (deutsch)",
+                      "\n7. Tiere des deutschen Waldes (deutsch)"
+                      "\n8. Filmnamen (englisch)"
+                      "\n9. Sports (englisch)"
+                      "\n10. Wissenschaft-Disziplinen (englisch)"
+                      "\n11. Technologie-Bezeichnungen (englisch)"
+                      "\n12. Musik Genres (englisch/deutsch)",
                       justify="left")
 
-    second_choice = funcs.give_me_a_value_inbetween(0, 7, is_english, False)
+    second_choice = funcs.give_me_a_value_inbetween(0, 12, is_english, False)
 
     # nested if statements for choosing the right secret word
     if second_choice == 1:
@@ -289,6 +300,16 @@ if first_choice == 2:  # the route of being challenged with a word
         console.print("\nah.... deutsche Tiere... jaja, guten Tag Herr Osterhase.",
                       justify="left")
         funcs.give_separators()
+    elif second_choice == 8:
+        secret_word = funcs.select_word(text_assets.movies)
+    elif second_choice == 9:
+        secret_word = funcs.select_word(text_assets.sports)
+    elif second_choice == 10:
+        secret_word = funcs.select_word(text_assets.fields_of_science)
+    elif second_choice == 11:
+        secret_word = funcs.select_word(text_assets.technology)
+    elif second_choice == 12:
+        secret_word = funcs.select_word(text_assets.music_genres)
     else:
         secret_word = "errorviernullvier"
 
@@ -563,6 +584,9 @@ if who_plays == "Player":
             "Der gesuchte Buchstabe hat {} Buchstaben... mache mit dieser Information, was du willst.\n".format(
                 len(secret_word)), justify="left")
         time.sleep(1)
+
+    # so blank spaces are automatically guessed and shown
+    guessed_letters: list = [" "]
 
     while remaining_attempts > 0 and len(guessed_letters) < length_of_secret_word:
         # the while-loop runs while the attempts haven't run out and the player hasn't won
