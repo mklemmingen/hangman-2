@@ -319,7 +319,8 @@ else:  # The route of challenging with a word
                       'Would you like me to go easier on you?\n', justify="left")
 
         console.print("   1. Yes, please. I am still confused! (easy)\n"
-                      "   2. I do not want your pity, but I do want a chance. (only english, medium)\n"
+                      
+                      "\n   2. I do not want your pity, but I do want a chance. (only english, medium)\n"
 
                       "\n   3. Give me the best that you got. You will be my prey. (hard)\n",
                       justify="left")
@@ -336,7 +337,8 @@ else:  # The route of challenging with a word
             "... damit es ür mich noch Spaß macht...\n", justify="left")
 
         console.print("   1. Ja, bitte. Ich bin immer noch verwirrt! (leicht)\n"
-                      "   2. Ich möchte dein Mitleid nicht, aber ich möchte eine Chance. (nur englisch, mittel)\n"
+                      
+                      "\n   2. Ich möchte dein Mitleid nicht, aber ich möchte eine Chance. (nur englisch, mittel)\n"
 
                       "\n    3. Geb mir das Beste was du hast. ICH werde dein Untergang sein. (schweeer)\n",
                       justify="left")
@@ -359,8 +361,8 @@ else:  # The route of challenging with a word
                       "czech (4)\n"
                       "danish (5)\n"
                       "dutch (6)\n"
-                      "french(7)\n"
-                      "georgian(8)\n"
+                      "french (7)\n"
+                      "georgian (8)\n"
                       "italian (9)\n"
                       "maltese (10\n"
                       "norwegian (11)\n"
@@ -371,6 +373,10 @@ else:  # The route of challenging with a word
                       "swedish (16)\n"
                       "turkish (17)\n"
                       "ukranian (18)\n",
+                      "hebrew (19)\n"
+                      "arabic (20)\n"
+                      "\nOr topical:\n"
+                      "\nenglish medical terms (21)"
                       "\nNarrator: for more -> add into user_input_dictionaries folder!\n",
                       justify="left")
     else:
@@ -393,11 +399,15 @@ else:  # The route of challenging with a word
             "Spanisch (15)\n"
             "Schwedisch (16)\n"
             "Türkisch (17)\n"
-            "Ukrainisch (18)\n",
+            "Ukrainisch (18)\n"
+            "Hebräisch (19)\n"
+            "Arabisch (20)\n"
+            "\nOder nach Thema:\n"
+            "Englische medizinische Begriffe (21)\n",
             "\n Narrator: für mehr -> füge eine Liste in user_input_dictionaries Ordner ein!\n",
             justify="left")
 
-    lang_value = funcs.give_me_a_value_inbetween(0, 18, is_english, False)
+    lang_value = funcs.give_me_a_value_inbetween(0, 21, is_english, False)
 
     if lang_value == 1:
         hard_mode_lang = "english"
@@ -453,6 +463,15 @@ else:  # The route of challenging with a word
     elif lang_value == 18:
         hard_mode_lang = "ukranian"
         alphabet = text_assets.ukrainian_alphabet
+    elif lang_value == 19:
+        hard_mode_lang = "hebrew"
+        alphabet = text_assets.hebrew_alphabet
+    elif lang_value == 20:
+        hard_mode_lang = "arabic"
+        alphabet = text_assets.arabic_alphabet
+    elif lang_value == 21:
+        hard_mode_lang = "english medical terms"
+        alphabet = text_assets.english_alphabet
     else:
         hard_mode_lang = "---All of them!---"
         # if all fails - resort to advanced alphabet
@@ -631,7 +650,7 @@ if who_plays == "NPC":
             if len(sliced_dict) == 0:
                 guess = funcs.guess_computer_letters_strategy(is_english, guessed_letters)
             else:
-                guess = funcs.high_strategy_dictionary(solving_dict, guessed_letters, remove_letters, is_english)
+                guess = funcs.high_strategy_dictionary(solving_dict, guessed_letters, remove_letters, alphabet, is_english)
 
             # gives out a True or False value which we store in the variable and use in the following if statements
             guess_in_secret_word = funcs.is_guess_in_secret_word(guess, secret_word)

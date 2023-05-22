@@ -186,7 +186,8 @@ def guess_computer_letters_strategy(language_eng: bool, gues_let_func: list) -> 
 
 # ----------------------------------------------
 
-def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, language_eng: bool) -> str:
+def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, alphabet: list, language_eng: bool) -> str:
+
     console.print("\n*The [bold magenta]Executioner[/bold magenta] looks into the distance... thinking hard...*",
                   justify="left")
     time.sleep(2)
@@ -201,38 +202,11 @@ def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, langua
     # Creating a skeleton dict without positional arguments.
     # Add onto the length of lists of a corresponding key:value-pairs
     # The biggest elements value gets chosen to be the high_guess
+    empty_in_func_dict: dict = {}
+    for letter in alphabet:
+        empty_in_func_dict[letter] = 0
 
-    # Variables
-
-    empty_in_func_dict = {
-        "a": 0,
-        "b": 0,
-        "c": 0,
-        "d": 0,
-        "e": 0,
-        "f": 0,
-        "g": 0,
-        "h": 0,
-        "i": 0,
-        "j": 0,
-        "k": 0,
-        "l": 0,
-        "m": 0,
-        "n": 0,
-        "o": 0,
-        "p": 0,
-        "q": 0,
-        "r": 0,
-        "s": 0,
-        "t": 0,
-        "u": 0,
-        "v": 0,
-        "x": 0,
-        "y": 0,
-        "z": 0,
-    }
-
-    length_dict = dict()
+    length_dict: dict = {}
 
     # merged list of correctly and wrongly guessed letters
     letter_list = list(set(gues_let + rem_let))
@@ -489,6 +463,12 @@ def slice_dict(language: str, language_eng: bool, secret_word: str, value_if_own
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/turkish.txt", "r")
         elif language == "ukranian":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/ukrainian.txt", "r")
+        elif language == "hebrew":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/hebrew.txt", "r")
+        elif language == "arabic":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/arabic.txt", "r")
+        elif language == "english medical terms":
+            my_dict = open(f"DICTIONARIES/in-build-dictionaries/medical-wordlist.txt", "r")
         else:  # if all fails
             my_dict = slice_the_english(language_eng, length_of_secret_word)
 

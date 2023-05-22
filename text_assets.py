@@ -92,7 +92,7 @@ point_player = ["I damn you and your tricky wordplay's",
                 "waiting to strike. Well, I'm onto you. I won't let you get away with it.",
                 "I've seen all kinds of cheaters in my time, and you're no different. \n"
                 "You think you can pull a fast one on me, but I'm too smart for that.\n"
-                " I know every trick in the book.",
+                "I know every trick in the book.",
                 "I've made a vow not to attack you during the game, \n"
                 "but that doesn't mean I won't call you out on your cheating ways. \n"
                 "You'll never beat me, not with your underhanded tactics.",
@@ -122,13 +122,13 @@ point_player_german = ["Ich verfluche dich und deine trickreichen Wortspiele",
                        "Ich sehe dich, wie du versuchst, mich in diesem Spiel von Hangman zu betrügen. "
                        "Du denkst, du kannst mich überlisten,\n"
                        "aber das kannst du nicht. Du bist nichts als ein erbärmlicher Betrüger,"
-                       " und du wirst niemals gegen mich gewinnen.",
+                       "und du wirst niemals gegen mich gewinnen.",
                        "Ich kenne deine Sorte. Du versuchst, unschuldig zu spielen,"
-                       " aber du wartest nur darauf, zuzuschlagen. \n"
+                       "aber du wartest nur darauf, zuzuschlagen. \n"
                        "Nun, ich bin auf dich aufmerksam geworden. Ich werde es dir nicht durchgehen lassen.",
                        "Ich habe in meiner Zeit schon alle Arten von Betrügern gesehen, und du bist nicht anders. \n"
                        "Du denkst, du kannst mich hinters Licht führen, aber dafür bin ich zu schlau.\n"
-                       " Ich kenne jedes Trickbuch.",
+                       "Ich kenne jedes Trickbuch.",
                        "Ich habe geschworen, dich während des Spiels nicht anzugreifen, \n"
                        "aber das bedeutet nicht, dass ich dich nicht wegen "
                        "deiner betrügerischen Methoden zur Rede stellen werde. \n"
@@ -141,7 +141,7 @@ point_player_german = ["Ich verfluche dich und deine trickreichen Wortspiele",
 
 point_computer = ["Hah, I pity the fool that you are!",
                   "If you win, I'll let the innocent man go free. If I win, well...\n"
-                  " let's just say there's a vacancy at the end of the rope.",
+                  "let's just say there's a vacancy at the end of the rope.",
                   "No man can kill me!!!... so I do hope you are not a women",
                   "This is too easy. Do you even want Jeff to survive this?",
                   "Next time, try to think of more vowels, muahahahahahah",
@@ -155,6 +155,24 @@ point_computer = ["Hah, I pity the fool that you are!",
                   "I'm going to make you swing from the gallows like a pinata at a children's party!",
                   "I learned how to spell 'vengeance' after my dog ran away with my family to Las Vegas.\n"
                   " You don't stand a chance."
+                  "Haha, looks like you've stumbled into my wicked realm, pal.\n"
+                  "Get ready to taste the bitter sting of defeat! Boom! \n"
+                  "Another point for me, crushing your feeble attempts like a boss.\n"
+                  "You thought you had game? Think again!",
+                  "Witness the genius at work! Your word is toast, my friend.\n"
+                  " I'm like a mastermind, hacking your brainwaves with my epic skills.\n"
+                  "Score! How's that for a reality check, my worthy adversary?\n"
+                  "Ready to go another round?",
+                  "I'm the ruler of your frustration, baby!\n"
+                  "Score another one for the bad guy, 'cause your hopes just went down the drain.\n"
+                  "Oh, the sweet sound of your defeat, like music to my ears!",
+                  "Watch me weave my wicked web, toying with you, messing with your confidence.\n"
+                  "Get the picture now? The game's rigged, the odds stacked against you.\n"
+                  "I'm the living embodiment of all your worst nightmares!",
+                  "In this ultimate battle of wits, I reign supreme!\n"
+                  "Victory is mine, baby, no doubt about it.\n"
+                  "Shaking in your boots yet?\n"
+                  "I'm the brains behind this twisted game, the puppetmaster pulling your strings!"
                   ]
 
 point_computer_german = ["Hah, ich bedaure dich, du Dummkopf!",
@@ -174,7 +192,26 @@ point_computer_german = ["Hah, ich bedaure dich, du Dummkopf!",
                          "Ich werde dich an der Galgen schwingen lassen wie eine Pinata auf einer Kinderparty!",
                          "Ich habe gelernt, wie man 'Rache' buchstabiert, "
                          "nachdem mein Hund mit meiner Familie nach Las Vegas weggelaufen ist.\n"
-                         "Du hast keine Chance."
+                         "Du hast keine Chance.",
+                         "Haha, du bist gerade in meinem fiesen Reich gelandet, Kumpel. \n"
+                         "Mach dich bereit, die bittere Niederlage zu schmecken! Boom! \n"
+                         "Noch ein Punkt für mich, deine armseligen Versuche wurden gerade zerschmettert.\n"
+                         "Du dachtest, du könntest mithalten? Denk nochmal nach!",
+                         "Sieh den Genie am Werk! Dein Wort ist erledigt, mein Freund. \n"
+                         "Ich bin wie ein Meisterhirn, das deine Gehirnwellen mit meinen epischen Fähigkeiten hackt.\n"
+                         "Treffer! Wie gefällt dir diese Realitätsprüfung, mein unwürdiger Gegner?\n"
+                         "Bereit für die nächste Runde?",
+                         "Ich bin der Herrscher deines Frusts, Baby! Hier kommt noch ein Punkt für den Bösewicht,\n"
+                         "denn deine Hoffnungen sind gerade den Bach runtergegangen.\n"
+                         "Oh, der süße Klang deiner Niederlage, wie Musik in meinen Ohren!",
+                         "Sieh mir zu, wie ich mein fieses Netz spinne, dich necke und dein Selbstvertrauen zermürbe.\n"
+                         "Verstehst du jetzt? Das Spiel ist manipuliert, die Chancen stehen gegen dich.\n"
+                         "Ich bin die lebendige Verkörperung deiner schlimmsten Albträume!",
+                         "In diesem ultimativen Duell der Köpfe bin ich der unangefochtene Herrscher! \n"
+                         "Der Sieg gehört mir, Kumpel, da gibt es keine Zweifel.\n"
+                         "Schlotterst du schon vor Angst?\n"
+                         "Ich bin das Mastermind hinter diesem verdrehten Spiel,\n"
+                         "der Puppenspieler, der an deinen Fäden zieht!"
                          ]
 
 # words for when the computer wins
@@ -261,10 +298,6 @@ georgian_alphabet = ["ა", "ბ", "გ", "დ", "ე", "ვ", "ზ", "თ", "�
                      "პ", "ჟ", "რ", "ს", "ტ", "უ", "ფ", "ქ", "ღ", "ყ", "შ", "ჩ", "ც", "ძ",
                      "წ", "ჭ", "ხ", "ჯ", "ჰ"]
 
-georgian_alphabet = ["ა", "ბ", "გ", "დ", "ე", "ვ", "ზ", "თ", "ი", "კ", "ლ",
-                     "მ", "ნ", "ო", "პ", "ჟ", "რ", "ს", "ტ", "უ", "ფ", "ქ", "ღ",
-                     "ყ", "შ", "ჩ", "ც", "ძ", "წ", "ჭ", "ხ", "ჯ", "ჰ"]
-
 italian_alphabet = ["a", "à", "b", "c", "d", "e", "è", "é", "f", "g", "h", "i",
                     "ì", "í", "î", "j", "k", "l", "m", "n", "o", "ò", "ó", "ô", "p",
                     "q", "r", "s", "t", "u", "ù", "ú", "û", "v", "w", "x", "y", "z"]
@@ -299,6 +332,16 @@ turkish_alphabet = ["a", "b", "c", "ç", "d", "e", "f", "g", "ğ", "h", "ı", "i
 ukrainian_alphabet = ["а", "б", "в", "г", "ґ", "д", "е", "є", "ж", "з", "и", "і", "ї", "й", "к",
                       "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ь", "ю", "я"]
 
+hebrew_alphabet = [
+    'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ך', 'ל', 'מ', 'ם',
+    'נ', 'ן', 'ס', 'ע', 'פ', 'ף', 'צ', 'ץ', 'ק', 'ר', 'ש', 'ת'
+]
+
+arabic_alphabet = [
+    'ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض',
+    'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي'
+]
+
 advanced_alphabet = [
     "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
     "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",  # English
@@ -330,6 +373,10 @@ advanced_alphabet = [
     "o", "ö", "p", "r", "s", "ş", "t", "u", "ü", "v", "y", "z",  # Turkish
     "а", "б", "в", "г", "ґ", "д", "е", "є", "ж", "з", "и", "і", "ї", "й", "к", "л", "м",
     "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ь", "ю", "я",  # Ukrainian
+    'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ך', 'ל', 'מ', 'ם',
+    'נ', 'ן', 'ס', 'ע', 'פ', 'ף', 'צ', 'ץ', 'ק', 'ר', 'ש',  'ת'  # Hebrew
+    'ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض',
+    'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي'  # Arabic
 ]
 
 # words that the npc is thinking # some of these were created by chatgpt after an appropriate input
