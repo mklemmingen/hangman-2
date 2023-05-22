@@ -52,7 +52,7 @@ import rich
 ## FUTURE of the Game
 
 TO-DO:
-  -
+  - nothing and wait for bugs
 
 COMPLETED:
   - Fallback of high strategy to medium difficulty if length of iterated dict == 0 
