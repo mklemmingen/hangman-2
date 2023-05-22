@@ -35,6 +35,8 @@ path_to_dict = r"DICTIONARIES/user_input_dicts"
 value_which_dictionary = -1
 value_if_own_dict = -1
 files_in_dir = -1
+# dummy-standard alphabet
+alphabet = text_assets.english_alphabet
 
 # creates the user-input-directory since GitHub can't track empty folders
 if not os.path.exists(path_to_dict):
