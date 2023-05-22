@@ -716,7 +716,7 @@ def games_callout(who_won: str, language_eng: bool):
         else:
             console.print("Narrator: Wow! Du hast es tatsächlich geschafft zu gewinnen! Gut gemacht!\n", justify="left")
         console.print("", justify="left")
-        console.print(text_assets.player_art_win, justify="left")
+        console.print(text_assets.player_art_win, highlight=False, justify="left", style="bold #2b8716")
         console.print("", justify="left")
         give_separators()
 
