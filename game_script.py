@@ -30,11 +30,15 @@ strategy_value = int
 # string used for language_identification
 hard_mode_lang = str
 # path to dictionaries folder
-path_to_dict = "DICTIONARIES/user_input_dicts"
+path_to_dict = r"DICTIONARIES/user_input_dicts"
 # standard value in value which dictionary
 value_which_dictionary = -1
 value_if_own_dict = -1
 files_in_dir = -1
+
+# creates the user-input-directory since GitHub can't track empty folders
+if not os.path.exists(path_to_dict):
+    os.makedirs(path_to_dict)
 
 # Story/Game-Opening ----------------------------
 
