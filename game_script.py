@@ -346,7 +346,7 @@ else:  # The route of challenging with a word
                       'Would you like me to go easier on you?\n', justify="left")
 
         console.print("   1. Yes, please. I am still confused! (easy)\n"
-                      
+
                       "\n   2. I do not want your pity, but I do want a chance. (only english, medium)\n"
 
                       "\n   3. Give me the best that you got. You will be my prey. (hard)\n",
@@ -364,7 +364,7 @@ else:  # The route of challenging with a word
             "... damit es ür mich noch Spaß macht...\n", justify="left")
 
         console.print("   1. Ja, bitte. Ich bin immer noch verwirrt! (leicht)\n"
-                      
+
                       "\n   2. Ich möchte dein Mitleid nicht, aber ich möchte eine Chance. (nur englisch, mittel)\n"
 
                       "\n    3. Geb mir das Beste was du hast. ICH werde dein Untergang sein. (schweeer)\n",
@@ -591,8 +591,10 @@ if who_plays == "Player":
                 len(secret_word)), justify="left")
         time.sleep(1)
 
-    # so blank spaces are automatically guessed and shown
-    guessed_letters: list = [" "]
+    # so blank spaces and non-letter symbols are automatically guessed and shown
+    guessed_letters: list = [" ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "!", ".", "-", "*", "+", "=", "&"]
+    # empty list for end-game check
+    only_player_guessed_letters: list = []
 
     while remaining_attempts > 0 and len(guessed_letters) < length_of_secret_word:
         # the while-loop runs while the attempts haven't run out and the player hasn't won
@@ -624,6 +626,7 @@ if who_plays == "Player":
                 console.print(funcs.select_word(text_assets.point_player), justify="left")
                 time.sleep(1)
                 guessed_letters += guess
+                only_player_guessed_letters += guess
         else:
             if is_english:
                 console.print("\nNo! The letter {} is not part of the secret word\n".format(guess), justify="left")
@@ -648,7 +651,7 @@ if who_plays == "Player":
                           "aber ich hoffe, dass du verlierst.\n".format(remaining_attempts), justify="left")
         time.sleep(1)
 
-    if len(guessed_letters) == len(funcs.get_unique_letters(secret_word)):
+    if len(only_player_guessed_letters) == len(funcs.get_unique_letters(secret_word)):
         funcs.games_callout("Player", is_english)
     else:
         funcs.games_callout("NPC", is_english)
@@ -680,7 +683,8 @@ if who_plays == "NPC":
             if len(sliced_dict) == 0:
                 guess = funcs.guess_computer_letters_strategy(is_english, guessed_letters)
             else:
-                guess = funcs.high_strategy_dictionary(solving_dict, guessed_letters, remove_letters, alphabet, is_english)
+                guess = funcs.high_strategy_dictionary(solving_dict, guessed_letters, remove_letters,
+                                                       alphabet, is_english)
 
             # gives out a True or False value which we store in the variable and use in the following if statements
             guess_in_secret_word = funcs.is_guess_in_secret_word(guess, secret_word)

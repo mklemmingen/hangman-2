@@ -154,7 +154,7 @@ def guess_computer_letter(language_eng: bool, alphabet: list) -> str:
 def guess_computer_letters_strategy(language_eng: bool, gues_let_func: list) -> str:
     # this reoccurring functions uses a simple vowel-first strategy to solve the user input words
     # https://pynative.com/python-weighted-random-choices-with-probability/
-    # used for inspiration for guesses with probability
+    # used for inspiration for guesses with probability.Links accessed on the 02.04.23
     # used for probabilities: https://www.wordcheats.com/blog/most-used-letters-in-english
 
     while True:
