@@ -652,8 +652,14 @@ def is_guess_in_secret_word(guess_in_func: str, sec_word: str) -> bool:
 # ----------------------------------------
 
 # function used to put the secret_word string into a set, so we can remove duplicates and iterate easy
-def get_unique_letters(word: str) -> str:
-    return "".join(set(word))
+def get_unique_letters(word: str, alph: list) -> list:
+    sec_list: list = []
+    word = set(word)
+    for element in word:
+        if element in alph:
+            if element not in sec_list:
+                sec_list.append(element)
+    return sec_list
 
 
 # -----------------------------------------

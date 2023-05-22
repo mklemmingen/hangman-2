@@ -80,7 +80,7 @@ EXCLUDED AND TERMINATED:
 ## DICTIONARY SOURCES:
 
   - https://github.com/dwyl/english-words
-      - words-alpha.txt   [English!] [as english_words.txt in the repo]
+      - words-alpha.txt   [English!] as english_words.txt in the repo
   - https://github.com/enz/german-wordlist/blob/master/words
       - german_words 
   - https://github.com/OpenTaal/opentaal-wordlist/blob/master/wordlist.txt

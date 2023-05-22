@@ -37,6 +37,9 @@ value_if_own_dict = -1
 files_in_dir = -1
 # dummy-standard alphabet
 alphabet = text_assets.english_alphabet
+# dummy category if unassigned
+category = "dummy"
+category_german = "dummy"
 
 # creates the user-input-directory if not existent since GitHub can't track empty folders
 if not os.path.exists(path_to_dict):
@@ -299,45 +302,81 @@ if first_choice == 2:  # the route of being challenged with a word
 
     # nested if statements for choosing the right secret word
     if second_choice == 1:
+        category_german = "Tiere"
+        category = "animals"
         secret_word = funcs.select_word(text_assets.animals)
     elif second_choice == 2:
         secret_word = funcs.select_word(text_assets.cities)
+        category_german = "Städte"
+        category = "Cities"
     elif second_choice == 3:
         secret_word = funcs.select_word(text_assets.food)
+        category_german = "Essen"
+        category = "Food"
     elif second_choice == 4:
         secret_word = funcs.select_word(text_assets.presidents)
+        category_german = "Präsidenten"
+        category = "presidents"
     elif second_choice == 5:
         secret_word = funcs.select_word(text_assets.cartoon_characters)
+        category_german = "Cartoon Charaktere"
+        category = "cartoon characters"
     elif second_choice == 6:
         secret_word = funcs.select_word(text_assets.hard_words)
+        category_german = "Schwere Wörter"
+        category = "hard words"
     elif second_choice == 7:
         secret_word = funcs.select_word(text_assets.animals_german)
+        category_german = "deutsche Tiere"
+        category = "german animals"
         funcs.give_separators()
         console.print("\nah.... deutsche Tiere... jaja, guten Tag Herr Osterhase.",
                       justify="left")
         funcs.give_separators()
     elif second_choice == 8:
         secret_word = funcs.select_word(text_assets.movies)
+        category_german = "Filmtitel"
+        category = "movie titles"
     elif second_choice == 9:
         secret_word = funcs.select_word(text_assets.sports)
+        category_german = "Sport Namen"
+        category = "sport names"
     elif second_choice == 10:
         secret_word = funcs.select_word(text_assets.fields_of_science)
+        category_german = "Wissenschafs Disziplinen"
+        category = "fields of science"
     elif second_choice == 11:
         secret_word = funcs.select_word(text_assets.technology)
+        category_german = "Technologien"
+        category = "technologies"
     elif second_choice == 12:
         secret_word = funcs.select_word(text_assets.music_genres)
+        category_german = "Musik Genres"
+        category = "music genres"
     elif second_choice == 13:
         secret_word = funcs.select_word(text_assets.historical_figures)
+        category_german = "historische Figuren"
+        category = "historical figures"
     elif second_choice == 14:
         secret_word = funcs.select_word(text_assets.mythology)
+        category_german = "Wesen der Mythologie"
+        category = "mythology"
     elif second_choice == 15:
         secret_word = funcs.select_word(text_assets.landmarks)
+        category_german = "Sehenswürdigkeiten"
+        category = "landmarks"
     elif second_choice == 16:
         secret_word = funcs.select_word(text_assets.literature)
+        category_german = "Literatur"
+        category = "literature"
     elif second_choice == 17:
         secret_word = funcs.select_word(text_assets.inventions)
+        category_german = "Erfindungen"
+        category = "inventions"
     else:
         secret_word = "error404"
+        category_german = "Fehler"
+        category = "Error"
 
     funcs.clean_window()
     # testing
@@ -600,7 +639,7 @@ else:  # The route of challenging with a word
 
 # The Player is in charge:
 
-length_of_secret_word = int(len(funcs.get_unique_letters(secret_word)))
+length_of_secret_word = int(len(funcs.get_unique_letters(secret_word, alphabet)))
 
 if who_plays == "Player":
 
@@ -620,6 +659,9 @@ if who_plays == "Player":
     # empty list for end-game check
     only_player_guessed_letters: list = []
     all_used_letters: list = []
+
+    # prints the formatted hidden secret word for first guess
+    funcs.pri_secret_word(secret_word, guessed_letters)
 
     while remaining_attempts > 0 and len(only_player_guessed_letters) < length_of_secret_word:
         # the while-loop runs while the attempts haven't run out and the player hasn't won
@@ -670,16 +712,19 @@ if who_plays == "Player":
         funcs.pri_secret_word(secret_word, guessed_letters)
         if is_english:
             console.print(f"You have already guessed these letters: {all_used_letters}")
+            console.print(f"The word is from the category of [bold]{category}[/bold]")
         else:
             console.print(f"Du hast bereits diese Buchstaben eingegeben: {all_used_letters}")
+            console.print(f"Das Wort stammt aus der Kategorie [bold]{category}[/bold]")
         time.sleep(1)
 
         if is_english:
-            console.print("\nYou can make {} more mistakes... I would say be careful, but I hope you lose.\n"
+            console.print("\nYou can make {} more mistakes... I'd say be careful!\n"
                           .format(remaining_attempts), justify="left")
         else:
-            console.print("\nDu hast noch {} Fehler übrig... Ich würde sagen, sei vorsichtig, "
-                          "aber ich hoffe, dass du verlierst.\n".format(remaining_attempts), justify="left")
+            console.print("\nDu hast noch {} Fehler übrig... "
+                          "Ich würde sagen, sei vorsichtig\n".format(remaining_attempts),
+                          justify="left")
         time.sleep(1)
 
     if len(only_player_guessed_letters) == length_of_secret_word:
@@ -690,7 +735,7 @@ if who_plays == "Player":
 # The Computer is in charge of guessing: ---------------------------------------------------
 
 if who_plays == "NPC":
-
+    guessed_letters = []
     if strategy_value == 3:
         # here the version for the high-strategy computer-way, separated for better overview
 
@@ -874,7 +919,7 @@ if who_plays == "NPC":
                     input("Drücke Enter, um fortzufahren...")
                     funcs.clean_window()
 
-    if len(guessed_letters) == len(funcs.get_unique_letters(secret_word)):
+    if len(guessed_letters) == len(funcs.get_unique_letters(secret_word, alphabet)):
         # Function that celebrates the victory of whoever has won
         funcs.clean_window()
         funcs.games_callout("NPC", is_english)
