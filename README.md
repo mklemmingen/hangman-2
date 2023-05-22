@@ -2,12 +2,12 @@
 
 terminal-optimised hanging man game. simply clone and python run the game_script to start the game.
 
-The game has a D&D like story-aspect to it to make it stand out against simple vanilla hangman games.
-
 It supports both english and german in the UI and many more languages through dictionary selection [see manual in game]
   - supported languages: english, german, ukranian, arabic, croatian, czech, danish, french, 
                          georgian, hebrew, italian, norwegian, polish, portugese, serbian, 
                          spanish, swedish, maltese, turkish
+                         
+The game has characterizations and dialoque in it to make it more lively and fun.
 
 Decisions are made by typing in one of the displayed numbers or by input of words and letters.
 
