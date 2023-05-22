@@ -73,8 +73,8 @@ COMPLETED:
 EXCLUDED AND TERMINATED:
   - Game Interface
       - using pygame and pygame_gui.
-      - after laying out the UI, the script has proven to complicated for easy beginner implimentation. Classes and threading needed.
-      -> interface-idea thrown out. now focus on making the game run smoothly and pretty in a terminal. 
+      - after laying out the UI, the script has proven too complicated for easy beginner implimentation. Classes and threading needed.
+      -> interface-idea thrown out. now focus on making the game run smoothly and pretty through "rich" in a terminal. 
 
 
 ## DICTIONARY SOURCES:
