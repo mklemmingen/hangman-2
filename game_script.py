@@ -38,7 +38,7 @@ files_in_dir = -1
 # dummy-standard alphabet
 alphabet = text_assets.english_alphabet
 
-# creates the user-input-directory since GitHub can't track empty folders
+# creates the user-input-directory if not existent since GitHub can't track empty folders
 if not os.path.exists(path_to_dict):
     os.makedirs(path_to_dict)
 
