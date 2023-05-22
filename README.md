@@ -14,7 +14,7 @@ Decisions are made by typing in one of the displayed numbers or by input of word
 If you want the computer to use another wordlist for guessing your words, simply put one of the dictonaries
 into the user_input_dictionaries folder. You can then choose it in game the next time you start it.
 
-## You either play yourself and try to solve a secret word, or you can challenge the villain with a word you can individually give him.
+### You either play yourself and try to solve a secret word, or you can challenge the villain with a word you can individually give him.
 ### The user can select 3 difficulty options.
 
   - easy: simply chooses a random letter of the alphabet and acts as if its a toddler who just gained colour sight
@@ -49,6 +49,8 @@ import os
 import rich
 ```
 
+## FUTURE 
+
 TO-DO:
   -
 
@@ -75,6 +77,8 @@ EXCLUDED AND TERMINATED:
       -> interface-idea thrown out. now focus on making the game run smoothly and pretty in a terminal. 
 
 Dictionaries already in the program:
+
+## DICTIONARY SOURCES:
 
   - https://github.com/dwyl/english-words
       - words-alpha.txt   [English!] [as english_words.txt in the repo]
