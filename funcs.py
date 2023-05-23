@@ -10,6 +10,28 @@ console = Console()
 
 
 # --------------------------
+# monkey patch of console.print combinded with this fork:
+
+# FORK from pywriter, license MIT, rights to: Jesse Amarquaye, package: pywrite
+# https://github.com/amarquaye/pywriter/blob/master/pywriter/__init__.py
+# changed for rich with console.print
+
+def write(text):
+    """Function to print output with typewriter effect
+
+    >>> For instance:
+        write(text="Hello world!", rate=1)
+
+        This will print all the elements of the string "Hello world!" one by one at the rate of 1 element per second
+    """
+
+    rate: float = 0.009
+
+    for i in range(len(text)):
+        console.print(text[i], end="")
+        time.sleep(rate)
+
+# --------------------------
 # some rules for certain words that should be treated specifically in rich
 def give_separators():
     # prints out separators
@@ -64,10 +86,6 @@ def pri_secret_word(word: str, gues_letters: list):
 # ------------------------------------------
 # used repeating
 def give_me_a_value_inbetween(value1: int, value2: int, language_eng: bool, start_of_game: bool) -> int:
-    """
-
-    :rtype: object
-    """
     # Function for choosing a letter between two values
     erg = -1
     console.bell()

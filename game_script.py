@@ -50,8 +50,7 @@ if not os.path.exists(path_to_dict):
 # console.prints the hangman logo
 funcs.clean_window()
 console.print(text_assets.hangman_art, highlight=False, style="bold red", justify="left")
-
-console.print("Willkommen zu Galgenmännchen!   Welcome to Hangman!\n", justify="left")
+console.print(funcs.write("Willkommen zu Galgenmännchen!   Welcome to Hangman!\n"), style="bold red", justify="left")
 console.print("Choose your language / Wähle deine Sprache:\n", highlight=False, justify="left")
 console.print(" --- 1. English/Englisch --- 2. German/Deutsch --- ", justify="left")
 
