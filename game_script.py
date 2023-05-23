@@ -43,7 +43,7 @@ category_german = "dummy"
 # for use in the typewriter function to use as this scripts styles
 system = "default"
 narrator_talks = "italic #fc9b14"
-executioner_talks = "#006600"
+executioner_talks = "bold #996633"
 # bool value for highlight
 no_highlights = False
 highlights = True
@@ -51,6 +51,13 @@ highlights = True
 # creates the user-input-directory if not existent since GitHub can't track empty folders
 if not os.path.exists(path_to_dict):
     os.makedirs(path_to_dict)
+
+# checks that code is run in a terminal
+test = "idlelib" in sys.modules
+if not test:
+    funcs.typewriter("Please make sure that game_script\n"
+                     "is run in a terminal and not in an IDLE!\n",
+                     "blink red", no_highlights)
 
 # Story/Game-Opening ----------------------------
 
@@ -423,7 +430,7 @@ else:  # The route of challenging with a word
         funcs.give_separators()
 
         funcs.typewriter('I will use my infinitely finite knowledge of the world to cause your destruction.\n'
-                         'Although I could crush you, I want to give you a chance... to play with my prey\n'
+                         'Although I could crush you, I want to give you a chance... so I get to play with my prey.\n'
                          'Would you like me to go easier on you?\n', executioner_talks, no_highlights)
 
         console.print("\n   1. Yes, please. I am still confused! (easy)\n"
@@ -829,7 +836,7 @@ if who_plays == "NPC":
                     if is_english:
                         funcs.typewriter(
                             "\nI have been right! The letter {} is part of your secret filthy word\n".format(guess),
-                        executioner_talks, no_highlights)
+                            executioner_talks, no_highlights)
                         time.sleep(2)
                         funcs.typewriter(funcs.select_word(text_assets.point_computer), executioner_talks,
                                          no_highlights)

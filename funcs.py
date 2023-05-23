@@ -11,7 +11,7 @@ console = Console()
 # for use in the typewriter function to use as this scripts styles
 system = "default"
 narrator_talks = "italic #fc9b14"
-executioner_talks = "#006600"
+executioner_talks = "bold #996633"
 # bool value for highlight
 no_highlights = False
 highlights = True
@@ -42,14 +42,14 @@ def typewriter(text, style: str, highlight: bool):
 # some rules for certain words that should be treated specifically in rich
 def give_separators():
     # prints out separators
-    console.print("\n-----------------------------------------------------------------------\n", style="wheat1",
+    console.print("\n-----------------------------------------------------------------------\n", style="#739900",
                   )
 
 
 def clean_window():
     # removes all words from the pygame window
     console.clear()
-    console.print("-------------- hanging man - the game of dictionaries -----------------\n", style="bold #504a56",
+    console.print("-------------- hanging man - the game of dictionaries -----------------\n", style="bold #ffffcc",
                   )
     # similar to os.system("clear")
 
