@@ -1,7 +1,9 @@
 import random  # used to choose randomly out of lists, see "https://docs.python.org/3/library/random.html"
 import time  # used to simulate delays of the npc while choosing a letter and add user-friendliness
-import text_assets
 import os  # used to exit and reload program at the end and to list files in dict dictionary
+
+# file of lists with sentences, words, alphabets and ascII art
+import text_assets
 
 # used for colouring and formatting the output
 from rich.console import Console
@@ -49,8 +51,9 @@ def give_separators():
 def clean_window():
     # removes all words from the pygame window
     console.clear()
-    console.print("-------------- hanging man - the game of dictionaries -----------------\n", style="bold #ffffcc",
-                  )
+    console.print("\n\n")
+    # console.print("-------------- hanging man - the game of dictionaries -----------------\n", style="bold #ffffcc",
+    #              )
     # similar to os.system("clear")
 
 
@@ -722,12 +725,12 @@ def user_input_word(language_eng: bool) -> str:
         if language_eng:
             console.print("--->", end="", style="blink bold")
             console.print("... so be it... write your human word on this card and do not tell me: ",
-                          end="", style=narrator_talks)
+                          end="", style=executioner_talks)
             user_word = str(input())
         else:
             console.print("--->", end="", style="blink bold")
             console.print("... so sei es... schreib dein menschliches Wort hier drauf und sag es mir nicht:", end="",
-                          style=narrator_talks)
+                          style=executioner_talks)
             user_word = str(input())
         # checking the challenge_word for anything bad
         # does it have numbers in it?

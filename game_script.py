@@ -48,16 +48,20 @@ executioner_talks = "bold #996633"
 no_highlights = False
 highlights = True
 
+
 # creates the user-input-directory if not existent since GitHub can't track empty folders
 if not os.path.exists(path_to_dict):
     os.makedirs(path_to_dict)
 
-# checks that code is run in a terminal
-test = "idlelib" in sys.modules
-if not test:
-    funcs.typewriter("Please make sure that game_script\n"
-                     "is run in a terminal and not in an IDLE!\n",
-                     "blink red", no_highlights)
+# checks that code is run in a terminal (currently not needed)
+# test = "False" if "idlelib.run" in sys.modules else "True"
+# if test == "True":
+#    funcs.clean_window()
+#    console.print("Please make sure that game_script\n"
+#                  "is run in a terminal and not in an IDLE,\n"
+#                  "so you can enjoy the colours and are not\n"
+#                  "subject to spam from the rich module.\n")
+#    empty_variable = input("Push Anything to acknowledge warning")
 
 # Story/Game-Opening ----------------------------
 
@@ -67,7 +71,7 @@ console.print(text_assets.hangman_art, highlight=False, style="bold red")
 funcs.typewriter("Willkommen zu Galgenmännchen!   Welcome to Hangman!\n", system, no_highlights)
 funcs.typewriter("Choose your language / Wähle deine Sprache:\n", system, no_highlights)
 funcs.typewriter("\n1. English/Englisch        "
-                 "\n2. German/Deutsch          ", system, no_highlights)
+                 "\n2. German/Deutsch          ", system, highlights)
 
 # call just for this one function
 is_english = True
@@ -433,13 +437,14 @@ else:  # The route of challenging with a word
                          'Although I could crush you, I want to give you a chance... so I get to play with my prey.\n'
                          'Would you like me to go easier on you?\n', executioner_talks, no_highlights)
 
-        console.print("\n   1. Yes, please. I am still confused! (easy)\n"
+        console.print("\n   1. Yes, please. I am still confused!\n"
 
-                      "\n   2. I do not want your pity, but I do want a chance. (only english, medium)\n"
+                      "\n   2. I do not want your pity, but I do want a chance. (only english)\n"
 
-                      "\n   3. Give me the best that you got. You will be my prey. (hard)\n",
+                      "\n   3. Give me the best that you got. You will be my prey.\n",
                       )
-
+        funcs.typewriter("\nSee the manual in the start menu for deep dives into what your selections mean!",
+                         narrator_talks, no_highlights)
         funcs.typewriter("\n  1 , 2 or 3  \n", system, highlights)
     else:
         funcs.give_separators()
@@ -451,13 +456,15 @@ else:  # The route of challenging with a word
             "Obwohl ich dich zerstören könnte mit dem Schnipse meines Fingers, möchte ich dir eine Chance geben...\n"
             "... damit es für mich noch Spaß macht...\n", executioner_talks, no_highlights)
 
-        console.print("\n    1. Ja, bitte. Ich bin immer noch verwirrt! (leicht)\n"
+        console.print("\n    1. Ja, bitte. Ich bin immer noch verwirrt!\n"
 
-                      "\n    2. Ich möchte dein Mitleid nicht, aber ich möchte eine Chance. (nur englisch, mittel)\n"
+                      "\n    2. Ich möchte dein Mitleid nicht, aber ich möchte eine Chance. (nur englisch)\n"
 
-                      "\n    3. Geb mir das Beste was du hast. ICH werde dein Untergang sein. (schweeer)\n",
+                      "\n    3. Geb mir das Beste was du hast. ICH werde dein Untergang sein.\n",
                       )
-
+        funcs.typewriter("\nWerf einen Blick in die Anleitung, um zu sehen, was deine Entscheidungen für Konsequenzen"
+                         "tragen\n",
+                         narrator_talks, no_highlights)
         funcs.typewriter("1, 2 oder 3", system, highlights)
 
     # used for controlling who gets to play / which part of the code is used
@@ -599,8 +606,7 @@ else:  # The route of challenging with a word
                          narrator_talks, no_highlights)
 
     funcs.give_separators()
-    time.sleep(2)
-    funcs.clean_window()
+    time.sleep(1)
 
     if strategy_value == 3:
         # asks if the user wants to use an in-build dictionary for the computer or if he
