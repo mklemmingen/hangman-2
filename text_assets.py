@@ -681,7 +681,7 @@ point_player = ["I damn you and your tricky wordplay's",
                 "but that doesn't mean I won't call you out on your cheating ways. \n"
                 "You'll never beat me, not with your underhanded tactics.",
                 "You may think you're one step ahead of me, but you're not.\n"
-                " I'm always watching, always waiting for you to slip up. \n"
+                "I'm always watching, always waiting for you to slip up. \n"
                 "And when you do, I'll be ready to pounce."]
 
 point_player_german = ["Ich verfluche dich und deine trickreichen Wortspiele",
@@ -738,13 +738,13 @@ point_computer = ["Hah, I pity the fool that you are!",
                   "You're the perfect contestant for my game show: 'Hangman: Live or Die!'",
                   "I'm going to make you swing from the gallows like a pinata at a children's party!",
                   "I learned how to spell 'vengeance' after my dog ran away with my family to Las Vegas.\n"
-                  " You don't stand a chance."
+                  "You don't stand a chance."
                   "Haha, looks like you've stumbled into my wicked realm, pal.\n"
                   "Get ready to taste the bitter sting of defeat! Boom! \n"
                   "Another point for me, crushing your feeble attempts like a boss.\n"
                   "You thought you had game? Think again!",
                   "Witness the genius at work! Your word is toast, my friend.\n"
-                  " I'm like a mastermind, hacking your brainwaves with my epic skills.\n"
+                  "I'm like a mastermind, hacking your brainwaves with my epic skills.\n"
                   "Score! How's that for a reality check, my worthy adversary?\n"
                   "Ready to go another round?",
                   "I'm the ruler of your frustration, baby!\n"
@@ -968,28 +968,28 @@ advanced_alphabet = [
 
 npc_inner_thoughts = ["I have an idea... but it may be risky!",
                       "My mother always said, 'Don't gamble with your life,' but she clearly never met me.",
-                      "I've always been a man of words, but this hangman game is getting the best of me.\n "
-                      "Maybe I should stick to my usual hobby of devising diabolical plans to conquer the world.\n "
+                      "I've always been a man of words, but this hangman game is getting the best of me.\n"
+                      "Maybe I should stick to my usual hobby of devising diabolical plans to conquer the world.\n"
                       "Ha ha ha! Just kidding...or am I?",
                       "I've never been one to play fair, "
-                      "so I'm using my evil intellect to crack this hangman puzzle.\n "
+                      "so I'm using my evil intellect to crack this hangman puzzle.\n"
                       "And once I do,"
                       "I'll have the perfect revenge against those do-gooders who thwarted my last scheme.",
                       "I had a crush on Shakespeare, but now I have a crush on crushing my opponents in Hangman.",
                       "My family tree is twisted like a noose, but at least I'm the one holding the rope.",
-                      "I may be a villain, but I still have a way with words. Let's see...\n "
+                      "I may be a villain, but I still have a way with words. Let's see...\n"
                       "'E' is a good bet... and 'O'... come on, think, you twisted genius, think!",
-                      "I've faced off against superheroes, but this hangman game is my biggest challenge yet.\n "
+                      "I've faced off against superheroes, but this hangman game is my biggest challenge yet.\n"
                       "Curse you, alphabet! Why must you be so tricky?",
                       "Hangman? More like hang-villain!"
-                      "I'm going to solve this puzzle and then plot my next dastardly deed.\n "
+                      "I'm going to solve this puzzle and then plot my next dastardly deed.\n"
                       "Nothing can stop me now!",
                       "Ah, the sweet anticipation of the hangman's noose. "
-                      "But there's something different about Jeff.\n "
+                      "But there's something different about Jeff.\n"
                       "He's not like the others. I almost hate to see him go...almost.",
-                      "I've been executing mortals for centuries, but there's something intriguing about Jeff. Maybe\n "
+                      "I've been executing mortals for centuries, but there's something intriguing about Jeff. Maybe\n"
                       "it's his wit, or his cunning, or... well, never mind. Let's just get this over with, shall we?",
-                      "As an immortal executioner, I've seen it all. And frankly, I'm tired of it.\n "
+                      "As an immortal executioner, I've seen it all. And frankly, I'm tired of it.\n"
                       "All I want now is someone to talk to, instead of constantly being stuck in my own head.\n"
                       "I mean, what's the point of being a godly being if you can't even enjoy life?",
                       "I used to revel in the screams of the damned, but now it just feels like a chore.\n"
@@ -1000,12 +1000,12 @@ npc_inner_thoughts = ["I have an idea... but it may be risky!",
                       "They say the Hangman's noose is a symbol of justice, but to me, it's a symbol of power.",
                       "I've haunted the dreams of many, but now it's time to haunt the reality of my next victim.",
                       "They say that death is the great equalizer,\n"
-                      " but I prefer to think of myself as the great differentiator.",
+                      "but I prefer to think of myself as the great differentiator.",
                       "I don't discriminate when it comes to my victims. Rich, poor, guilty, innocent... \n"
                       "they all end up swinging from the Hangman's noose."
-                      "As an immortal godly executioner, I've seen it all. The pain, the suffering, the screams.\n "
+                      "As an immortal godly executioner, I've seen it all. The pain, the suffering, the screams.\n"
                       "But what I wouldn't give for just a moment of peace,"
-                      "a chance to talk to someone who understands\n "
+                      "a chance to talk to someone who understands\n"
                       "the burden of my existence. But seeing as tho what you chosen... you are not it.",
                       "I once had a dog that could spell better than most people. \n"
                       "Too bad he ran off with my ex-wife and kids.",
@@ -1021,7 +1021,7 @@ npc_inner_thoughts = ["I have an idea... but it may be risky!",
                       "Interesting choice of letters. But I see you have left some crucial ones out. \n"
                       "Perhaps you are trying to outsmart me? But I assure you, I am not easily fooled.\n"
                       "I have played this game with many before you, and I have yet to lose.",
-                      "You think you have me stumped, don't you? But I am a master of deduction.\n "
+                      "You think you have me stumped, don't you? But I am a master of deduction.\n"
                       "I can see the patterns in your word, the subtle hints that you have left for me to follow.\n"
                       "You may think you have the upper hand, but I assure you, the tables will turn soon enough.",
                       "A valiant effort, but alas, not good enough. \n"
@@ -1042,12 +1042,12 @@ npc_inner_thoughts_german = ["Ich habe eine Idee... aber es könnte riskant sein
                              "Meine Mutter hat immer gesagt: 'Spiele nicht mit deinem Leben', aber sie hat mich "
                              "offensichtlich nie getroffen.",
                              "Ich war schon immer ein Mann der Worte, aber dieses Hangman-Spiel "
-                             "bringt mich an meine Grenzen.\n "
-                             "Vielleicht sollte ich mich lieber meinem üblichen Hobby widmen, d"
-                             "diabolische Pläne zu schmieden, um die Welt zu erobern.\n "
+                             "bringt mich an meine Grenzen.\n"
+                             "Vielleicht sollte ich mich lieber meinem üblichen Hobby widmen,"
+                             "diabolische Pläne zu schmieden, um die Welt zu erobern.\n"
                              "Ha ha ha! Nur ein Scherz... oder auch nicht?",
                              "Ich war noch nie jemand, der fair spielt, \n"
-                             "also benutze ich meine böse Intelligenz, um dieses Hangman-Rätsel zu knacken.\n "
+                             "also benutze ich meine böse Intelligenz, um dieses Hangman-Rätsel zu knacken.\n"
                              "Und sobald ich es geschafft habe, werde ich die perfekte Rache gegen "
                              "die Gutgläubigen haben, die meinen letzten Plan vereitelt haben.",
                              "Ich hatte einen Schwarm für Shakespeare, aber jetzt habe ich einen Schwarm dafür, "
@@ -1059,26 +1059,26 @@ npc_inner_thoughts_german = ["Ich habe eine Idee... aber es könnte riskant sein
                              "'E' ist eine gute Wahl... und 'O'... komm schon, denk nach, du verdrehtes Genie, "
                              "denk nach!",
                              "Ich habe mich Superhelden gegenübergestellt, aber dieses Hangman-Spiel ist meine "
-                             "bisher größte Herausforderung.\n "
+                             "bisher größte Herausforderung.\n"
                              "Verflucht sei das Alphabet! Warum musst du so knifflig sein?",
                              "Hangman? Eher Hang-Bösewicht!"
-                             "Ich werde dieses Puzzle lösen und dann meinen nächsten teuflischen Plan aushecken.\n "
+                             "Ich werde dieses Puzzle lösen und dann meinen nächsten teuflischen Plan aushecken.\n"
                              "Nichts kann mich jetzt aufhalten!",
                              "Ah, die süße Vorfreude auf das Schafott des Henkers. \n"
-                             "Aber da ist etwas anders an Jeff.\n "
+                             "Aber da ist etwas anders an Jeff.\n"
                              "Er ist nicht wie die anderen. Ich hasse es fast, ihn gehen zu sehen...fast.",
                              "Ich habe Sterbliche seit Jahrhunderten hingerichtet, "
-                             "aber bei Jeff ist etwas faszinierendes.\n "
+                             "aber bei Jeff ist etwas faszinierendes.\n"
                              "Vielleicht ist es sein Witz, oder seine Listigkeit, oder... na ja, egal."
-                             " Lass uns das hier einfach hinter uns bringen, sollen wir?",
+                             "Lass uns das hier einfach hinter uns bringen, sollen wir?",
                              "Als unsterblicher Henker habe ich alles gesehen. "
-                             "Und ehrlich gesagt, ich habe genug davon.\n "
+                             "Und ehrlich gesagt, ich habe genug davon.\n"
                              "Ich möchte jetzt jemanden zum Reden haben, anstatt ständig "
-                             "in meinem eigenen Kopf festzustecken.\n "
+                             "in meinem eigenen Kopf festzustecken.\n"
                              "Ich meine, was bringt es, ein göttliches Wesen zu sein, "
                              "wenn man das Leben nicht einmal genießen kann?",
                              "Früher habe ich mich über die Schreie der Verdammten gefreut, "
-                             "aber jetzt fühlt es sich nur noch wie eine Pflicht an.\n "
+                             "aber jetzt fühlt es sich nur noch wie eine Pflicht an.\n"
                              "Wenn ich nur jemanden hätte, mit dem ich meine Gedanken teilen könnte, "
                              "anstatt sie immer mit meiner Klinge zu ersticken.",
                              "Ich bin seit Jahrhunderten hier und habe alles gesehen. \n",
@@ -1132,7 +1132,7 @@ npc_inner_thoughts_german = ["Ich habe eine Idee... aber es könnte riskant sein
                              "Vielleicht versuchst du, mich zu übertreffen? Aber ich versichere dir, "
                              "ich bin nicht leicht zu täuschen.\n"
                              "Ich habe dieses Spiel mit vielen vor dir gespielt und noch nie verloren.",
-                             "Du denkst, du hast mich festgenagelt, oder? Aber ich bin ein Meister der Deduktion.\n "
+                             "Du denkst, du hast mich festgenagelt, oder? Aber ich bin ein Meister der Deduktion.\n"
                              "Ich kann die Muster in deinem Wort sehen, die subtilen Hinweise, "
                              "die du für mich hinterlassen hast, um zu folgen.\n"
                              "Du magst denken, dass du die Oberhand hast, aber ich versichere dir, d"

@@ -8,51 +8,62 @@ from rich.console import Console
 
 console = Console()
 
+# for use in the typewriter function to use as this scripts styles
+system = "default"
+narrator_talks = "italic #fc9b14"
+executioner_talks = "#006600"
+# bool value for highlight
+no_highlights = False
+highlights = True
+
 
 # --------------------------
-# monkey patch of console.print combinded with this fork:
+# mimicking the console.print function, but with an extra implement of time.sleep for typewriter effect
 
-# FORK from pywriter, license MIT, rights to: Jesse Amarquaye, package: pywrite
+# FORK from pywriter, licence MIT, rights to: Jesse Amarquaye, package: pywrite
 # https://github.com/amarquaye/pywriter/blob/master/pywriter/__init__.py
 # changed for rich with console.print
 
 
-def write(text):
-    """Function to print output with typewriter effect
+def typewriter(text, style: str, highlight: bool):
+    # dependency: use rich with open console of name "console"
 
-    >>> For instance:
-        write(text="Hello world!", rate=1)
+    # Function to print output with typewriter effect
+    # This will print all the elements of the string one by one at a certain rate of an element per second
 
-        This will print all the elements of the string "Hello world!" one by one at the rate of 1 element per second
-    """
-
-    rate: float = 0.009
+    rate: float = 0.02
 
     for i in range(len(text)):
-        console.print(text[i], end="")
+        console.print(text[i], end="", style=style, highlight=highlight)
         time.sleep(rate)
+
 
 # --------------------------
 # some rules for certain words that should be treated specifically in rich
 def give_separators():
     # prints out separators
     console.print("\n-----------------------------------------------------------------------\n", style="wheat1",
-                  justify="left")
+                  )
 
 
 def clean_window():
     # removes all words from the pygame window
     console.clear()
     console.print("-------------- hanging man - the game of dictionaries -----------------\n", style="bold #504a56",
-                  justify="left")
+                  )
     # similar to os.system("clear")
 
 
 # --------------------------------------------------
 # Select the word function
 
-
 def select_word(func_words: list) -> str:
+    # function to select a string from a list.
+    # it uses the random module to help with the random word pick
+    return random.choice(func_words)
+
+
+def select_word_guess(func_words: list) -> str:
     # function to select a string from a list.
     # it uses the random module to help with the random word pick
     return random.choice(func_words).lower()
@@ -97,24 +108,24 @@ def give_me_a_value_inbetween(value1: int, value2: int, language_eng: bool, star
             console.bell()
             if start_of_game:
                 give_separators()
+                console.print("--->  ", style="blink bold", end="")
                 erg = int(input("Enter your choices number ... Geb die Nummer deiner Entscheidung ein: "))
-                console.print("", justify="left")
                 start_of_game = False
             elif language_eng:
                 # User is presented with the choice to choose between playing the game or choosing the computer word
                 give_separators()
-                erg = int(input("\nEnter your choices number: "))
-                console.print("", justify="left")
+                console.print("--->  ", style="blink bold", end="")
+                erg = int(input("Enter your choices number: "))
             else:
                 # User is presented with the choice to choose between playing the game or choosing the computer word
                 give_separators()
-                erg = int(input("\nGebe die Zahl deiner Entscheidung ein: "))
-                console.print("", justify="left")
+                console.print("--->", end="", style="blink bold")
+                erg = int(input("Gebe die Zahl deiner Entscheidung ein: "))
         except ValueError or TypeError:
             if language_eng:
-                console.print("That is not an option... and you know it!", justify="left")
+                console.print("That is not an option... and you know it!", )
             else:
-                console.print("Das war keine Möglichkeit! Nochmal!", justify="left")
+                console.print("Das war keine Möglichkeit! Nochmal!", )
     clean_window()
     return erg
 
@@ -127,6 +138,7 @@ def guess_player_letter(language_eng: bool) -> str:
     # reoccurring function for guessing a letter as the PLAYER
     while True:
         give_separators()
+        console.print("--->", end="", style="blink bold")
         if language_eng:
             console.print(select_word(text_assets.choose), end="", style="#db6825")
         else:
@@ -135,13 +147,15 @@ def guess_player_letter(language_eng: bool) -> str:
         give_separators()
         if len(guess_func) > 1 or not guess_func.isalpha():
             if language_eng:
-                console.print("\nYou fool of a tuck, only single letters are to be guessed. Do you want to break"
-                              "the simulation?... go again... "
-                              "this time remember the rules of only one letter at a time!", justify="left")
+                typewriter("\nYou fool of a tuck, only single letters are to be guessed. Do you want to break"
+                           "the simulation?... go again... "
+                           "this time remember the rules of only one letter at a time!", narrator_talks,
+                           no_highlights)
             else:
-                console.print("\nDu Möchtegern-Hobbit, es darf nur ein einzelner Buchstabe geraten werden.\n "
-                              "Möchtest du die Simulation zerstören? Versuche es erneut und denke daran, "
-                              "dass nur ein Buchstabe auf einmal geraten werden darf!", justify="left")
+                typewriter("\nDu Möchtegern-Hobbit, es darf nur ein einzelner Buchstabe geraten werden.\n "
+                           "Möchtest du die Simulation zerstören? Versuche es erneut und denke daran, "
+                           "dass nur ein Buchstabe auf einmal geraten werden darf!", narrator_talks,
+                           no_highlights)
         else:
             break
     clean_window()
@@ -150,20 +164,21 @@ def guess_player_letter(language_eng: bool) -> str:
 
 def guess_computer_letter(language_eng: bool, alphabet: list) -> str:
     # reoccurring function for guessing a letter as the NPC (Executioner) does
-    in_func_guess: str = select_word(alphabet)
+    in_func_guess: str = select_word_guess(alphabet)
     if language_eng:
-        console.print("\n*The [bold magenta]Executioner[/bold magenta] looks into the distance... thinking hard...*",
-                      style="italic",
-                      justify="left")
+        typewriter("\n*The Executioner looks into the distance... thinking hard...*",
+                   narrator_talks, no_highlights
+                   )
     else:
-        console.print("\nDer Henker schaut nachdenklich in die Ferne...", style="italic",
-                      justify="left")
+        typewriter("\nDer Henker schaut nachdenklich in die Ferne...",
+                   narrator_talks, no_highlights
+                   )
     time.sleep(2)
     give_separators()
     if language_eng:
-        console.print(select_word(text_assets.npc_inner_thoughts), style="#19700a", justify="left")
+        typewriter(select_word(text_assets.npc_inner_thoughts), executioner_talks, no_highlights)
     else:
-        console.print(select_word(text_assets.npc_inner_thoughts_german), style="#19700a", justify="left")
+        typewriter(select_word(text_assets.npc_inner_thoughts_german), executioner_talks, no_highlights)
     give_separators()
     time.sleep(2)
     return in_func_guess
@@ -187,15 +202,20 @@ def guess_computer_letters_strategy(language_eng: bool, gues_let_func: list) -> 
             continue
         if in_function_guess not in gues_let_func:
             break
-
-    console.print("\n*The [bold magenta]Executioner[/bold magenta] looks into the distance... thinking real hard...*",
-                  justify="left")
+    if language_eng:
+        typewriter("\n*The Executioner looks into the distance... thinking real hard...*",
+                   narrator_talks, no_highlights
+                   )
+    else:
+        typewriter("\nDer Henker schaut nachdenklich in die Ferne...",
+                   narrator_talks, no_highlights
+                   )
     time.sleep(2)
     give_separators()
     if language_eng:
-        console.print(select_word(text_assets.npc_inner_thoughts), style="#19700a", justify="left")
+        typewriter(select_word(text_assets.npc_inner_thoughts), executioner_talks, no_highlights)
     else:
-        console.print(select_word(text_assets.npc_inner_thoughts_german), style="#19700a", justify="left")
+        typewriter(select_word(text_assets.npc_inner_thoughts_german), executioner_talks, no_highlights)
     give_separators()
     time.sleep(2)
     in_function_guess = str(in_function_guess[0])
@@ -205,15 +225,22 @@ def guess_computer_letters_strategy(language_eng: bool, gues_let_func: list) -> 
 # ----------------------------------------------
 
 def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, alphabet: list, language_eng: bool) -> str:
-    console.print("\n*The [bold magenta]Executioner[/bold magenta] looks into the distance... thinking hard...*",
-                  justify="left")
+    if language_eng:
+        typewriter("\n*The Executioner looks into the distance... thinking real hard...*",
+                   narrator_talks, no_highlights
+                   )
+    else:
+        typewriter("\nDer Henker schaut nachdenklich in die Ferne...",
+                   narrator_talks, no_highlights
+                   )
     time.sleep(2)
     give_separators()
     if language_eng:
-        console.print(select_word(text_assets.npc_inner_thoughts), justify="left")
+        typewriter(select_word(text_assets.npc_inner_thoughts), executioner_talks, no_highlights)
     else:
-        console.print(select_word(text_assets.npc_inner_thoughts_german), justify="left")
+        typewriter(select_word(text_assets.npc_inner_thoughts_german), executioner_talks, no_highlights)
     give_separators()
+    time.sleep(2)
     time.sleep(2)
 
     # Creating a skeleton dict without positional arguments.
@@ -254,7 +281,7 @@ def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, alphab
     highest_value_elem_unchosen: str = max(length_dict, key=length_dict.get)
 
     # simulate mistakes, so the computer isn't too good and acts different with the same word each time
-    random_letter = select_word(alphabet)
+    random_letter = select_word_guess(alphabet)
     # creates a list out of a random alphabetic letter and the highest_value_element
     probability_bowl: list = [random_letter, highest_value_elem_unchosen]
 
@@ -592,15 +619,15 @@ def slice_the_english(language_eng: bool, length_of_secret_word: int) -> list:
         elif length_of_secret_word == 26:
             output_dict = fun_dict
             if language_eng:
-                console.print("mhhh, I do not know any words with 26 letters...", justify="left")
-                console.print("I will try anyway, but I will take some more time, mortal.", justify="left")
-                console.print("I hope you have some more left... muahahah\n", justify="left")
+                console.print("mhhh, I do not know any words with 26 letters...", )
+                console.print("I will try anyway, but I will take some more time, mortal.", )
+                console.print("I hope you have some more left... muahahah\n", )
             else:
-                console.print("Hmm, ich kenne keine Wörter mit 26 Buchstaben...", justify="left")
+                console.print("Hmm, ich kenne keine Wörter mit 26 Buchstaben...", )
                 console.print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.",
-                              justify="left")
+                              )
                 console.print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n",
-                              justify="left")
+                              )
         elif length_of_secret_word == 27:
             output_dict = fun_dict[370097:370099]
         elif length_of_secret_word == 28:
@@ -610,31 +637,31 @@ def slice_the_english(language_eng: bool, length_of_secret_word: int) -> list:
         elif length_of_secret_word == 30:
             output_dict = fun_dict
             if language_eng:
-                console.print("mhhh, I do not know any words with 30 letters...", justify="left")
-                console.print("I will try anyway, but I will take some more time, mortal.", justify="left")
-                console.print("I hope you have some more left... muahahah\n", justify="left")
+                console.print("mhhh, I do not know any words with 30 letters...", )
+                console.print("I will try anyway, but I will take some more time, mortal.", )
+                console.print("I hope you have some more left... muahahah\n", )
             else:
-                console.print("Hmm, ich kenne keine Wörter mit 30 Buchstaben...", justify="left")
+                console.print("Hmm, ich kenne keine Wörter mit 30 Buchstaben...", )
                 console.print("Dennoch werde ich es versuchen, aber ich werde mir etwas mehr Zeit nehmen, Sterblicher.",
-                              justify="left")
-                console.print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n", justify="left")
+                              )
+                console.print("Ich hoffe, du hast noch etwas übrig... Muahahaha\n", )
         elif length_of_secret_word == 31:
             output_dict = fun_dict[370105:370105]
         else:
             if language_eng:
-                console.print("\nthat's a very long word... are you sure it exists?", justify="left")
-                console.print("\nI will try anyway, cheat.", justify="left")
+                console.print("\nthat's a very long word... are you sure it exists?", )
+                console.print("\nI will try anyway, cheat.", )
                 console.print("\nIf you button-smashed, I will haunt your dreams for eternity and make sure that "
                               "in the after-life you won`t have the chance to dream.... just kidding... unless...",
-                              justify="left")
+                              )
             else:
                 console.print("\nDas ist ein sehr langes Wort... bist du sicher, dass es existiert?",
-                              justify="left")
-                console.print("\nIch werde es trotzdem versuchen, Schummler.", justify="left")
+                              )
+                console.print("\nIch werde es trotzdem versuchen, Schummler.", )
                 console.print("\nWenn du wild auf den Tasten hermeneutical hast,\n"
                               "werde ich dich für die Ewigkeit heimsuchen und sicherstellen,\n"
                               "dass du im Jenseits nicht träumen wirst... nur ein Scherz... oder auch nicht...",
-                              justify="left")
+                              )
             output_dict = fun_dict
 
     return output_dict
@@ -693,10 +720,15 @@ def user_input_word(language_eng: bool) -> str:
     while not good_enough_points:
         # while-loop breaks when the challenge_word is good enough
         if language_eng:
-            user_word = str(input("\n... so be it... write your human word on this card and do not tell me: "))
+            console.print("--->", end="", style="blink bold")
+            console.print("... so be it... write your human word on this card and do not tell me: ",
+                          end="", style=narrator_talks)
+            user_word = str(input())
         else:
-            user_word = str(
-                input("\n... so sei es... schreib dein menschliches Wort hier drauf und sag es mir nicht: "))
+            console.print("--->", end="", style="blink bold")
+            console.print("... so sei es... schreib dein menschliches Wort hier drauf und sag es mir nicht:", end="",
+                          style=narrator_talks)
+            user_word = str(input())
         # checking the challenge_word for anything bad
         # does it have numbers in it?
         # is challenge word actually multiple words with space between
@@ -706,17 +738,17 @@ def user_input_word(language_eng: bool) -> str:
             else:
                 if language_eng:
                     console.print("\n Narrator: Numbers??? Multiple words??? Separators?! "
-                                  "Not in this game! Repeat, Repeat, Repeeeeat!", justify="left")
+                                  "Not in this game! Repeat, Repeat, Repeeeeat!", )
                 else:
                     console.print("\n Narrator: Zahlen??? Mehrere Wörter??? Trennzeichen?! Nicht in diesem Spiel! "
-                                  "Wiederholen, Wiederholen, Wiederholen!", justify="left")
+                                  "Wiederholen, Wiederholen, Wiederholen!", )
         else:
             if language_eng:
                 console.print("\n Narrator: Numbers??? Multiple words??? Separators?! Not in this game! "
-                              "Repeat, Repeat, Repeeeeat!", justify="left")
+                              "Repeat, Repeat, Repeeeeat!", )
             else:
                 console.print("\n Narrator: Zahlen??? Mehrere Wörter??? Trennzeichen?! Nicht in diesem Spiel! "
-                              "Wiederholen, Wiederholen, Wiederholen!", justify="left")
+                              "Wiederholen, Wiederholen, Wiederholen!", )
     return user_word
 
 
@@ -725,31 +757,36 @@ def user_input_word(language_eng: bool) -> str:
 def games_callout(who_won: str, language_eng: bool):
     # function that gives out a statement according to who won - perspective player
     if who_won == "NPC":
-        console.print(text_assets.npc_art_win, highlight=True, justify="left")
-        console.print("", justify="left")
+        console.print(text_assets.npc_art_win, highlight=True)
+        console.print("", )
         time.sleep(2)
         give_separators()
-        console.print(select_word(text_assets.npc_wins), justify="left")
-        console.print("", justify="left")
+        console.print(select_word(text_assets.npc_wins), )
+        console.print("", )
         if language_eng:
-            console.print(
-                "Narrator: The Exorcist... or was it [bold magenta]Executioner[/bold magenta]?... has won! pity you!\n",
-                justify="left")
+            typewriter(
+                "Narrator: The Exorcist... or was it Executioner?... has won! pity you!\n",
+                narrator_talks, no_highlights)
         else:
-            console.print("Narrator: Der Exorzist... oder war es der Henker?... hat gewonnen! Schade für dich!\n",
-                          justify="left")
+            typewriter("Narrator: Der Exorzist... oder war es der Henker?... hat gewonnen! Schade für dich!\n",
+                       narrator_talks, no_highlights)
         give_separators()
     if who_won == "Player":
         give_separators()
-        console.print(select_word(text_assets.player_wins), highlight=False, justify="left")
-        console.print("", justify="left")
         if language_eng:
-            console.print("Narrator: Wow! You have actually managed to win! good job you!\n", justify="left")
+            typewriter(select_word(text_assets.player_wins), executioner_talks, no_highlights)
         else:
-            console.print("Narrator: Wow! Du hast es tatsächlich geschafft zu gewinnen! Gut gemacht!\n", justify="left")
-        console.print("", justify="left")
-        console.print(text_assets.player_art_win, highlight=False, justify="left", style="bold #2b8716")
-        console.print("", justify="left")
+            typewriter(select_word(text_assets.player_wins_german), executioner_talks, no_highlights)
+        console.print("", )
+        if language_eng:
+            typewriter("Narrator: Wow! You have actually managed to win! good job you!\n", narrator_talks,
+                       no_highlights)
+        else:
+            console.print("Narrator: Wow! Du hast es tatsächlich geschafft zu gewinnen! Gut gemacht!\n", narrator_talks,
+                          no_highlights)
+        console.print("", )
+        console.print(text_assets.player_art_win, highlight=False, style="bold #2b8716")
+        console.print("", )
         give_separators()
 
 
