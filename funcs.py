@@ -16,6 +16,7 @@ console = Console()
 # https://github.com/amarquaye/pywriter/blob/master/pywriter/__init__.py
 # changed for rich with console.print
 
+
 def write(text):
     """Function to print output with typewriter effect
 
