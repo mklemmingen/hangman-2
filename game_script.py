@@ -53,15 +53,17 @@ highlights = True
 if not os.path.exists(path_to_dict):
     os.makedirs(path_to_dict)
 
+"""
 # checks that code is run in a terminal (currently not needed)
-# test = "False" if "idlelib.run" in sys.modules else "True"
-# if test == "True":
-#    funcs.clean_window()
-#    console.print("Please make sure that game_script\n"
-#                  "is run in a terminal and not in an IDLE,\n"
-#                  "so you can enjoy the colours and are not\n"
-#                  "subject to spam from the rich module.\n")
-#    empty_variable = input("Push Anything to acknowledge warning")
+test = "False" if "idlelib.run" in sys.modules else "True"
+if test == "True":
+    funcs.clean_window()
+    console.print("Please make sure that game_script\n"
+                  "is run in a terminal and not in an IDLE,\n"
+                  "so you can enjoy the colours and are not\n"
+                  "subject to spam from the rich module.\n")
+    empty_variable = input("Push Anything to acknowledge warning")
+"""
 
 # Story/Game-Opening ----------------------------
 
@@ -609,10 +611,13 @@ else:  # The route of challenging with a word
     time.sleep(1)
 
     if strategy_value == 3:
+        """
         # asks if the user wants to use an in-build dictionary for the computer or if he
         # has provided an own one in the DICTIONARY folder
         # if he has not, go to ask about language:
         # creates a list of the files in the dir
+        """
+
         files_in_dir = funcs.files_in_dir(path_to_dict)
         # length of the former mentioned list
         own_dictionaries = len(files_in_dir)
@@ -744,7 +749,7 @@ if who_plays == "Player":
             if is_english:
                 funcs.typewriter("\nNo! The letter {} is not part of the secret word\n".format(guess),
                                  executioner_talks, no_highlights)
-                time.sleep(2)
+                time.sleep(0)
                 funcs.typewriter(funcs.select_word(text_assets.point_computer), executioner_talks, no_highlights)
                 # console.print(funcs.select_word(text_assets.point_player))
             else:
@@ -843,7 +848,7 @@ if who_plays == "NPC":
                         funcs.typewriter(
                             "\nI have been right! The letter {} is part of your secret filthy word\n".format(guess),
                             executioner_talks, no_highlights)
-                        time.sleep(2)
+                        time.sleep(0)
                         funcs.typewriter(funcs.select_word(text_assets.point_computer), executioner_talks,
                                          no_highlights)
                         # console.print(funcs.select_word(text_assets.point_computer))
@@ -851,7 +856,7 @@ if who_plays == "NPC":
                     else:
                         console.print("\nIch habe recht gehabt! Der Buchstabe {} ist "
                                       "Teil deines geheimen Wortes.\n".format(guess))
-                        time.sleep(2)
+                        time.sleep(0)
                         funcs.typewriter(text_assets.point_computer_german, executioner_talks, no_highlights)
                         # console.print(funcs.select_word(text_assets.point_computer_german))
 
@@ -869,13 +874,13 @@ if who_plays == "NPC":
                 if is_english:
                     console.print("\n Nooooo.... The letter {} is not part of your word...\n".format(guess),
                                   )
-                    time.sleep(2)
+                    time.sleep(0)
                     funcs.typewriter(funcs.select_word(text_assets.point_player), executioner_talks, no_highlights)
                     # console.print(funcs.select_word(text_assets.point_player))
                 else:
                     console.print("\n Nein! Der Buchstabe {} ist nicht Teil deines Wortes ...\n".format(guess),
                                   )
-                    time.sleep(2)
+                    time.sleep(0)
                     funcs.typewriter(funcs.select_word(text_assets.point_player_german), executioner_talks,
                                      no_highlights)
                     # console.print(funcs.select_word(text_assets.point_player))
@@ -915,7 +920,7 @@ if who_plays == "NPC":
                     console.print("Jeff, mit seinem letzten Atemzug:\n"
                                   " Warum... Bitte... du hättest... besser ein Wörterbuch selbst nutzen sollen...",
                                   )
-                time.sleep(2)
+                time.sleep(0)
 
     else:
         while remaining_attempts > 0 and len(guessed_letters) < length_of_secret_word:
@@ -960,7 +965,7 @@ if who_plays == "NPC":
                 if is_english:
                     funcs.typewriter("\n Nooooo.... The letter {} is not part of your word...\n".format(guess),
                                      executioner_talks, no_highlights)
-                    time.sleep(2)
+                    time.sleep(0)
                     funcs.typewriter(funcs.select_word(text_assets.point_player), executioner_talks, no_highlights)
                     # console.print(funcs.select_word(text_assets.point_player))
                 else:
