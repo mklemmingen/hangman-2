@@ -74,7 +74,7 @@ console.print(text_assets.hangman_art, highlight=False, style="bold red")
 funcs.typewriter("Willkommen zu Galgenmännchen!   Welcome to Hangman!\n", system, no_highlights)
 funcs.typewriter("Choose your interface language / Wähle deine Interface Sprache:\n", system, no_highlights)
 funcs.typewriter("\n1. English/Englisch        "
-                 "\n2. German/Deutsch          ", system, highlights)
+                 "\n2. German/Deutsch          \n", system, highlights)
 
 # call just for this one function
 is_english = True
@@ -782,7 +782,7 @@ else:  # The route of challenging with a word
     if is_english:
         funcs.typewriter(f"Narrator:You have chosen {hard_mode_lang}! Have fun!", narrator_talks, no_highlights)
     else:
-        funcs.typewriter(f"Erzähler: Du hast dich für {hard_mode_lang} entschieden! Viel Spaß!",
+        funcs.typewriter(f"Erzähler: Du hast dich für {hard_mode_lang} entschieden! Viel Spaß!\n",
                          narrator_talks, no_highlights)
 
     funcs.give_separators()

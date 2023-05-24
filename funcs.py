@@ -156,7 +156,7 @@ def give_me_a_value_inbetween(value1: int, value2: int, language_eng: bool, star
             else:
                 # User is presented with the choice to choose between playing the game or choosing the computer word
                 give_separators()
-                console.print("--->", end="", style="blink bold")
+                console.print("--->   ", end="", style="blink bold")
                 typewriter("Gebe die Zahl deiner Entscheidung ein: ",
                            system, no_highlights)
                 erg = int(input())
@@ -181,7 +181,7 @@ def guess_player_letter(language_eng: bool) -> str:
     """
     while True:
         give_separators()
-        console.print("--->", end="", style="blink bold")
+        console.print("--->   ", end="", style="blink bold")
         if language_eng:
             typewriter(select_word(text_assets.choose), executioner_talks, no_highlights)
         else:
@@ -888,12 +888,12 @@ def user_input_word(language_eng: bool) -> str:
     while not good_enough_points:
         # while-loop breaks when the challenge_word is good enough
         if language_eng:
-            console.print("--->", end="", style="blink bold")
+            console.print("--->   ", end="", style="blink bold")
             typewriter("... so be it... write your human word on this card and do not tell me: ",
                        executioner_talks, no_highlights)
             user_word = str(input())
         else:
-            console.print("--->", end="", style="blink bold")
+            console.print("--->   ", end="", style="blink bold")
             typewriter("... so sei es... schreib dein menschliches Wort hier drauf und sag es mir nicht:",
                        executioner_talks, no_highlights)
             user_word = str(input())
