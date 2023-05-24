@@ -30,9 +30,9 @@ def typewriter(text, style: str, highlight: bool):
     https://github.com/amarquaye/pywriter/blob/master/pywriter/__init__.py
 
     :param text: The data you would like to print
-    :param style: style parameters, see rich documnetation
+    :param style: style parameters, see rich documentation
     :param highlight: Bool Value if it should be auto-highlighted
-    :return: output of a stylized text to the rich console
+    :return: output of a stylised text to the rich console
     """
     rate: float = 0.02
 
@@ -45,8 +45,8 @@ def typewriter(text, style: str, highlight: bool):
 # some rules for certain words that should be treated specifically in rich
 def give_separators():
     """
-    prints out mutliple separators.
-    :return: output of some - symbols to the rich console.
+    prints out multiple separators.
+    :return: output of some symbols to the rich console.
     """
     console.print("\n-----------------------------------------------------------------------\n", style="#739900",
                   )
@@ -142,23 +142,29 @@ def give_me_a_value_inbetween(value1: int, value2: int, language_eng: bool, star
             if start_of_game:
                 give_separators()
                 console.print("--->  ", style="blink bold", end="")
-                erg = int(input("Enter your choices number ... Geb die Nummer deiner Entscheidung ein: "))
+                typewriter("Enter your choices number ... Geb die Nummer deiner Entscheidung ein: ",
+                           system, no_highlights)
+                erg = int(input())
                 start_of_game = False
             elif language_eng:
                 # User is presented with the choice to choose between playing the game or choosing the computer word
                 give_separators()
                 console.print("--->  ", style="blink bold", end="")
-                erg = int(input("Enter your choices number: "))
+                typewriter("Enter your choices number: ",
+                           system, no_highlights)
+                erg = int(input())
             else:
                 # User is presented with the choice to choose between playing the game or choosing the computer word
                 give_separators()
                 console.print("--->", end="", style="blink bold")
-                erg = int(input("Gebe die Zahl deiner Entscheidung ein: "))
+                typewriter("Gebe die Zahl deiner Entscheidung ein: ",
+                           system, no_highlights)
+                erg = int(input())
         except ValueError or TypeError:
             if language_eng:
-                console.print("That is not an option... and you know it!", )
+                typewriter("That is not an option... and you know it!", narrator_talks, no_highlights)
             else:
-                console.print("Das war keine Möglichkeit! Nochmal!", )
+                typewriter("Das war keine Möglichkeit! Nochmal!", narrator_talks, no_highlights)
     clean_window()
     return erg
 
@@ -177,9 +183,9 @@ def guess_player_letter(language_eng: bool) -> str:
         give_separators()
         console.print("--->", end="", style="blink bold")
         if language_eng:
-            console.print(select_word(text_assets.choose), end="", style="#db6825")
+            typewriter(select_word(text_assets.choose), executioner_talks, no_highlights)
         else:
-            console.print(select_word(text_assets.choose_german), end="", style="#db6825")
+            typewriter(select_word(text_assets.choose_german), executioner_talks, no_highlights)
         guess_func = str(input(":  "))
         give_separators()
         if len(guess_func) > 1 or not guess_func.isalpha():
@@ -270,7 +276,8 @@ def guess_computer_letters_strategy(language_eng: bool, gues_let_func: list) -> 
 
 # ----------------------------------------------
 
-def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, alphabet: list, language_eng: bool) -> str:
+def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list,
+                             alphabet: list, language_eng: bool, mis_weight: int) -> str:
     """
     Function: creates an evaluated guess about secret word, simulates mistake
 
@@ -282,12 +289,13 @@ def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, alphab
     gets the key with the highest value
     simulates a chance for mistake
 
-    :param pydict:
-    :param gues_let:
-    :param rem_let:
-    :param alphabet:
-    :param language_eng:
-    :return:
+    :param pydict: The big wordlist.
+    :param gues_let: List of letters that have been guessed.
+    :param rem_let: List of letters that should be removed.
+    :param alphabet: Selected alphabet as a list of elements.
+    :param language_eng: Bool value if the ui is in english.
+    :param mis_weight: Chance for the random letter to be guessed instead of the actual most frequent.
+    :return: Returns a guess letter
     """
     if language_eng:
         typewriter("\n*The Executioner looks into the distance... thinking real hard...*",
@@ -343,7 +351,7 @@ def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, alphab
     # creates a list out of a random alphabetic letter and the highest_value_element
     probability_bowl: list = [random_letter, highest_value_elem_unchosen]
 
-    highest_value_elem: str = random.choices(probability_bowl, weights=(10, 90), k=1)
+    highest_value_elem: str = random.choices(probability_bowl, weights=(mis_weight, 100-mis_weight), k=1)
     highest_value_elem = str(highest_value_elem[0])
     return highest_value_elem  # guess as char
 
@@ -881,13 +889,13 @@ def user_input_word(language_eng: bool) -> str:
         # while-loop breaks when the challenge_word is good enough
         if language_eng:
             console.print("--->", end="", style="blink bold")
-            console.print("... so be it... write your human word on this card and do not tell me: ",
-                          end="", style=executioner_talks)
+            typewriter("... so be it... write your human word on this card and do not tell me: ",
+                       executioner_talks, no_highlights)
             user_word = str(input())
         else:
             console.print("--->", end="", style="blink bold")
-            console.print("... so sei es... schreib dein menschliches Wort hier drauf und sag es mir nicht:", end="",
-                          style=executioner_talks)
+            typewriter("... so sei es... schreib dein menschliches Wort hier drauf und sag es mir nicht:",
+                       executioner_talks, no_highlights)
             user_word = str(input())
         # checking the challenge_word for anything bad
         # does it have numbers in it?
@@ -897,18 +905,19 @@ def user_input_word(language_eng: bool) -> str:
                 good_enough_points = True
             else:
                 if language_eng:
-                    console.print("\n Narrator: Numbers??? Multiple words??? Separators?! "
-                                  "Not in this game! Repeat, Repeat, Repeeeeat!", )
+                    typewriter("\n Narrator: Numbers??? Multiple words??? Separators?!\n"
+                               "Not in this game! Repeat, Repeat, Repeeeeat!", narrator_talks, no_highlights)
                 else:
-                    console.print("\n Narrator: Zahlen??? Mehrere Wörter??? Trennzeichen?! Nicht in diesem Spiel! "
-                                  "Wiederholen, Wiederholen, Wiederholen!", )
+                    typewriter("\n Narrator: Zahlen??? Mehrere Wörter??? Trennzeichen?! Nicht in diesem Spiel!\n"
+                               "Wiederholen, Wiederholen, Wiederholen!",
+                               narrator_talks, no_highlights)
         else:
             if language_eng:
-                console.print("\n Narrator: Numbers??? Multiple words??? Separators?! Not in this game! "
-                              "Repeat, Repeat, Repeeeeat!", )
+                typewriter("\n Narrator: Numbers??? Multiple words??? Separators?! Not in this game!\n"
+                           "Repeat, Repeat, Repeeeeat!", narrator_talks, no_highlights)
             else:
-                console.print("\n Narrator: Zahlen??? Mehrere Wörter??? Trennzeichen?! Nicht in diesem Spiel! "
-                              "Wiederholen, Wiederholen, Wiederholen!", )
+                typewriter("\n Narrator: Zahlen??? Mehrere Wörter??? Trennzeichen?! Nicht in diesem Spiel!\n"
+                           "Wiederholen, Wiederholen, Wiederholen!", narrator_talks, no_highlights)
     return user_word
 
 

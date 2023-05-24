@@ -47,7 +47,8 @@ executioner_talks = "bold #996633"
 # bool value for highlight
 no_highlights = False
 highlights = True
-
+# standard value for the chance of the random letter chosen in high_dict_strategy_guess
+mistake_probability = 15
 
 # creates the user-input-directory if not existent since GitHub can't track empty folders
 if not os.path.exists(path_to_dict):
@@ -58,7 +59,7 @@ if not os.path.exists(path_to_dict):
 test = "False" if "idlelib.run" in sys.modules else "True"
 if test == "True":
     funcs.clean_window()
-    console.print("Please make sure that game_script\n"
+    funcs.typewriter()("Please make sure that game_script\n"
                   "is run in a terminal and not in an IDLE,\n"
                   "so you can enjoy the colours and are not\n"
                   "subject to spam from the rich module.\n")
@@ -67,7 +68,7 @@ if test == "True":
 
 # Story/Game-Opening ----------------------------
 
-# console.prints the hangman logo
+# funcs.typewriter()s the hangman logo
 funcs.clean_window()
 console.print(text_assets.hangman_art, highlight=False, style="bold red")
 funcs.typewriter("Willkommen zu Galgenmännchen!   Welcome to Hangman!\n", system, no_highlights)
@@ -89,100 +90,190 @@ while in_game_menu:
         funcs.give_separators()
 
         funcs.typewriter("This is the Hangman starting menu\n", narrator_talks, no_highlights)
-        time.sleep(0.5)
-        console.print("\n  1. Start the Game   ")
-        console.print("  2. Manual   ")
-        console.print("  3. Check Dictionary directory  ")
-        console.print("  4. Credits   ")
-        console.print("  5. Quit Game  ")
+        funcs.typewriter("\n  1. Start the Game\n", system, highlights)
+        funcs.typewriter("  2. Manual\n", system, highlights)
+        funcs.typewriter("  3. Check Dictionary directory\n", system, highlights)
+        funcs.typewriter("  4. Credits\n", system, highlights)
+        funcs.typewriter("  5. Options\n", system, highlights)
+        funcs.typewriter("  6. Quit Game\n", system, highlights)
 
         menu_choice = funcs.give_me_a_value_inbetween(0, 5, True, False)
 
         if menu_choice == 1:
             in_game_menu = False
-        if menu_choice == 2:
+        elif menu_choice == 2:
             funcs.give_separators()
-            console.print("Manual:"
-                          "\n")
-            console.print(
+            funcs.typewriter("Manual:"
+                             "\n", narrator_talks, no_highlights)
+            funcs.typewriter(
                 "Hanging man is based on the idea of having to guess a word, from which you only know the number\n"
                 "of letters at first and can only guess a letter at a time. Once you have guessed wrong, it slowly\n"
                 "draws a person being hanged, hence the name. If the word is guessed in under 6 wrong attempts,\n"
                 "the person guessing has won.\n"
-                "  \n")
-            console.print("Once the game starts, you will be given the opportunity to select to either\n"
-                          "challenge the computer with a word or to be challenged with a word yourself.\n"
-                          " \n"
-                          "The word that you can guess, you can select the category of when you decide to play this "
-                          "way.\n"
-                          " \n"
-                          "If you choose to challenge the computer, you will be able to select one of three "
-                          "difficulties.\n"
-                          "    1. Easy mode. The computer guesses letters randomly\n"
-                          "    2. Medium mode (only english) The computer guesses letters from a weighted alphabet.\n"
-                          "    3. Hard mode. The computer guesses letters by using a specific algorithm "
-                          "with a given dictionary.\n"
-                          " \n"
-                          "If you choose to challenge the computer, the game automatically checks if there are any "
-                          "files\n"
-                          "in the game files directory 'user_input_dictionaries'. \n"
-                          " \n"
-                          "If yes, it will ask you if you wish for the computer to use any of these.\n"
-                          " \n"
-                          "Beware: all letters in file will be made lowercase and words sorted. Filename changed.\n"
-                          " \n"
-                          "If no, you will be asked if your word is from one of 20 languages. \n"
-                          "The computer will then use the in-build dictionaries.\n")
+                "  \n", system, no_highlights)
+            funcs.typewriter("Once the game starts, you will be given the opportunity to select to either\n"
+                             "challenge the computer with a word or to be challenged with a word yourself.\n"
+                             " \n"
+                             "The word that you can guess, you can select the category of when you decide to play this "
+                             "way.\n"
+                             " \n"
+                             "If you choose to challenge the computer, you will be able to select one of three "
+                             "difficulties.\n"
+                             "    1. Easy mode. The computer guesses letters randomly\n"
+                             "    2. Medium mode (only english) The computer guesses letters from a weighted alphabet.\n"
+                             "    3. Hard mode. The computer guesses letters by using a specific algorithm "
+                             "with a given dictionary.\n"
+                             " \n"
+                             "If you choose to challenge the computer, the game automatically checks if there are any "
+                             "files\n"
+                             "in the game files directory 'user_input_dictionaries'. \n"
+                             " \n"
+                             "If yes, it will ask you if you wish for the computer to use any of these.\n"
+                             " \n"
+                             "Beware: all letters in file will be made lowercase and words sorted. Filename changed.\n"
+                             " \n"
+                             "If no, you will be asked if your word is from one of 20 languages. \n"
+                             "The computer will then use the in-build dictionaries.\n", system, no_highlights)
             funcs.give_separators()
             # wait for user input
             console.print("--->  ", end="", style="blink bold")
             empty_variable = input("Press Enter to continue...\n")
             funcs.clean_window()
-        if menu_choice == 3:
+        elif menu_choice == 3:
             # display files in directory with for loop
             funcs.typewriter("These are, if any, the files in Dir DICTIONARIES:\n", narrator_talks, no_highlights)
             files_in_DICTIONARIES = funcs.files_in_dir(path_to_dict)
             for file in files_in_DICTIONARIES:
-                console.print(file)
+                funcs.typewriter(file, system, highlights)
             # wait for user input
             console.print("")
             console.print("--->  ", end="", style="blink bold")
             empty_variable = input("Press Enter to continue...\n")
             funcs.clean_window()
-        if menu_choice == 4:
+        elif menu_choice == 4:
             # display the credits
             funcs.give_separators()
-            console.print("Created by Marty Lauterbach as a project for a class in the months of March-June 2023\n"
-                          "See github for extended documentaries.\n"
-                          "Sources for inspiration in the code are to be found with links in the code/github itself.\n"
-                          "Have fun!\n")
+            funcs.typewriter("Created by Marty Lauterbach as a project for a class in the months of March-June 2023\n"
+                             "See github for extended documentaries.\n"
+                             "Sources for inspiration in the code are to be found with links in the code/github itself.\n"
+                             "Have fun!\n", system, no_highlights)
             funcs.give_separators()
             # wait for user input
             console.print("--->  ", end="", style="blink bold")
             empty_variable = input("Press Enter to continue...\n")
             funcs.clean_window()
-        if menu_choice == 5:
+        elif menu_choice == 5:
+            funcs.typewriter("   1. Change the scale of probability for mistakes in the computer\n",
+                             narrator_talks,
+                             highlights)
+            funcs.typewriter("   2. Turn on colour-deficiency mode for better contrast\n",
+                             narrator_talks,
+                             highlights)
+            funcs.typewriter("   3. Go back to the Main Menu\n", narrator_talks, highlights)
+            options_value = funcs.give_me_a_value_inbetween(0, 3, True, False)
+            funcs.clean_window()
+            if options_value == 1:
+                funcs.typewriter("You have chosen to change the scale for mistake:\n",
+                                 narrator_talks, no_highlights)
+                funcs.typewriter(" 1-low chance for mistake\n"
+                                 " 2-semi-low chance for mistake\n"
+                                 " 3-medium chance for mistake\n"
+                                 " 4.-semi-medium chance for mistake\n"
+                                 " 5.-high-chance for mistake\n\n"
+                                 " 6 - Go back to the main menu screen", narrator_talks, highlights)
+                chance_mistake_option = funcs.give_me_a_value_inbetween(0, 6, True, False)
+                funcs.clean_window()
+                if chance_mistake_option == 1:
+                    mistake_probability = 1
+                    funcs.typewriter("Mistake Scale set to low-chance.\n", narrator_talks, no_highlights)
+                    funcs.give_separators()
+                    console.print("--->  ", end="", style="blink bold")
+                    empty_variable = input("Press Enter to continue...\n")
+                    funcs.clean_window()
+                elif chance_mistake_option == 2:
+                    mistake_probability = 10
+                    mistake_probability = 1
+                    funcs.typewriter("Mistake Scale set to semi-low-chance.\n", narrator_talks, no_highlights)
+                    funcs.give_separators()
+                    console.print("--->  ", end="", style="blink bold")
+                    empty_variable = input("Press Enter to continue...\n")
+                    funcs.clean_window()
+                elif chance_mistake_option == 3:
+                    mistake_probability = 15
+                    funcs.typewriter("Mistake Scale set to medium-chance.\n", narrator_talks, no_highlights)
+                    funcs.give_separators()
+                    console.print("--->  ", end="", style="blink bold")
+                    empty_variable = input("Press Enter to continue...\n")
+                    funcs.clean_window()
+                elif chance_mistake_option == 4:
+                    mistake_probability = 30
+                    funcs.typewriter("Mistake Scale set to semi-medium-chance.\n", narrator_talks, no_highlights)
+                    funcs.give_separators()
+                    console.print("--->  ", end="", style="blink bold")
+                    empty_variable = input("Press Enter to continue...\n")
+                    funcs.clean_window()
+                elif chance_mistake_option == 5:
+                    mistake_probability = 50
+                    funcs.typewriter("Mistake Scale set to high-chance.\n", narrator_talks, no_highlights)
+                    funcs.give_separators()
+                    console.print("--->  ", end="", style="blink bold")
+                    empty_variable = input("Press Enter to continue...\n")
+                    funcs.clean_window()
+                elif chance_mistake_option == 6:
+                    funcs.clean_window()
+                    continue
+            elif options_value == 2:
+                funcs.typewriter("Confirm the setting of colour-deficiency-mode:\n"
+                                 "1. Yes \n2. No, back to main menu\n", system, highlights)
+                colour_deficiency_option = funcs.give_me_a_value_inbetween(0, 2, True, False)
+                funcs.clean_window()
+                if colour_deficiency_option == 1:
+                    system = "default"
+                    narrator_talks = "italic"
+                    executioner_talks = "bold"
+                    funcs.typewriter("Colour-deficiency-mode has been set to True", narrator_talks, no_highlights)
+                    funcs.give_separators()
+                    console.print("--->  ", end="", style="blink bold")
+                    empty_variable = input("Press Enter to continue...\n")
+                    funcs.clean_window()
+                elif colour_deficiency_option == 2:
+                    funcs.clean_window()
+                    continue
+            elif options_value == 3:
+                continue
+        elif menu_choice == 6:
+            funcs.clean_window()
             sys.exit()
+        else:
+            funcs.clean_window()
+            continue
 
     else:
         funcs.give_separators()
         funcs.typewriter("Hauptmenü von \"Galgenmännchen : Der Henker und sein Wörterbuch\" \n",
                          narrator_talks, no_highlights)
-        time.sleep(0.5)
-        console.print("\n  1. Starte das Spiel  ")
-        console.print("  2. Anleitung   ")
-        console.print("  3. Zeige das DICTIONARIES (Wörterbuch) Verzeichnis  ")
-        console.print("  4. Credits   ")
-        console.print("  5. Beende das Spiel   ")
+        time.sleep(0)
+        funcs.typewriter("\n  1. Starte das Spiel  \n",
+                         system, highlights)
+        funcs.typewriter("  2. Anleitung   \n",
+                         system, highlights)
+        funcs.typewriter("  3. Zeige das DICTIONARIES (Wörterbuch) Verzeichnis  \n",
+                         system, highlights)
+        funcs.typewriter("  4. Credits\n",
+                         system, highlights)
+        funcs.typewriter("  5. Optionen\n",
+                         system, highlights)
+        funcs.typewriter("  6. Beende das Spiel\n",
+                         system, highlights)
 
         menu_choice = funcs.give_me_a_value_inbetween(0, 5, True, False)
 
         if menu_choice == 1:
             in_game_menu = False
-        if menu_choice == 2:
+        elif menu_choice == 2:
             console.print("")
-            console.print("Anleitung:\n")
-            console.print(
+            funcs.typewriter("\nAnleitung:\n", narrator_talks, no_highlights)
+            funcs.typewriter(
                 "Galgenmännchen basiert auf der Idee, ein Wort erraten zu müssen, \n"
                 "von dem du anfangs nur die Anzahl der Buchstaben kennst \n"
                 "und nur einen Buchstaben auf einmal raten kannst. \n"
@@ -190,7 +281,7 @@ while in_game_menu:
                 "gehängt wird (daher der Name).\n"
                 "Wenn das Wort in weniger als 6 falschen Versuchen geraten wird, \n"
                 "hat die Person, die rät, gewonnen.\n"
-                "\n",
+                "\n"
                 "Sobald das Spiel beginnt, erhältst du die Möglichkeit, \n"
                 "entweder den Computer mit einem von dir geschriebenen Wort herauszufordern \n"
                 "oder selbst mit einem Wort herausgefordert zu werden.\n"
@@ -213,36 +304,117 @@ while in_game_menu:
                 "Dateiname geändert.\n"
                 "\n"
                 "Wenn nein, wirst du gefragt, ob dein Wort eines von 20 Sprachen ist. \n"
-                "Der Computer verwendet dann die integrierten Wörterbücher.\n")
+                "Der Computer verwendet dann die integrierten Wörterbücher.\n",
+                system, highlights)
             funcs.give_separators()
             # wait for user input
             console.print("--->  ", end="", style="blink bold")
             empty_variable = input("Drücke Enter um weiterzufahren...\n")
             funcs.clean_window()
-        if menu_choice == 3:
+        elif menu_choice == 3:
             # display files in directory with for loop
             funcs.typewriter("Dies sind, wenn überhaupt, die Dateien im Dir DICTIONARIES:\n",
                              narrator_talks, no_highlights)
             files_in_DICTIONARIES = funcs.files_in_dir(path_to_dict)
             for file in files_in_DICTIONARIES:
-                console.print(file)
+                funcs.typewriter(file, system, highlights)
             # wait for user input
             console.print("")
             console.print("--->  ", end="", style="blink bold")
             empty_variable = input("Drücke Enter um weiterzufahren...\n")
             funcs.clean_window()
-        if menu_choice == 4:
+        elif menu_choice == 4:
             # display the credits
-            console.print(
+            funcs.typewriter(
                 "Erstellt von Marty Lauterbach als ein Projekt für eine Vorlesung in den Monaten Maerz-Juni 2023\n"
                 "Sehe github für extended documentaries.\n"
                 "Quellen für Inspiration im Code sind als Kommentare im Code selbst zu finden.\n"
-                "Viel Spaß!\n")
+                "Viel Spaß!\n", system, no_highlights)
             # wait for user input
             console.print("--->  ", end="", style="blink bold")
             empty_variable = input("Drücke Enter um weiterzufahren...\n")
             funcs.clean_window()
-        if menu_choice == 5:
+        elif menu_choice == 5:
+            funcs.typewriter("   1. Ändere die Skala der Wahrscheinlichkeit für einen Fehler des Computers\n",
+                             narrator_talks,
+                             highlights)
+            funcs.typewriter("   2. Schalte den Farben-blindheits-Modus ein\n",
+                             narrator_talks,
+                             highlights)
+            funcs.typewriter("   3. Geh zurück ins Hauptmenü\n", narrator_talks, highlights)
+            options_value = funcs.give_me_a_value_inbetween(0, 3, False, False)
+            funcs.clean_window()
+            if options_value == 1:
+                funcs.typewriter("Du hast gewählt, einen neuen Wert auf der Skala auszuwählen:\n",
+                                 narrator_talks, no_highlights)
+                funcs.typewriter(" 1-niedrige Chance eines Fehlers\n"
+                                 " 2-semi-niedrige Chance eines Fehlers\n"
+                                 " 3-mittlere Chance eines Fehlers\n"
+                                 " 4.-semi-mittlere Chance eines Fehlers\n"
+                                 " 5.-hohe Chance eines Fehlers \n\n"
+                                 " 6 - Ich will zurück ins Hauptmenü!", narrator_talks, highlights)
+                chance_mistake_option = funcs.give_me_a_value_inbetween(0, 6, False, False)
+                funcs.clean_window()
+                if chance_mistake_option == 1:
+                    mistake_probability = 1
+                    funcs.typewriter("Fehler-Skala auf niedrig gesetzt.\n", narrator_talks, no_highlights)
+                    funcs.give_separators()
+                    console.print("--->  ", end="", style="blink bold")
+                    empty_variable = input("Drücke Enter um weiterzumachen...\n")
+                    funcs.clean_window()
+                elif chance_mistake_option == 2:
+                    mistake_probability = 10
+                    mistake_probability = 1
+                    funcs.typewriter("Fehler-Skala auf semi-niedrig gesetzt..\n", narrator_talks, no_highlights)
+                    funcs.give_separators()
+                    console.print("--->  ", end="", style="blink bold")
+                    empty_variable = input("Drücke Enter um weiterzumachen...\n")
+                    funcs.clean_window()
+                elif chance_mistake_option == 3:
+                    mistake_probability = 15
+                    funcs.typewriter("Fehler-Skala auf mittleren Wert gesetzt..\n", narrator_talks, no_highlights)
+                    funcs.give_separators()
+                    console.print("--->  ", end="", style="blink bold")
+                    empty_variable = input("Drücke Enter um weiterzumachen...\n")
+                    funcs.clean_window()
+                elif chance_mistake_option == 4:
+                    mistake_probability = 30
+                    funcs.typewriter("Fehler-Skala auf semi-mittleren Wert gesetzt..\n", narrator_talks, no_highlights)
+                    funcs.give_separators()
+                    console.print("--->  ", end="", style="blink bold")
+                    empty_variable = input("Drücke Enter um weiterzumachen...\n")
+                    funcs.clean_window()
+                elif chance_mistake_option == 5:
+                    mistake_probability = 50
+                    funcs.typewriter("Fehler-Skala auf hohen Wert gesetzt.\n", narrator_talks, no_highlights)
+                    funcs.give_separators()
+                    console.print("--->  ", end="", style="blink bold")
+                    empty_variable = input("Drücke Enter um weiterzumachen...\n")
+                    funcs.clean_window()
+                elif chance_mistake_option == 6:
+                    funcs.clean_window()
+                    continue
+            elif options_value == 2:
+                funcs.typewriter("Bestätige die Auswahl des Farbenblindheit-modi:\n"
+                                 "1. Ja \n2. Nein, zurück ins Hauptmenü\n", system, highlights)
+                colour_deficiency_option = funcs.give_me_a_value_inbetween(0, 2, False, False)
+                funcs.clean_window()
+                if colour_deficiency_option == 1:
+                    system = "default"
+                    narrator_talks = "italic"
+                    executioner_talks = "bold"
+                    funcs.typewriter("Farbenblindheit-modi auf Wahr gesetzt", narrator_talks, no_highlights)
+                    funcs.give_separators()
+                    console.print("--->  ", end="", style="blink bold")
+                    empty_variable = input("Drücke Enter um weiterzumachen...\n")
+                    funcs.clean_window()
+                elif colour_deficiency_option == 2:
+                    funcs.clean_window()
+                    continue
+            elif options_value == 3:
+                continue
+        if menu_choice == 6:
+            funcs.clean_window()
             sys.exit()
 
 if is_english:
@@ -255,8 +427,9 @@ if is_english:
                      "\ndo you challenge me or do you challenge yourself?\n", executioner_talks, no_highlights)
 
     # choice inbetween being challenged or challenging
-    console.print("\n1. Tell a word to the Executioner that he has to guess"
-                  "\n2. Be given a word, so you can take guesses and be challenged yourself.\n")
+    funcs.typewriter("\n1. Tell a word to the Executioner that he has to guess"
+                     "\n2. Be given a word, so you can take guesses and be challenged yourself.\n",
+                     system, no_highlights)
 else:
     funcs.typewriter(
         "Du wachst auf und findest einen riesigen, schattenhaften Riesen vor dir stehen,\n"
@@ -269,8 +442,8 @@ else:
                      "indem du mich herausforderst oder dich selbst herausforderst?\n",
                      executioner_talks, no_highlights)
     console.print(" ")
-    console.print("1. Nenne dem Henker ein Wort, das er erraten muss\n"
-                  "2. Erhalte ein Wort, so dass du erraten musst.\n")
+    funcs.typewriter("1. Nenne dem Henker ein Wort, das er erraten muss\n"
+                     "2. Erhalte ein Wort, so dass du erraten musst.\n", system, highlights)
 
 first_choice = funcs.give_me_a_value_inbetween(0, 2, is_english, False)
 
@@ -365,8 +538,8 @@ if first_choice == 2:  # the route of being challenged with a word
         category_german = "deutsche Tiere"
         category = "german animals"
         funcs.give_separators()
-        console.print("\nah.... deutsche Tiere... jaja, guten Tag Herr Osterhase.",
-                      )
+        funcs.typewriter("\nah.... deutsche Tiere... jaja, guten Tag Herr Osterhase.",
+                         narrator_talks, no_highlights)
         funcs.give_separators()
     elif second_choice == 8:
         secret_word = funcs.select_word(text_assets.movies)
@@ -415,7 +588,7 @@ if first_choice == 2:  # the route of being challenged with a word
 
     funcs.clean_window()
     # testing
-    # console.print(secret_word)
+    # funcs.typewriter()(secret_word)
     if is_english:
         funcs.give_separators()
         funcs.typewriter("Narrator: Very well, let it BEGIN!\n", narrator_talks, no_highlights)
@@ -426,7 +599,7 @@ if first_choice == 2:  # the route of being challenged with a word
         funcs.typewriter("Erzähler: Nun gut, möge deine Folter beginnen!", narrator_talks, no_highlights)
         funcs.let_it_begin_art()
         funcs.give_separators()
-    time.sleep(4)
+    time.sleep(0)
     funcs.clean_window()
     # used for controlling who gets to play / which part of the code is used
     who_plays: str = "Player"
@@ -441,12 +614,12 @@ else:  # The route of challenging with a word
                          'Although I could crush you, I want to give you a chance... so I get to play with my prey.\n'
                          'Would you like me to go easier on you?\n', executioner_talks, no_highlights)
 
-        console.print("\n   1. Yes, please. I am still confused!\n"
+        funcs.typewriter("\n   1. Yes, please. I am still confused!\n"
 
-                      "\n   2. I do not want your pity, but I do want a chance. (only english)\n"
+                         "\n   2. I do not want your pity, but I do want a chance. (only english)\n"
 
-                      "\n   3. Give me the best that you got. You will be my prey.\n",
-                      )
+                         "\n   3. Give me the best that you got. You will be my prey.\n",
+                         system, highlights)
         funcs.typewriter("\nSee the manual in the start menu for deep dives into what your selections mean!",
                          narrator_talks, no_highlights)
         funcs.typewriter("\n  1 , 2 or 3  \n", system, highlights)
@@ -462,12 +635,12 @@ else:  # The route of challenging with a word
             "möchte ich dir eine Chance geben... damit es für mich noch Spaß macht...\n",
             executioner_talks, no_highlights)
 
-        console.print("\n    1. Ja, bitte. Ich bin immer noch verwirrt!\n"
+        funcs.typewriter("\n    1. Ja, bitte. Ich bin immer noch verwirrt!\n"
 
-                      "\n    2. Ich möchte dein Mitleid nicht, aber ich möchte eine Chance. (nur englisch)\n"
+                         "\n    2. Ich möchte dein Mitleid nicht, aber ich möchte eine Chance. (nur englisch)\n"
 
-                      "\n    3. Geb mir das Beste was du hast. ICH werde dein Untergang sein.\n",
-                      )
+                         "\n    3. Geb mir das Beste was du hast. ICH werde dein Untergang sein.\n",
+                         system, highlights)
         funcs.typewriter("\nWerf einen Blick in die Anleitung, um zu sehen,\n"
                          "was deine Entscheidungen für Konsequenzen tragen\n",
                          narrator_talks, no_highlights)
@@ -483,33 +656,33 @@ else:  # The route of challenging with a word
 
     if is_english:
         funcs.typewriter("Which language will you write your word in?:\n", narrator_talks, no_highlights)
-        console.print("\n english (1)"
-                      "\n german (2)"
-                      "\n croatian (3)"
-                      "\n czech (4)"
-                      "\n danish (5)"
-                      "\n dutch (6)"
-                      "\n french (7)"
-                      "\n georgian (8)"
-                      "\n italian (9)"
-                      "\n maltese (10"
-                      "\n norwegian (11)"
-                      "\n polish (12)"
-                      "\n portuguese (13)"
-                      "\n serbian (14)"
-                      "\n spanish (15)"
-                      "\n swedish (16)"
-                      "\n turkish (17)"
-                      "\n ukranian (18)"
-                      "\n hebrew (19)"
-                      "\n arabic (20)"
-                      "\n or topical:\n"
-                      " english medical terms (21)\n")
+        funcs.typewriter("\n english (1)"
+                         "\n german (2)"
+                         "\n croatian (3)"
+                         "\n czech (4)"
+                         "\n danish (5)"
+                         "\n dutch (6)"
+                         "\n french (7)"
+                         "\n georgian (8)"
+                         "\n italian (9)"
+                         "\n maltese (10"
+                         "\n norwegian (11)"
+                         "\n polish (12)"
+                         "\n portuguese (13)"
+                         "\n serbian (14)"
+                         "\n spanish (15)"
+                         "\n swedish (16)"
+                         "\n turkish (17)"
+                         "\n ukranian (18)"
+                         "\n hebrew (19)"
+                         "\n arabic (20)"
+                         "\n or topical:\n"
+                         " english medical terms (21)\n", system, highlights)
         funcs.typewriter("Narrator: for more -> add into user_input_dictionaries folder!\n",
                          narrator_talks, no_highlights)
     else:
         funcs.typewriter("In welcher Sprache wirst du dein Wort schreiben?:\n", narrator_talks, no_highlights)
-        console.print(
+        funcs.typewriter(
             "\nEnglisch (1)\n"
             "Deutsch (2)\n"
             "Kroatisch (3)\n"
@@ -531,7 +704,7 @@ else:  # The route of challenging with a word
             "Hebräisch (19)\n"
             "Arabisch (20)\n"
             "\nOder nach Thema:\n"
-            "Englische medizinische Begriffe (21)\n")
+            "Englische medizinische Begriffe (21)\n", system, highlights)
         funcs.typewriter("\nNarrator: für mehr -> füge eine Liste in user_input_dictionaries Ordner ein!\n",
                          narrator_talks, no_highlights)
 
@@ -612,7 +785,7 @@ else:  # The route of challenging with a word
                          narrator_talks, no_highlights)
 
     funcs.give_separators()
-    time.sleep(1)
+    time.sleep(0)
 
     if strategy_value == 3:
         """
@@ -632,11 +805,11 @@ else:  # The route of challenging with a word
             if is_english:
                 funcs.typewriter("Tell me, have you put a dictionary for me into my DICTIONARY box,\n"
                                  "that you would like me to use? \n", executioner_talks, no_highlights)
-                console.print("  1.Yes  2. No \n")
+                funcs.typewriter("  1.Yes  2. No \n", system, highlights)
             else:
                 funcs.typewriter("Sag mir, hast du ein Wörterbuch in meine Wörterbuch-Kiste getan,\n"
                                  "welches du willst, dass ich benutze? \n", executioner_talks, no_highlights)
-                console.print("  1.Ja   2. Nein \n")
+                funcs.typewriter("  1.Ja   2. Nein \n", system, highlights)
 
             value_if_own_dict = funcs.give_me_a_value_inbetween(0, 2, is_english, False)
 
@@ -655,7 +828,7 @@ else:  # The route of challenging with a word
                 zaehler = -1
                 for i in files_in_dir:
                     zaehler = zaehler + 1
-                    console.print(f" {zaehler}  {i} \n")
+                    funcs.typewriter(f" {zaehler}  {i} \n", system, highlights)
 
                 # value for later selection
                 value_which_dictionary = funcs.give_me_a_value_inbetween(-1, own_dictionaries, is_english, False)
@@ -675,7 +848,7 @@ else:  # The route of challenging with a word
         funcs.typewriter("Erzähler: Nun gut, möge deine Folter beginnen.", narrator_talks, no_highlights)
         funcs.let_it_begin_art()
         funcs.give_separators()
-    time.sleep(4)
+    time.sleep(0)
     funcs.clean_window()
 
 # ------------------------------------------------------------
@@ -692,12 +865,12 @@ if who_plays == "Player":
         funcs.typewriter(
             "The letter you wish to guess has {} letter´s... do with this Information what you like.\n".format(
                 len(secret_word)), executioner_talks, no_highlights)
-        time.sleep(1)
+        time.sleep(0)
     else:
         funcs.typewriter(
             "Der gesuchte Buchstabe hat {} Buchstaben... mache mit dieser Information, was du willst.\n".format(
                 len(secret_word)), executioner_talks, no_highlights)
-        time.sleep(1)
+        time.sleep(0)
 
     # so blank spaces and non-letter symbols are automatically guessed and shown
     guessed_letters: list = [" ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "!", ".", "-", "*", "+", "=", "&"]
@@ -725,27 +898,27 @@ if who_plays == "Player":
                     funcs.typewriter("\nDu hast bereits den Buchstaben {} geraten.\n".format(guess),
                                      executioner_talks, no_highlights)
                 funcs.give_separators()
-                time.sleep(1)
+                time.sleep(0)
             else:
                 if is_english:
                     funcs.typewriter(
                         "\nDamn. You have been right! The letter {} is part of the secret word\n".format(guess),
                         executioner_talks, no_highlights)
                     funcs.give_separators()
-                    time.sleep(1)
+                    time.sleep(0)
                     funcs.typewriter(funcs.select_word(text_assets.point_player), executioner_talks, no_highlights)
-                    # console.print(funcs.select_word(text_assets.point_player))
-                    time.sleep(1)
+                    # funcs.typewriter()(funcs.select_word(text_assets.point_player))
+                    time.sleep(0)
                 else:
                     funcs.typewriter(
                         "\nVerdammt. Du hast recht! Der Buchstabe {} ist Teil des geheimen Wortes\n".format(guess),
                         executioner_talks, no_highlights)
                     funcs.give_separators()
-                    time.sleep(1)
+                    time.sleep(0)
                     funcs.typewriter(funcs.select_word(text_assets.point_player_german), executioner_talks,
                                      no_highlights)
-                    # console.print(funcs.select_word(text_assets.point_player))
-                    time.sleep(1)
+                    # funcs.typewriter()(funcs.select_word(text_assets.point_player))
+                    time.sleep(0)
                 guessed_letters += guess
                 only_player_guessed_letters += guess
                 all_used_letters += guess
@@ -755,36 +928,40 @@ if who_plays == "Player":
                                  executioner_talks, no_highlights)
                 time.sleep(0)
                 funcs.typewriter(funcs.select_word(text_assets.point_computer), executioner_talks, no_highlights)
-                # console.print(funcs.select_word(text_assets.point_player))
+                # funcs.typewriter()(funcs.select_word(text_assets.point_player))
             else:
                 funcs.typewriter("\nNein! Der Buchstabe {} ist nicht Teil des geheimen Wortes\n".format(guess),
                                  executioner_talks, no_highlights)
                 funcs.give_separators()
-                time.sleep(1)
+                time.sleep(0)
                 funcs.typewriter(funcs.select_word(text_assets.point_computer_german), executioner_talks,
                                  no_highlights)
-                time.sleep(1)
+                time.sleep(0)
             remaining_attempts -= 1
             all_used_letters += guess
 
-        console.print(funcs.get_hangman_stage(remaining_attempts), highlight=False, style="bold")
+        funcs.typewriter(funcs.get_hangman_stage(remaining_attempts), highlight=False, style="bold")
         funcs.pri_secret_word(secret_word, guessed_letters)
         if is_english:
-            console.print(f"You have already guessed these letters: {all_used_letters}")
-            console.print(f"The word is from the category of [bold]{category}[/bold]")
+            funcs.typewriter(f"You have already guessed these letters: {all_used_letters}", system,
+                             highlights)
+            funcs.typewriter(f"The word is from the category of [bold]{category}[/bold]", system,
+                             highlights)
         else:
-            console.print(f"Du hast bereits diese Buchstaben eingegeben: {all_used_letters}")
-            console.print(f"Das Wort stammt aus der Kategorie [bold]{category}[/bold]")
-        time.sleep(1)
+            funcs.typewriter(f"Du hast bereits diese Buchstaben eingegeben: {all_used_letters}", system,
+                             highlights)
+            funcs.typewriter(f"Das Wort stammt aus der Kategorie [bold]{category}[/bold]", system,
+                             highlights)
+        time.sleep(0)
 
         if is_english:
-            console.print("\nYou can make {} more mistakes... I'd say be careful!\n"
-                          .format(remaining_attempts))
+            funcs.typewriter("\nYou can make {} more mistakes... I'd say be careful!\n"
+                             .format(remaining_attempts), executioner_talks, highlights)
         else:
-            console.print("\nDu hast noch {} Fehler übrig... "
-                          "Ich würde sagen, sei vorsichtig\n".format(remaining_attempts),
-                          )
-        time.sleep(1)
+            funcs.typewriter("\nDu hast noch {} Fehler übrig... "
+                             "Ich würde sagen, sei vorsichtig\n".format(remaining_attempts),
+                             executioner_talks, highlights)
+        time.sleep(0)
 
     if len(only_player_guessed_letters) == length_of_secret_word:
         funcs.games_callout("Player", is_english)
@@ -819,7 +996,7 @@ if who_plays == "NPC":
                 guess = funcs.guess_computer_letters_strategy(is_english, guessed_letters)
             else:
                 guess = funcs.high_strategy_dictionary(solving_dict, guessed_letters, remove_letters,
-                                                       alphabet, is_english)
+                                                       alphabet, is_english, mistake_probability)
 
             # gives out a True or False value which we store in the variable and use in the following if statements
             guess_in_secret_word = funcs.is_guess_in_secret_word(guess, secret_word)
@@ -829,21 +1006,21 @@ if who_plays == "NPC":
                 if guess in guessed_letters:  # meaning the computer has guessed the same thing again
                     # mostly used in case there is a bug somewhere and letters can get chosen more often
                     if is_english:
-                        console.print(
+                        funcs.typewriter(
                             "\nI have already guessed this letter '{}'... fool me and my old mind\n".format(guess),
-                        )
-                        console.print(
+                            executioner_talks, highlights)
+                        funcs.typewriter(
                             "Someone contact the matrix-creator please... I dont feel so good repeating myself.\n",
-                        )
+                            executioner_talks, highlights)
                     else:
-                        console.print("\nIch habe diesen Buchstaben '{}' bereits geraten... "
-                                      "täusche mich nicht und meinen alten Verstand.\n".format(guess),
-                                      )
-                        console.print("Jemand kontaktiere bitte den Matrix-Schöpfer..."
-                                      "Ich fühle mich nicht gut dabei, mich zu wiederholen.\n",
-                                      )
-                    console.print(funcs.get_hangman_stage(remaining_attempts), highlight=False, style="bold",
-                                  )
+                        funcs.typewriter("\nIch habe diesen Buchstaben '{}' bereits geraten... "
+                                         "täusche mich nicht und meinen alten Verstand.\n".format(guess),
+                                         executioner_talks, highlights)
+                        funcs.typewriter("Jemand kontaktiere bitte den Matrix-Schöpfer..."
+                                         "Ich fühle mich nicht gut dabei, mich zu wiederholen.\n",
+                                         executioner_talks, highlights)
+                    funcs.typewriter(funcs.get_hangman_stage(remaining_attempts), highlight=False, style="bold",
+                                     )
                     guessed_letters.append(guess)
                     funcs.pri_secret_word(secret_word, guessed_letters)
 
@@ -855,18 +1032,18 @@ if who_plays == "NPC":
                         time.sleep(0)
                         funcs.typewriter(funcs.select_word(text_assets.point_computer), executioner_talks,
                                          no_highlights)
-                        # console.print(funcs.select_word(text_assets.point_computer))
+                        # funcs.typewriter()(funcs.select_word(text_assets.point_computer))
 
                     else:
-                        console.print("\nIch habe recht gehabt! Der Buchstabe {} ist "
-                                      "Teil deines geheimen Wortes.\n".format(guess))
+                        funcs.typewriter("\nIch habe recht gehabt! Der Buchstabe {} ist "
+                                         "Teil deines geheimen Wortes.\n".format(guess), executioner_talks, highlights)
                         time.sleep(0)
                         funcs.typewriter(funcs.select_word(text_assets.point_computer_german),
                                          executioner_talks, no_highlights)
-                        # console.print(funcs.select_word(text_assets.point_computer_german))
+                        # funcs.typewriter()(funcs.select_word(text_assets.point_computer_german))
 
-                    console.print(funcs.get_hangman_stage(remaining_attempts), highlight=False, style="bold",
-                                  )
+                    funcs.typewriter(funcs.get_hangman_stage(remaining_attempts), highlight=False, style="bold",
+                                     )
                     guessed_letters.append(guess)
                     funcs.pri_secret_word(secret_word, guessed_letters)
                     # creates a list that is used in understanding where a known element is in the secret word
@@ -877,23 +1054,23 @@ if who_plays == "NPC":
 
             else:  # meaning that the letter is not part of the word.
                 if is_english:
-                    console.print("\n Nooooo.... The letter {} is not part of your word...\n".format(guess),
-                                  )
+                    funcs.typewriter("\n Nooooo.... The letter {} is not part of your word...\n".format(guess),
+                                     executioner_talks, highlights)
                     time.sleep(0)
                     funcs.typewriter(funcs.select_word(text_assets.point_player), executioner_talks, no_highlights)
-                    # console.print(funcs.select_word(text_assets.point_player))
+                    # funcs.typewriter()(funcs.select_word(text_assets.point_player))
                 else:
-                    console.print("\n Nein! Der Buchstabe {} ist nicht Teil deines Wortes ...\n".format(guess),
-                                  )
+                    funcs.typewriter("\n Nein! Der Buchstabe {} ist nicht Teil deines Wortes ...\n".format(guess),
+                                     executioner_talks, highlights)
                     time.sleep(0)
                     funcs.typewriter(funcs.select_word(text_assets.point_player_german), executioner_talks,
                                      no_highlights)
-                    # console.print(funcs.select_word(text_assets.point_player))
+                    # funcs.typewriter()(funcs.select_word(text_assets.point_player))
                 remaining_attempts -= 1
                 remove_letters.append(guess)
                 sliced_dict = funcs.thinner_the_sliced_dict(sliced_dict, solving_dict, remove_letters)
-                console.print(funcs.get_hangman_stage(remaining_attempts), highlight=False, style="bold",
-                              )
+                funcs.typewriter(funcs.get_hangman_stage(remaining_attempts), highlight=False, style="bold",
+                                 )
                 funcs.pri_secret_word(secret_word, guessed_letters)
 
             # prevents duplicates in the guessed letters list,
@@ -905,26 +1082,30 @@ if who_plays == "NPC":
                 # the player, so that the computer doesn't run through the skript too quickly.
                 # In case, the user likes to read the canon of the Executioner.
                 if is_english:
-                    console.print("\n I have another {} attempts to go.\n".format(remaining_attempts))
-                    time.sleep(1)
+                    funcs.typewriter("\n I have another {} attempts to go.\n".format(remaining_attempts),
+                                     executioner_talks, highlights)
+                    time.sleep(0)
                     console.print("--->  ", end="", style="blink bold")
                     input("Press Enter to continue...")
                     funcs.clean_window()
                 else:
-                    console.print("\n Ich habe noch {} Versuche übrig.\n".format(remaining_attempts))
-                    time.sleep(1)
+                    funcs.typewriter("\n Ich habe noch {} Versuche übrig.\n".format(remaining_attempts),
+                                     executioner_talks, highlights)
+                    time.sleep(0)
                     console.print("--->  ", end="", style="blink bold")
                     input("Drücke Enter, um fortzufahren...")
                     funcs.clean_window()
             else:
                 if is_english:
-                    console.print(
+                    funcs.typewriter(
                         "Jeff, with last breath: Why....Please... u should have used a harder woooooordddd.....",
+                        system, no_highlights
                     )
                 else:
-                    console.print("Jeff, mit seinem letzten Atemzug:\n"
-                                  " Warum... Bitte... du hättest... besser ein Wörterbuch selbst nutzen sollen...",
-                                  )
+                    funcs.typewriter("Jeff, mit seinem letzten Atemzug:\n"
+                                     " Warum... Bitte... du hättest... besser ein Wörterbuch selbst nutzen sollen...",
+                                     system, no_highlights
+                                     )
                 time.sleep(0)
 
     else:
@@ -943,13 +1124,13 @@ if who_plays == "NPC":
             if guess_in_secret_word:
                 if guess in guessed_letters:
                     if is_english:
-                        console.print(
+                        funcs.typewriter(
                             "\nI have already guessed this letter '{}'... fool me and my old mind\n".format(guess),
-                        )
+                            executioner_talks, highlights)
                     else:
-                        console.print("\nIch habe diesen Buchstaben '{}' bereits geraten... "
-                                      "täusche mich nicht und meinen alten Verstand.\n".format(guess),
-                                      )
+                        funcs.typewriter("\nIch habe diesen Buchstaben '{}' bereits geraten... "
+                                         "täusche mich nicht und meinen alten Verstand.\n".format(guess),
+                                         executioner_talks, highlights)
                 else:
                     if is_english:
                         funcs.typewriter(
@@ -957,14 +1138,14 @@ if who_plays == "NPC":
                             executioner_talks, no_highlights)
                         funcs.typewriter(funcs.select_word(text_assets.point_computer), executioner_talks,
                                          no_highlights)
-                        # console.print(funcs.select_word(text_assets.point_computer))
+                        # funcs.typewriter()(funcs.select_word(text_assets.point_computer))
                     else:
                         funcs.typewriter("\nIch habe recht gehabt! Der Buchstabe {} ist "
                                          "Teil deines geheimen Wortes.\n".format(guess),
                                          executioner_talks, no_highlights)
                         funcs.typewriter(funcs.select_word(text_assets.point_computer_german),
                                          executioner_talks, no_highlights)
-                        # console.print(funcs.select_word(text_assets.point_computer))
+                        # funcs.typewriter()(funcs.select_word(text_assets.point_computer))
                     guessed_letters += guess
             else:
                 if is_english:
@@ -972,18 +1153,18 @@ if who_plays == "NPC":
                                      executioner_talks, no_highlights)
                     time.sleep(0)
                     funcs.typewriter(funcs.select_word(text_assets.point_player), executioner_talks, no_highlights)
-                    # console.print(funcs.select_word(text_assets.point_player))
+                    # funcs.typewriter()(funcs.select_word(text_assets.point_player))
                 else:
                     funcs.typewriter("\n Nein! Der Buchstabe {} ist nicht Teil deines Wortes ...\n".format(guess),
                                      executioner_talks, no_highlights)
                     funcs.typewriter(funcs.select_word(text_assets.point_player_german), executioner_talks,
                                      no_highlights)
-                    # console.print(funcs.select_word(text_assets.point_player)
+                    # funcs.typewriter()(funcs.select_word(text_assets.point_player)
                     #            )
                 remaining_attempts -= 1
 
-            console.print(funcs.get_hangman_stage(remaining_attempts), highlight=False, style="bold",
-                          )
+            funcs.typewriter(funcs.get_hangman_stage(remaining_attempts), highlight=False, style="bold",
+                             )
 
             funcs.pri_secret_word(secret_word, guessed_letters)
 
