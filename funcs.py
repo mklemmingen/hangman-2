@@ -24,7 +24,7 @@ def typewriter(text, style: str, highlight: bool):
     """
     Function to print output with typewriter effect.
     This will print all the elements of the string one by one at a certain rate of an element per second.
-    Uses a rich console print statement with console.print().
+    It uses a rich console print statement with console.print().
 
     FORK from pywriter, licence MIT, rights to: Jesse Amarquaye, package: pywrite
     https://github.com/amarquaye/pywriter/blob/master/pywriter/__init__.py
