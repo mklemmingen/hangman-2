@@ -43,10 +43,12 @@ If you have any tips and tricks on how to improve the code, feel free to message
 
 Dependencies
 ```python
+# iibuilt in py>3
 import random
 import time
 import sys
 import os
+# needs to be gathered - use IDLE package manager, pip or else.
 import rich
 ```
 
@@ -73,6 +75,8 @@ COMPLETED:
   - typewriter effect
   - implemented rich for nice looking colours, bold, blink and italic formatting. Hangman - now in Colour!
   - added good documentation for the functions
+  - added colourblind mode
+  - added choosable scale in probability for mistake in the computer
 
 EXCLUDED AND TERMINATED:
   - Game Interface
