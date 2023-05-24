@@ -593,13 +593,14 @@ if first_choice == 2:  # the route of being challenged with a word
         funcs.give_separators()
         funcs.typewriter("Narrator: Very well, let it BEGIN!\n", narrator_talks, no_highlights)
         funcs.let_it_begin_art()
-        funcs.give_separators()
     else:
         funcs.give_separators()
         funcs.typewriter("Erzähler: Nun gut, möge deine Folter beginnen!", narrator_talks, no_highlights)
         funcs.let_it_begin_art()
-        funcs.give_separators()
     time.sleep(0)
+    funcs.typewriter("\n1---------------------------------------------\n"
+                     "2---------------------------------------------\n"
+                     "3---------------------------------------------\n", system, no_highlights)
     funcs.clean_window()
     # used for controlling who gets to play / which part of the code is used
     who_plays: str = "Player"
@@ -620,7 +621,7 @@ else:  # The route of challenging with a word
 
                          "\n   3. Give me the best that you got. You will be my prey.\n",
                          system, highlights)
-        funcs.typewriter("\nSee the manual in the start menu for deep dives into what your selections mean!",
+        funcs.typewriter("\nSee the manual in the start menu for deep dives into what your selections mean!\n",
                          narrator_talks, no_highlights)
         funcs.typewriter("\n  1 , 2 or 3  \n", system, highlights)
     else:
@@ -842,13 +843,13 @@ else:  # The route of challenging with a word
         funcs.give_separators()
         funcs.typewriter("Narrator: Very well, let it BEGIN!", narrator_talks, no_highlights)
         funcs.let_it_begin_art()
-        funcs.give_separators()
     else:
         funcs.give_separators()
         funcs.typewriter("Erzähler: Nun gut, möge deine Folter beginnen.", narrator_talks, no_highlights)
         funcs.let_it_begin_art()
-        funcs.give_separators()
-    time.sleep(0)
+    funcs.typewriter("\n1---------------------------------------------\n"
+                     "2---------------------------------------------\n"
+                     "3---------------------------------------------\n", system, no_highlights)
     funcs.clean_window()
 
 # ------------------------------------------------------------
