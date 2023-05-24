@@ -429,7 +429,7 @@ if is_english:
     # choice inbetween being challenged or challenging
     funcs.typewriter("\n1. Tell a word to the Executioner that he has to guess"
                      "\n2. Be given a word, so you can take guesses and be challenged yourself.\n",
-                     system, no_highlights)
+                     system, highlights)
 else:
     funcs.typewriter(
         "Du wachst auf und findest einen riesigen, schattenhaften Riesen vor dir stehen,\n"
@@ -1055,13 +1055,13 @@ if who_plays == "NPC":
 
             else:  # meaning that the letter is not part of the word.
                 if is_english:
-                    funcs.typewriter("\n Nooooo.... The letter {} is not part of your word...\n".format(guess),
+                    funcs.typewriter("\n Nooooo.... The letter {} is not part of your word...\n\n".format(guess),
                                      executioner_talks, highlights)
                     time.sleep(0)
                     funcs.typewriter(funcs.select_word(text_assets.point_player), executioner_talks, no_highlights)
                     # funcs.typewriter()(funcs.select_word(text_assets.point_player))
                 else:
-                    funcs.typewriter("\n Nein! Der Buchstabe {} ist nicht Teil deines Wortes ...\n".format(guess),
+                    funcs.typewriter("\n Nein! Der Buchstabe {} ist nicht Teil deines Wortes ...\n\n".format(guess),
                                      executioner_talks, highlights)
                     time.sleep(0)
                     funcs.typewriter(funcs.select_word(text_assets.point_player_german), executioner_talks,
@@ -1086,14 +1086,16 @@ if who_plays == "NPC":
                     funcs.typewriter("\n I have another {} attempts to go.\n".format(remaining_attempts),
                                      executioner_talks, highlights)
                     time.sleep(0)
-                    console.print("--->  ", end="", style="blink bold")
+                    funcs.give_separators()
+                    console.print("\n--->  ", end="", style="blink bold")
                     input("Press Enter to continue...")
                     funcs.clean_window()
                 else:
                     funcs.typewriter("\n Ich habe noch {} Versuche übrig.\n".format(remaining_attempts),
                                      executioner_talks, highlights)
                     time.sleep(0)
-                    console.print("--->  ", end="", style="blink bold")
+                    funcs.give_separators()
+                    console.print("\n--->  ", end="", style="blink bold")
                     input("Drücke Enter, um fortzufahren...")
                     funcs.clean_window()
             else:
@@ -1150,13 +1152,13 @@ if who_plays == "NPC":
                     guessed_letters += guess
             else:
                 if is_english:
-                    funcs.typewriter("\n Nooooo.... The letter {} is not part of your word...\n".format(guess),
+                    funcs.typewriter("\n Nooooo.... The letter {} is not part of your word...\n\n".format(guess),
                                      executioner_talks, no_highlights)
                     time.sleep(0)
                     funcs.typewriter(funcs.select_word(text_assets.point_player), executioner_talks, no_highlights)
                     # funcs.typewriter()(funcs.select_word(text_assets.point_player))
                 else:
-                    funcs.typewriter("\n Nein! Der Buchstabe {} ist nicht Teil deines Wortes ...\n".format(guess),
+                    funcs.typewriter("\n Nein! Der Buchstabe {} ist nicht Teil deines Wortes ...\n\n".format(guess),
                                      executioner_talks, no_highlights)
                     funcs.typewriter(funcs.select_word(text_assets.point_player_german), executioner_talks,
                                      no_highlights)
@@ -1176,13 +1178,15 @@ if who_plays == "NPC":
                 if is_english:
                     funcs.typewriter("\n I have another {} attempts to go.\n".format(remaining_attempts),
                                      executioner_talks, no_highlights)
-                    console.print("--->  ", end="", style="blink bold")
+                    funcs.give_separators()
+                    console.print("\n--->  ", end="", style="blink bold")
                     input("Press Enter to continue...")
                     funcs.clean_window()
                 else:
                     funcs.typewriter("\n Ich habe noch {} Versuche übrig.\n".format(remaining_attempts),
                                      executioner_talks, no_highlights)
-                    console.print("--->  ", end="", style="blink bold")
+                    funcs.give_separators()
+                    console.print("\n--->  ", end="", style="blink bold")
                     input("Drücke Enter, um fortzufahren...")
                     funcs.clean_window()
 
