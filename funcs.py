@@ -26,13 +26,13 @@ def typewriter(text, style: str, highlight: bool):
     This will print all the elements of the string one by one at a certain rate of an element per second.
     It uses a rich console print statement with console.print().
 
-    FORK from pywriter, licence MIT, rights to: Jesse Amarquaye, package: pywrite
+    modified FORK from pywriter, licence MIT, rights to: Jesse Amarquaye, package: pywrite
     https://github.com/amarquaye/pywriter/blob/master/pywriter/__init__.py
 
-    :param text:
-    :param style:
-    :param highlight:
-    :return:
+    :param text: The data you would like to print
+    :param style: style parameters, see rich documnetation
+    :param highlight: Bool Value if it should be auto-highlighted
+    :return: output of a stylized text to the rich console
     """
     rate: float = 0.02
 
@@ -45,8 +45,8 @@ def typewriter(text, style: str, highlight: bool):
 # some rules for certain words that should be treated specifically in rich
 def give_separators():
     """
-    prints out separators
-    :return:
+    prints out mutliple separators.
+    :return: output of some - symbols to the rich console.
     """
     console.print("\n-----------------------------------------------------------------------\n", style="#739900",
                   )
@@ -56,7 +56,7 @@ def clean_window():
     """
     removes all text from the console window
     similar to os.system("clear")
-    :return:
+    :return: a clear console window and some empty lines to make the game look better
     """
     console.clear()
     console.print("\n\n")
@@ -68,19 +68,19 @@ def clean_window():
 def select_word(func_words: list) -> str:
     """
     function to select a string from a list.
-    it uses the random module to help with the random word pick
-    :param func_words:
-    :return:
+    it uses the random module to help with the random word pick.
+    :param func_words: list of elements/strings, one gets selected.
+    :return: element as string.
     """
     return random.choice(func_words)
 
 
-def select_word_guess(func_words: list) -> str:
+def select_word_lower(func_words: list) -> str:
     """
     function to select a string from a list.
-    it uses the random module to help with the random word pick
-    :param func_words:
-    :return:
+    it uses the random module to help with the random word pick.
+    :param func_words: list of elements/strings, one gets selected.
+    :return: element as all lower-letter string.
     """
     return random.choice(func_words).lower()
 
@@ -206,7 +206,7 @@ def guess_computer_letter(language_eng: bool, alphabet: list) -> str:
     :param alphabet:
     :return:
     """
-    in_func_guess: str = select_word_guess(alphabet)
+    in_func_guess: str = select_word_lower(alphabet)
     if language_eng:
         typewriter("\n*The Executioner looks into the distance... thinking hard...*",
                    narrator_talks, no_highlights
@@ -339,7 +339,7 @@ def high_strategy_dictionary(pydict: dict, gues_let: list, rem_let: list, alphab
     highest_value_elem_unchosen: str = max(length_dict, key=length_dict.get)
 
     # simulate mistakes, so the computer isn't too good and acts different with the same word each time
-    random_letter = select_word_guess(alphabet)
+    random_letter = select_word_lower(alphabet)
     # creates a list out of a random alphabetic letter and the highest_value_element
     probability_bowl: list = [random_letter, highest_value_elem_unchosen]
 
@@ -947,11 +947,11 @@ def games_callout(who_won: str, language_eng: bool):
             typewriter("Narrator: Wow! You have actually managed to win! good job you!\n", narrator_talks,
                        no_highlights)
         else:
-            console.print("Narrator: Wow! Du hast es tatsächlich geschafft zu gewinnen! Gut gemacht!\n", narrator_talks,
-                          no_highlights)
-        console.print("", )
-        console.print(text_assets.player_art_win, highlight=False, style="bold #2b8716")
-        console.print("", )
+            typewriter("\nNarrator: Wow! Du hast es tatsächlich geschafft zu gewinnen! Gut gemacht!\n",
+                       narrator_talks, no_highlights)
+        console.print("")
+        console.print(text_assets.player_art_win, highlight=False, style="bold #fc3205")
+        console.print("")
         give_separators()
 
 

@@ -71,7 +71,7 @@ if test == "True":
 funcs.clean_window()
 console.print(text_assets.hangman_art, highlight=False, style="bold red")
 funcs.typewriter("Willkommen zu Galgenmännchen!   Welcome to Hangman!\n", system, no_highlights)
-funcs.typewriter("Choose your language / Wähle deine Sprache:\n", system, no_highlights)
+funcs.typewriter("Choose your interface language / Wähle deine Interface Sprache:\n", system, no_highlights)
 funcs.typewriter("\n1. English/Englisch        "
                  "\n2. German/Deutsch          ", system, highlights)
 
@@ -125,13 +125,13 @@ while in_game_menu:
                           " \n"
                           "If you choose to challenge the computer, the game automatically checks if there are any "
                           "files\n"
-                          "in the game files directory 'DICTIONARIES'. \n"
+                          "in the game files directory 'user_input_dictionaries'. \n"
                           " \n"
                           "If yes, it will ask you if you wish for the computer to use any of these.\n"
                           " \n"
                           "Beware: all letters in file will be made lowercase and words sorted. Filename changed.\n"
                           " \n"
-                          "If no, you will be asked if your word is from either english or german. \n"
+                          "If no, you will be asked if your word is from one of 20 languages. \n"
                           "The computer will then use the in-build dictionaries.\n")
             funcs.give_separators()
             # wait for user input
@@ -183,35 +183,36 @@ while in_game_menu:
             console.print("")
             console.print("Anleitung:\n")
             console.print(
-                "Galgenmännchen basiert auf der Idee, ein Wort erraten zu müssen, von dem du anfangs nur die Anzahl\n"
-                "der Buchstaben kennst und nur einen Buchstaben auf einmal raten kannst. \n"
+                "Galgenmännchen basiert auf der Idee, ein Wort erraten zu müssen, \n"
+                "von dem du anfangs nur die Anzahl der Buchstaben kennst \n"
+                "und nur einen Buchstaben auf einmal raten kannst. \n"
                 "Sobald du falsch geraten hast, wird langsam das Bild gemalt, wie eine Person"
-                " gehängt wird (daher der Name).\n"
-                "Wenn das Wort in weniger als 6 falschen Versuchen geraten wird, hat die Person, die rät, gewonnen.\n"
+                "gehängt wird (daher der Name).\n"
+                "Wenn das Wort in weniger als 6 falschen Versuchen geraten wird, \n"
+                "hat die Person, die rät, gewonnen.\n"
                 "\n",
-                "Sobald das Spiel beginnt, erhältst du die Möglichkeit, entweder\n"
-                "den Computer mit einem Wort herauszufordern oder selbst mit einem Wort herausgefordert zu "
-                "werden.\n"
+                "Sobald das Spiel beginnt, erhältst du die Möglichkeit, \n"
+                "entweder den Computer mit einem von dir geschriebenen Wort herauszufordern \n"
+                "oder selbst mit einem Wort herausgefordert zu werden.\n"
                 " \n"
                 "Das Wort, das du erraten kannst, kannst du durch seine Kategorie auswählen.\n"
                 " \n"
-                "Wenn du dich dafür entscheidest, den Computer herauszufordern, kannst du "
-                "eine von drei Schwierigkeiten auswählen.\n"
+                "Wenn du dich dafür entscheidest, den Computer herauszufordern, \n "
+                "kannst du eine von drei Schwierigkeiten auswählen.\n"
                 "   1. Einfacher Modus. Der Computer wählt Buchstaben zufällig aus.\n"
                 "   2. Mittlerer Modus. Der Computer wählt Buchstaben aus einem gewichteten Alphabet aus.\n"
-                "   3. Schwerer Modus. Der Computer wählt Buchstaben anhand eines spezifischen Algorithmus "
-                "mit einem gegebenen Wörterbuch aus.\n"
+                "   3. Schwerer Modus. Der Computer wählt Buchstaben anhand eines spezifischen Algorithmus\n "
+                "      mit einem gegebenen Wörterbuch aus.\n"
                 " \n"
                 "Wenn du dich dafür entscheidest, den Computer herauszufordern, überprüft das Spiel "
-                "automatisch,"
-                "ob es Dateien im Spielordner 'DICTIONARIES' gibt. \n"
+                "automatisch, ob es Dateien im Spielordner 'user-input-dictionaries' gibt. \n"
                 "Wenn ja, wird es dich fragen, ob du möchtest, dass der Computer eine davon verwendet.\n"
                 "\n"
-                "     Achtung: Alle Buchstaben in der ausgewählten Datei werden in Kleinbuchstaben "
-                "umgewandelt und Wörter sortiert.\n "
-                "              Dateiname geändert.\n"
+                "Achtung: Alle Buchstaben in der ausgewählten Datei werden\n"
+                "in Kleinbuchstaben umgewandelt und Wörter sortiert.\n "
+                "Dateiname geändert.\n"
                 "\n"
-                "Wenn nein, wirst du gefragt, ob dein Wort entweder Englisch oder Deutsch ist. \n"
+                "Wenn nein, wirst du gefragt, ob dein Wort eines von 20 Sprachen ist. \n"
                 "Der Computer verwendet dann die integrierten Wörterbücher.\n")
             funcs.give_separators()
             # wait for user input
@@ -250,7 +251,7 @@ if is_english:
                      "\nHe points to a sad, small and thin man in chains, tied to a high beam.\n",
                      narrator_talks, no_highlights)
     funcs.typewriter("\nThe Executioner: Harharhar. Welcome to my wicked game.\n", executioner_talks, no_highlights)
-    funcs.typewriter("Tell me, you dwarf wrangler, to safe this unspoiled being, "
+    funcs.typewriter("Tell me, you bug-finder, to safe this unspoiled being, "
                      "\ndo you challenge me or do you challenge yourself?\n", executioner_talks, no_highlights)
 
     # choice inbetween being challenged or challenging
@@ -258,12 +259,13 @@ if is_english:
                   "\n2. Be given a word, so you can take guesses and be challenged yourself.\n")
 else:
     funcs.typewriter(
-        "Du wachst auf und findest einen riesigen, schattenhaften Riesen vor dir stehen, der über dir aufragt.\n"
-        "Er zeigt auf einen traurigen, kleinen und dünnen Mann in Ketten, "
+        "Du wachst auf und findest einen riesigen, schattenhaften Riesen vor dir stehen,\n"
+        "der über dir aufragt.\n"
+        "Er zeigt auf einen traurigen, kleinen und dünnen Mann in Ketten, \n"
         "der an einem hohen Balken festgebunden ist.\n",
         narrator_talks, no_highlights)
     funcs.typewriter("\nDer Henker: Harharhar. Willkommen in meinem verzwickten Spiel.\n"
-                     "Sag mir, du Zwerganfänger, willst du dieses unschuldige Wesen retten, \n"
+                     "Sag mir, du Käferfänger, willst du dieses unschuldige Wesen retten, \n"
                      "indem du mich herausforderst oder dich selbst herausforderst?\n",
                      executioner_talks, no_highlights)
     console.print(" ")
@@ -454,9 +456,11 @@ else:  # The route of challenging with a word
         funcs.give_separators()
 
         funcs.typewriter(
-            "\nIch werde mein unendlich endliches Wissen gegen dich verwenden, um dein Untergang hervorzurufen.\n"
-            "Obwohl ich dich zerstören könnte mit dem Schnipse meines Fingers, möchte ich dir eine Chance geben...\n"
-            "... damit es für mich noch Spaß macht...\n", executioner_talks, no_highlights)
+            "\nIch werde mein unendlich endliches Wissen gegen dich verwenden,\n"
+            "um dein Untergang hervorzurufen.\n"
+            "Obwohl ich dich zerstören könnte mit dem Schnipse meines Fingers,\n"
+            "möchte ich dir eine Chance geben... damit es für mich noch Spaß macht...\n",
+            executioner_talks, no_highlights)
 
         console.print("\n    1. Ja, bitte. Ich bin immer noch verwirrt!\n"
 
@@ -464,8 +468,8 @@ else:  # The route of challenging with a word
 
                       "\n    3. Geb mir das Beste was du hast. ICH werde dein Untergang sein.\n",
                       )
-        funcs.typewriter("\nWerf einen Blick in die Anleitung, um zu sehen, was deine Entscheidungen für Konsequenzen"
-                         "tragen\n",
+        funcs.typewriter("\nWerf einen Blick in die Anleitung, um zu sehen,\n"
+                         "was deine Entscheidungen für Konsequenzen tragen\n",
                          narrator_talks, no_highlights)
         funcs.typewriter("1, 2 oder 3", system, highlights)
 
@@ -857,7 +861,8 @@ if who_plays == "NPC":
                         console.print("\nIch habe recht gehabt! Der Buchstabe {} ist "
                                       "Teil deines geheimen Wortes.\n".format(guess))
                         time.sleep(0)
-                        funcs.typewriter(text_assets.point_computer_german, executioner_talks, no_highlights)
+                        funcs.typewriter(funcs.select_word(text_assets.point_computer_german),
+                                         executioner_talks, no_highlights)
                         # console.print(funcs.select_word(text_assets.point_computer_german))
 
                     console.print(funcs.get_hangman_stage(remaining_attempts), highlight=False, style="bold",
@@ -1019,8 +1024,8 @@ else:
 
     funcs.give_separators()
     console.print("--->  ", end="", style="blink bold")
-    funcs.typewriter(f"Erzähler: Lass uns das Spiel hier beenden. Drücke Enter um zu beenden. Spiel gerne erneut, indem"
-                     f"du die Datei erneut laufen lässt!",
+    funcs.typewriter(f"Erzähler: Lass uns das Spiel hier beenden. Drücke Enter um zu beenden.\n"
+                     f" Spiel gerne erneut, indem du die Datei erneut laufen lässt!",
                      narrator_talks, no_highlights)
 input()
 sys.exit(0)
