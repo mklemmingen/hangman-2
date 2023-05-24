@@ -587,7 +587,7 @@ def slice_dict(language: str, language_eng: bool, secret_word: str, value_if_own
         # open files to my_dict depending on language in hard_mode_lang
         change_me = True
         in_built = True
-        long_list_of_sorted: list = []
+        long_list_of_sorted = []
         if language == "croatian":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/croatian.txt", "r")
         elif language == "german":
