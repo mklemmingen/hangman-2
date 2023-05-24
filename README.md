@@ -70,12 +70,15 @@ COMPLETED:
   - Fixes of german
   - add the possibility for mistake into the computer guessing, so that the player always has a chance and doesnt have to resort to using ultra-long words,
     and so there is replayability
+  - typewriter effect
+  - implemented rich for nice looking colours, bold, blink and italic formatting. Hangman - now in Colour!
+  - added good documentation for the functions
 
 EXCLUDED AND TERMINATED:
   - Game Interface
-      - using pygame and pygame_gui.
+      - using pygame and pygame_gui, or pysimplegui, or renpy... 
       - after laying out the UI, the script has proven too complicated for easy beginner implimentation. Classes and threading needed.
-      -> interface-idea thrown out. now focus on making the game run smoothly and pretty through "rich" in a terminal. 
+      -> interface-idea thrown out. instead used rich for a nice and efficient terminal layout without any bugs!
 
 
 ## DICTIONARY SOURCES:
