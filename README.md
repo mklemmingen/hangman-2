@@ -20,7 +20,7 @@ into the user_input_dictionaries folder. You can then choose it in game the next
 
   - easy: simply chooses a random letter of the alphabet and acts as if its a toddler who just gained colour sight
   
-  - medium: knows which letters of the alphabet are most used and weights them more than others in his random decision making.
+  - medium: hard mode but with a higher chance for mistakes if not changed prior in the option menus mistake scale.
   
   - hard: here is where the fun begins:
   
