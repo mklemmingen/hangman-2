@@ -1,6 +1,7 @@
 # hangman 2 - the dictionaries strike back
 
 terminal-optimised hanging man game. simply clone and python run the game_script to start.
+
 (best played in a 90x40 terminal)
 
 It supports both english and german in the UI and many more languages through language/dictionary selection [see manual in game]
@@ -14,6 +15,8 @@ Decisions are made by typing in one of the displayed numbers or by input of word
 
 If you want the computer to use another wordlist for guessing your words, simply put one of the dictonaries
 into the user_input_dictionaries folder. You can then choose it in game the next time you start it.
+
+supports a colourblind-mode, set to True in the Options Menu.
 
 ### You either play yourself and try to solve a secret word, or you can challenge the villain with a word you can individually give him.
 ### The user can select 3 difficulty options.
