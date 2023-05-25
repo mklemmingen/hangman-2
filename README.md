@@ -1,7 +1,7 @@
 # hangman 2 - the dictionaries strike back
 
-terminal-optimised hanging man game. simply clone and python run the game_script to start the game.
-(best played in a 90x30 terminal)
+terminal-optimised hanging man game. simply clone and python run the game_script to start.
+(best played in a 120x30 terminal)
 
 It supports both english and german in the UI and many more languages through language/dictionary selection [see manual in game]
   - supported languages: english, german, ukranian, arabic, croatian, czech, danish, french, 
@@ -43,10 +43,12 @@ If you have any tips and tricks on how to improve the code, feel free to message
 
 Dependencies
 ```python
+# iibuilt in py>3
 import random
 import time
 import sys
 import os
+# needs to be gathered - use IDLE package manager, pip or else.
 import rich
 ```
 
@@ -73,6 +75,8 @@ COMPLETED:
   - typewriter effect
   - implemented rich for nice looking colours, bold, blink and italic formatting. Hangman - now in Colour!
   - added good documentation for the functions
+  - added colourblind mode
+  - added choosable scale in probability for mistake in the computer
 
 EXCLUDED AND TERMINATED:
   - Game Interface
