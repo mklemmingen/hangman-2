@@ -994,7 +994,7 @@ if who_plays == "NPC":
             # computer takes a guess based on the highest amount of an element it found in solving_dict
             # if sliced_dict empty, meaning no known words fit parameters of secret word, use medium strategy
             if len(sliced_dict) == 0:
-                guess = funcs.guess_computer_letter(is_english, guessed_letters)
+                guess = funcs.guess_computer_letter(is_english, alphabet)
             else:
                 guess = funcs.high_strategy_dictionary(solving_dict, guessed_letters, remove_letters,
                                                        alphabet, is_english, mistake_probability)
