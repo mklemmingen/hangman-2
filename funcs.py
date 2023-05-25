@@ -565,7 +565,7 @@ def slice_dict(language: str, language_eng: bool, secret_word: str, value_if_own
     :param value_which_dictionary:
     :return:
     """
-    global my_dict, chosen_file, full_dict, in_built, output_in_func_dict, long_list_of_sorted
+    global my_dict, chosen_file, full_dict, in_built, output_in_func_dict, pre_sorted
 
     length_of_secret_word = len(secret_word)
 
@@ -595,48 +595,65 @@ def slice_dict(language: str, language_eng: bool, secret_word: str, value_if_own
         # open files to my_dict depending on language in hard_mode_lang
         change_me = True
         in_built = True
-        long_list_of_sorted = []
+        pre_sorted = False
         if language == "croatian":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/croatian.txt", "r")
+            pre_sorted = True
         elif language == "german":
-            long_list_of_sorted.append("german")
             my_dict = my_dict = open(f"DICTIONARIES/in-build-dictionaries/german.txt", "r")
         elif language == "czech":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/czech.txt", "r")
+            pre_sorted = True
         elif language == "danish":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/danish.txt", "r")
+            pre_sorted = True
         elif language == "dutch":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/dutch.txt", "r")
+            pre_sorted = True
         elif language == "french":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/french.txt", "r")
+            pre_sorted = True
         elif language == "georgian":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/georgian.txt", "r")
+            pre_sorted = True
         elif language == "italian":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/italian.txt", "r")
+            pre_sorted = True
         elif language == "maltese":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/maltese_words.txt", "r")
+            pre_sorted = True
         elif language == "norwegian":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/norwegian.txt", "r")
+            pre_sorted = True
         elif language == "polish":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/polish.txt", "r")
+            pre_sorted = True
         elif language == "portuguese":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/portuguese.txt", "r")
+            pre_sorted = True
         elif language == "serbian":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/serbian.txt", "r")
+            pre_sorted = True
         elif language == "spanish":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/spanish.txt", "r")
+            pre_sorted = True
         elif language == "swedish":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/swedish.txt", "r")
+            pre_sorted = True
         elif language == "turkish":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/turkish.txt", "r")
+            pre_sorted = True
         elif language == "ukranian":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/ukrainian.txt", "r")
+            pre_sorted = True
         elif language == "hebrew":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/hebrew.txt", "r")
+            pre_sorted = True
         elif language == "arabic":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/arabic.txt", "r")
         elif language == "english medical terms":
             my_dict = open(f"DICTIONARIES/in-build-dictionaries/medical-wordlist.txt", "r")
+            pre_sorted = True
         else:  # if all fails
             my_dict = slice_the_english(language_eng, length_of_secret_word)
 
@@ -657,7 +674,7 @@ def slice_dict(language: str, language_eng: bool, secret_word: str, value_if_own
             os.rename(f"DICTIONARIES/{chosen_file}", f"DICTIONARIES/{chosen_file}_changed")
 
         in_func_list = []
-        if value_if_own_dict == 1 or language not in long_list_of_sorted:
+        if value_if_own_dict == 1 or not pre_sorted:
             """
             turn every element of dictionary into alpha-mode
             slices/chooses only words with the right length, does so with all before selected lists.
