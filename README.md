@@ -1,7 +1,7 @@
 # hangman 2 - the dictionaries strike back
 
 terminal-optimised hanging man game. simply clone and python run the game_script to start the game.
-(best played in a 90x30 terminal)
+(best played in a 120x30 terminal)
 
 It supports both english and german in the UI and many more languages through language/dictionary selection [see manual in game]
   - supported languages: english, german, ukranian, arabic, croatian, czech, danish, french, 
