@@ -617,7 +617,7 @@ else:  # The route of challenging with a word
 
         funcs.typewriter("\n   1. Yes, please. I am still confused!\n"
 
-                         "\n   2. I do not want your pity, but I do want a chance. (only english)\n"
+                         "\n   2. I do not want your pity, but I do want a chance.\n"
 
                          "\n   3. Give me the best that you got. You will be my prey.\n",
                          system, highlights)
@@ -638,7 +638,7 @@ else:  # The route of challenging with a word
 
         funcs.typewriter("\n    1. Ja, bitte. Ich bin immer noch verwirrt!\n"
 
-                         "\n    2. Ich möchte dein Mitleid nicht, aber ich möchte eine Chance. (nur englisch)\n"
+                         "\n    2. Ich möchte dein Mitleid nicht, aber ich möchte eine Chance.\n"
 
                          "\n    3. Geb mir das Beste was du hast. ICH werde dein Untergang sein.\n",
                          system, highlights)
@@ -788,7 +788,7 @@ else:  # The route of challenging with a word
     funcs.give_separators()
     time.sleep(0)
 
-    if strategy_value == 3:
+    if strategy_value == 3 or strategy_value == 2:
         """
         # asks if the user wants to use an in-build dictionary for the computer or if he
         # has provided an own one in the DICTIONARY folder
@@ -973,8 +973,15 @@ if who_plays == "Player":
 
 if who_plays == "NPC":
     guessed_letters = []
-    if strategy_value == 3:
-        # here the version for the high-strategy computer-way, separated for better overview
+    if strategy_value == 3 or strategy_value == 2:
+        if strategy_value == 2:
+            # changes the mistake probability to 30 if user decided for medium difficulty
+            # and hasn't changed the scale in the option's menu
+            if mistake_probability == 15:
+                mistake_probability = 30
+
+        # here starts the version for the high-strategy computer-way,
+        # separated to low_strategy for better overview
 
         sliced_dict = funcs.slice_dict(hard_mode_lang, is_english,
                                        secret_word, value_if_own_dict, files_in_dir,
@@ -1115,14 +1122,14 @@ if who_plays == "NPC":
         while remaining_attempts > 0 and len(guessed_letters) < length_of_secret_word:
             # the while-loop runs while the attempts haven't run out and the computer hasn't won
 
-            if strategy_value == 1:
+            if not hard_mode_lang == "english":
                 guess = funcs.guess_computer_letter(is_english, alphabet)  # computer takes a guess
             else:
+                # computer takes a structured guess with a higher success chance if the alphabet is english
                 guess = funcs.guess_computer_letters_strategy(is_english, guessed_letters)
-                # computer takes a structured guess with a higher success chance
 
-            guess_in_secret_word = funcs.is_guess_in_secret_word(guess, secret_word)
             # gives out a True or False value which we store in the variable and use in the following if statements
+            guess_in_secret_word = funcs.is_guess_in_secret_word(guess, secret_word)
 
             if guess_in_secret_word:
                 if guess in guessed_letters:

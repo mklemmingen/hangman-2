@@ -889,7 +889,7 @@ def user_input_word(language_eng: bool) -> str:
         # while-loop breaks when the challenge_word is good enough
         if language_eng:
             console.print("--->   ", end="", style="blink bold")
-            typewriter("... so be it... write your human word on this card and do not tell me: ",
+            typewriter("... so be it... \n       write your human word on this card and do not tell me: ",
                        executioner_talks, no_highlights)
             user_word = str(input())
         else:
