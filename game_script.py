@@ -946,12 +946,12 @@ if who_plays == "Player":
         if is_english:
             funcs.typewriter(f"You have already guessed these letters: {all_used_letters}", system,
                              highlights)
-            funcs.typewriter(f"The word is from the category of [bold]{category}[/bold]", system,
+            funcs.typewriter(f"\nThe word is from the category of {category}\n", system,
                              highlights)
         else:
             funcs.typewriter(f"Du hast bereits diese Buchstaben eingegeben: {all_used_letters}", system,
                              highlights)
-            funcs.typewriter(f"Das Wort stammt aus der Kategorie [bold]{category}[/bold]", system,
+            funcs.typewriter(f"\nDas Wort stammt aus der Kategorie {category}\n", system,
                              highlights)
         time.sleep(0)
 
