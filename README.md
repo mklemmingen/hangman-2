@@ -2,8 +2,8 @@
 
 terminal-optimised hanging man game. simply clone and python run the game_script to start.
 
+![](hangma2-intro.gif)
 
-![](https://github.com/hangman-2/hangma2-intro.gif)
 (best played in a 90x40 terminal)
 
 It supports both english and german in the UI and many more languages through language/dictionary selection [see manual in game]
