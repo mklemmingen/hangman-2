@@ -2,7 +2,7 @@
 
 terminal-optimised hanging man game. simply clone and python run the game_script to start.
 
-![](hangma2-intro.gif)
+![til](https://raw.githubusercontent.com/mklemmingen/hangman-2/master/hangman2_intro.gif)
 
 (best played in a 90x40 terminal)
 
