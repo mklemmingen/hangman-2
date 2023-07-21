@@ -865,7 +865,6 @@ point_computer_german: list = ["Hah, ich bedaure dich, du Dummkopf!\n",
                                "nachdem mein Hund mit meiner Familie nach Las Vegas weggelaufen ist.\n"
                                "Du hast keine Chance.\n",
 
-
                                "Haha, du bist gerade in meinem fiesen Reich gelandet, Kumpel. \n"
                                "Mach dich bereit, die bittere Niederlage zu schmecken! Boom! \n"
                                "Noch ein Punkt für mich, deine armseligen Versuche wurden gerade zerschmettert.\n"
@@ -980,14 +979,19 @@ choose_german = ["Wähle weise, oder Thor wird dich hart treffen. WÄHLE!\n",
 # letters for the computer to choose
 
 standard_alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
-                     "u",
-                     "v", "w", "x", "y", "z"]
+                     "u", "v", "w", "x", "y", "z",
+                     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
+                     "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
-english_alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
-                    "s", "t", "u", "v", "w", "x", "y", "z"]
+english_alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+                    "u", "v", "w", "x", "y", "z",
+                    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
+                    "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
 german_alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
-                   "r", "s", "t", "u", "v", "w", "x", "y", "z", "ä", "ö", "ü", "ß"]
+                   "r", "s", "t", "u", "v", "w", "x", "y", "z", "ä", "ö", "ü", "ß",
+                   "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
+                   "S", "T", "U", "V", "W", "X", "Y", "Z", "Ä", "Ö", "Ü", "ẞ"]
 
 croatian_alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "r",
                      "s", "t", "u", "v", "z", "ć", "č", "đ", "š", "ž"]
@@ -1124,7 +1128,7 @@ npc_inner_thoughts = ["I have an idea... but it may be risky!\n",
 
                       "Ah, the sweet anticipation of the hangman's noose. \n"
                       "But there's something different about Jeff.\n"
-                      
+
                       "He's not like the others. I almost hate to see him go...almost.\n",
                       "I've been executing mortals for centuries, but there's something intriguing about Jeff. Maybe\n"
                       "it's his wit, or his cunning, or... well, never mind.\n "
